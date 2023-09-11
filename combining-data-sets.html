@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Combining Data Sets | STA311: Stats Comp. &amp; Data Mgmt.</title>
+  <meta name="description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Combining Data Sets | STA311: Stats Comp. &amp; Data Mgmt." />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Combining Data Sets | STA311: Stats Comp. &amp; Data Mgmt." />
+  
+  <meta name="twitter:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  
+
+<meta name="author" content="Cheng Peng" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="subsetting-data.html"/>
+<link rel="next" href="modifying-data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><center><font color = "darkred" size = 3>STA311 E-Pack</font><br><font color = "darkred" size = 4> <b>Stats Comp & Data Mgmt.</b><br><br><img src = "311.png"  width="85" height="115"></center></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html"><i class="fa fa-check"></i><b>2</b> Basics of SAS System</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-data-and-variables"><i class="fa fa-check"></i><b>2.1</b> SAS Data and Variables</a></li>
+<li class="chapter" data-level="2.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-code-structure"><i class="fa fa-check"></i><b>2.2</b> SAS Code Structure</a></li>
+<li class="chapter" data-level="2.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-libraries"><i class="fa fa-check"></i><b>2.3</b> SAS Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#first-sas-code-hello-world"><i class="fa fa-check"></i><b>2.4</b> First SAS Code: “Hello World!”</a></li>
+<li class="chapter" data-level="2.5" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-log-files"><i class="fa fa-check"></i><b>2.5</b> SAS Log Files</a></li>
+<li class="chapter" data-level="2.6" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-output"><i class="fa fa-check"></i><b>2.6</b> SAS Output</a></li>
+<li class="chapter" data-level="2.7" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#some-sas-tutorial-from-sas-inc."><i class="fa fa-check"></i><b>2.7</b> Some SAS Tutorial from SAS Inc.</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#description-of-the-sas-program"><i class="fa fa-check"></i><b>2.7.1</b> Description of the SAS Program</a></li>
+<li class="chapter" data-level="2.7.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-graphical-user-interface"><i class="fa fa-check"></i><b>2.7.2</b> SAS Graphical User Interface</a></li>
+<li class="chapter" data-level="2.7.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#writing-sas-code"><i class="fa fa-check"></i><b>2.7.3</b> Writing SAS Code</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html"><i class="fa fa-check"></i><b>3</b> Coding Conventions and Best Practices</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-file-and-program-structures"><i class="fa fa-check"></i><b>3.1</b> SAS file and Program Structures</a></li>
+<li class="chapter" data-level="3.2" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#naming-conventions-and-sas-program-structure"><i class="fa fa-check"></i><b>3.2</b> Naming Conventions and SAS Program Structure</a></li>
+<li class="chapter" data-level="3.3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-data-structure"><i class="fa fa-check"></i><b>3.3</b> SAS Data Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#some-best-coding-practices"><i class="fa fa-check"></i><b>3.4</b> Some Best Coding Practices</a></li>
+<li class="chapter" data-level="3.5" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#learning-sas-coding-by-examples"><i class="fa fa-check"></i><b>3.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html"><i class="fa fa-check"></i><b>4</b> Methods of SAS Data Input</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#specifying-variable-length"><i class="fa fa-check"></i><b>4.1</b> Specifying Variable Length</a></li>
+<li class="chapter" data-level="4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#methods-of-data-input"><i class="fa fa-check"></i><b>4.2</b> Methods of Data Input</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#list-input"><i class="fa fa-check"></i><b>4.2.1</b> List Input</a></li>
+<li class="chapter" data-level="4.2.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#column-input"><i class="fa fa-check"></i><b>4.2.2</b> Column Input</a></li>
+<li class="chapter" data-level="4.2.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formatted-input-delimited-input"><i class="fa fa-check"></i><b>4.2.3</b> Formatted Input (Delimited Input)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#summary---three-input-styles"><i class="fa fa-check"></i><b>4.2.4</b> Summary - Three Input Styles</a></li>
+<li class="chapter" data-level="4.2.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#mixed-input"><i class="fa fa-check"></i><b>4.2.5</b> Mixed Input</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#handling-special-structured-data"><i class="fa fa-check"></i><b>4.3</b> Handling Special Structured Data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#data-file-containing-comments-and-descriptions"><i class="fa fa-check"></i><b>4.3.1</b> Data File Containing Comments and Descriptions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-line-for-the-record"><i class="fa fa-check"></i><b>4.3.2</b> Multi-line for the Record</a></li>
+<li class="chapter" data-level="4.3.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-records-in-the-same-line"><i class="fa fa-check"></i><b>4.3.3</b> Multi-records In the Same Line</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#making-better-line-outputs"><i class="fa fa-check"></i><b>4.4</b> Making Better Line Outputs</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#options-statement"><i class="fa fa-check"></i><b>4.4.1</b> OPTIONS Statement</a></li>
+<li class="chapter" data-level="4.4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#titles-and-footnotes"><i class="fa fa-check"></i><b>4.4.2</b> Titles and Footnotes</a></li>
+<li class="chapter" data-level="4.4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#labeling-variables"><i class="fa fa-check"></i><b>4.4.3</b> Labeling Variables</a></li>
+<li class="chapter" data-level="4.4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formats-and-user-define-formats"><i class="fa fa-check"></i><b>4.4.4</b> Formats and User Define Formats</a></li>
+<li class="chapter" data-level="4.4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#a-note-on-sas-dates"><i class="fa fa-check"></i><b>4.4.5</b> A Note on SAS Dates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#learning-sas-coding-by-examples-1"><i class="fa fa-check"></i><b>4.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html"><i class="fa fa-check"></i><b>5</b> Read Data from Other Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#more-infile-options"><i class="fa fa-check"></i><b>5.1</b> More INFILE Options</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dlm"><i class="fa fa-check"></i><b>5.1.1</b> <code>DLM</code></a></li>
+<li class="chapter" data-level="5.1.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dsd"><i class="fa fa-check"></i><b>5.1.2</b> <code>DSD</code></a></li>
+<li class="chapter" data-level="5.1.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#missover"><i class="fa fa-check"></i><b>5.1.3</b> <code>MISSOVER</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-in-existing-sas-data-sets"><i class="fa fa-check"></i><b>5.2</b> Reading in Existing SAS Data Sets</a></li>
+<li class="chapter" data-level="5.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-data-via-wizard"><i class="fa fa-check"></i><b>5.3</b> Reading Data via Wizard</a></li>
+<li class="chapter" data-level="5.4" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#loading-data-proc-import"><i class="fa fa-check"></i><b>5.4</b> Loading Data PROC IMPORT</a></li>
+<li class="chapter" data-level="5.5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#read-data-with-url"><i class="fa fa-check"></i><b>5.5</b> Read Data with URL</a></li>
+<li class="chapter" data-level="5.6" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#learning-coding-by-examples"><i class="fa fa-check"></i><b>5.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#frequency-table-analysis"><i class="fa fa-check"></i><b>6.1</b> Frequency Table Analysis</a></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Numerical Summary Statistics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-means"><i class="fa fa-check"></i><b>6.2.1</b> <code>PROC MEANS</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-univariate"><i class="fa fa-check"></i><b>6.2.2</b> <code>PROC UNIVARIATE</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#learning-coding-by-examples-1"><i class="fa fa-check"></i><b>6.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html"><i class="fa fa-check"></i><b>7</b> Basic Statistics Graphics</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#boxplot"><i class="fa fa-check"></i><b>7.1</b> Boxplot</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-box-plot"><i class="fa fa-check"></i><b>7.1.1</b> Basic Box Plot</a></li>
+<li class="chapter" data-level="7.1.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#boxplots-for-categories"><i class="fa fa-check"></i><b>7.1.2</b> Boxplots for Categories</a></li>
+<li class="chapter" data-level="7.1.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-box-plot"><i class="fa fa-check"></i><b>7.1.3</b> Panel Box Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#bar-charts"><i class="fa fa-check"></i><b>7.2</b> Bar Charts</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-bar-chart-for-one-variable"><i class="fa fa-check"></i><b>7.2.1</b> Basic Bar Chart for One Variable</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#stacked-bar-charts"><i class="fa fa-check"></i><b>7.2.2</b> Stacked Bar Charts</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#bar-charts-with-means-and-error-bars"><i class="fa fa-check"></i><b>7.2.3</b> Bar Charts with Means and Error Bars</a></li>
+<li class="chapter" data-level="7.2.4" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-bar-charts"><i class="fa fa-check"></i><b>7.2.4</b> Panel Bar Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#histogram"><i class="fa fa-check"></i><b>7.3</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#histogram-with-density-curves"><i class="fa fa-check"></i><b>7.3.1</b> Histogram with Density Curves</a></li>
+<li class="chapter" data-level="7.3.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#overlaid-histograms"><i class="fa fa-check"></i><b>7.3.2</b> Overlaid Histograms</a></li>
+<li class="chapter" data-level="7.3.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-histogram"><i class="fa fa-check"></i><b>7.3.3</b> Panel Histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#scatter-plots"><i class="fa fa-check"></i><b>7.4</b> Scatter Plots</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-scatter-plot-for-two-numeric-variables"><i class="fa fa-check"></i><b>7.4.1</b> Basic Scatter Plot for Two Numeric Variables</a></li>
+<li class="chapter" data-level="7.4.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#scatter-plot-with-least-squares-regression-line"><i class="fa fa-check"></i><b>7.4.2</b> Scatter Plot With Least Squares Regression Line</a></li>
+<li class="chapter" data-level="7.4.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-scatter-plot"><i class="fa fa-check"></i><b>7.4.3</b> Panel Scatter Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#pair-wise-scatter-plot"><i class="fa fa-check"></i><b>7.5</b> Pair-wise Scatter Plot</a></li>
+<li class="chapter" data-level="7.6" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#learning-coding-by-examples-2"><i class="fa fa-check"></i><b>7.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="subsetting-data.html"><a href="subsetting-data.html"><i class="fa fa-check"></i><b>8</b> Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="subsetting-data.html"><a href="subsetting-data.html#selecting-columns"><i class="fa fa-check"></i><b>8.1</b> Selecting Columns</a></li>
+<li class="chapter" data-level="8.2" data-path="subsetting-data.html"><a href="subsetting-data.html#selecting-rows"><i class="fa fa-check"></i><b>8.2</b> Selecting Rows</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="subsetting-data.html"><a href="subsetting-data.html#partial-reading"><i class="fa fa-check"></i><b>8.2.1</b> Partial Reading</a></li>
+<li class="chapter" data-level="8.2.2" data-path="subsetting-data.html"><a href="subsetting-data.html#conditional-selecting-methods"><i class="fa fa-check"></i><b>8.2.2</b> Conditional Selecting Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="subsetting-data.html"><a href="subsetting-data.html#subsetting-by-splitting"><i class="fa fa-check"></i><b>8.3</b> Subsetting by Splitting</a></li>
+<li class="chapter" data-level="8.4" data-path="subsetting-data.html"><a href="subsetting-data.html#learning-coding-by-examples-3"><i class="fa fa-check"></i><b>8.4</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>9</b> Combining Data Sets</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="combining-data-sets.html"><a href="combining-data-sets.html#stackingconcatenating"><i class="fa fa-check"></i><b>9.1</b> Stacking/Concatenating</a></li>
+<li class="chapter" data-level="9.2" data-path="combining-data-sets.html"><a href="combining-data-sets.html#in-statement-and-ghost-variable"><i class="fa fa-check"></i><b>9.2</b> <code>IN</code> Statement and <code>ghost</code> Variable</a></li>
+<li class="chapter" data-level="9.3" data-path="combining-data-sets.html"><a href="combining-data-sets.html#interleaving-data-sets"><i class="fa fa-check"></i><b>9.3</b> Interleaving Data Sets</a></li>
+<li class="chapter" data-level="9.4" data-path="combining-data-sets.html"><a href="combining-data-sets.html#merging-by-matching"><i class="fa fa-check"></i><b>9.4</b> Merging by Matching</a></li>
+<li class="chapter" data-level="9.5" data-path="combining-data-sets.html"><a href="combining-data-sets.html#summary-of-some-key-words-and-statements"><i class="fa fa-check"></i><b>9.5</b> Summary of Some KEY Words and Statements</a></li>
+<li class="chapter" data-level="9.6" data-path="combining-data-sets.html"><a href="combining-data-sets.html#learning-coding-by-examples-4"><i class="fa fa-check"></i><b>9.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modifying-data.html"><a href="modifying-data.html"><i class="fa fa-check"></i><b>10</b> Modifying Data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modifying-data.html"><a href="modifying-data.html#sas-functions-date-and-others"><i class="fa fa-check"></i><b>10.1</b> SAS Functions: Date and Others</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="modifying-data.html"><a href="modifying-data.html#using-date-functions"><i class="fa fa-check"></i><b>10.1.1</b> Using Date Functions</a></li>
+<li class="chapter" data-level="10.1.2" data-path="modifying-data.html"><a href="modifying-data.html#other-related-sas-functions"><i class="fa fa-check"></i><b>10.1.2</b> Other Related SAS Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="modifying-data.html"><a href="modifying-data.html#automatic-variables"><i class="fa fa-check"></i><b>10.2</b> Automatic Variables</a></li>
+<li class="chapter" data-level="10.3" data-path="modifying-data.html"><a href="modifying-data.html#calculating-new-variables"><i class="fa fa-check"></i><b>10.3</b> Calculating New Variables</a></li>
+<li class="chapter" data-level="10.4" data-path="modifying-data.html"><a href="modifying-data.html#logical-expressions"><i class="fa fa-check"></i><b>10.4</b> Logical Expressions</a></li>
+<li class="chapter" data-level="10.5" data-path="modifying-data.html"><a href="modifying-data.html#operators-with-where-statement"><i class="fa fa-check"></i><b>10.5</b> Operators with WHERE statement</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="modifying-data.html"><a href="modifying-data.html#where-between-and"><i class="fa fa-check"></i><b>10.5.1</b> <code>WHERE-BETWEEN-AND</code></a></li>
+<li class="chapter" data-level="10.5.2" data-path="modifying-data.html"><a href="modifying-data.html#where-contains-or"><i class="fa fa-check"></i><b>10.5.2</b> <code>WHERE-CONTAINS or ?</code></a></li>
+<li class="chapter" data-level="10.5.3" data-path="modifying-data.html"><a href="modifying-data.html#where-is-missing-or-is-null"><i class="fa fa-check"></i><b>10.5.3</b> <code>WHERE-IS MISSING or IS NULL</code></a></li>
+<li class="chapter" data-level="10.5.4" data-path="modifying-data.html"><a href="modifying-data.html#where-like"><i class="fa fa-check"></i><b>10.5.4</b> <code>WHERE-LIKE</code></a></li>
+<li class="chapter" data-level="10.5.5" data-path="modifying-data.html"><a href="modifying-data.html#where"><i class="fa fa-check"></i><b>10.5.5</b> <code>WHERE =*</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="modifying-data.html"><a href="modifying-data.html#learning-coding-by-examples-5"><i class="fa fa-check"></i><b>10.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html"><i class="fa fa-check"></i><b>11</b> String Functions and Basic Loops</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#string-functions"><i class="fa fa-check"></i><b>11.1</b> String Functions</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#concatenation-cat-cats-catx-and"><i class="fa fa-check"></i><b>11.1.1</b> Concatenation CAT, CATS, CATX, and <code>||</code></a></li>
+<li class="chapter" data-level="11.1.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#substr"><i class="fa fa-check"></i><b>11.1.2</b> SUBSTR</a></li>
+<li class="chapter" data-level="11.1.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#string-function-for-handling-blanks"><i class="fa fa-check"></i><b>11.1.3</b> String Function for Handling Blanks</a></li>
+<li class="chapter" data-level="11.1.4" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#compress-vs-compbl"><i class="fa fa-check"></i><b>11.1.4</b> COMPRESS vs COMPBL</a></li>
+<li class="chapter" data-level="11.1.5" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#change-character-case-functions"><i class="fa fa-check"></i><b>11.1.5</b> Change Character Case Functions</a></li>
+<li class="chapter" data-level="11.1.6" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#search-character-functions"><i class="fa fa-check"></i><b>11.1.6</b> Search Character Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#basic-loops"><i class="fa fa-check"></i><b>11.2</b> Basic Loops</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do--loop"><i class="fa fa-check"></i><b>11.2.1</b> DO -loop</a></li>
+<li class="chapter" data-level="11.2.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do-while-loop"><i class="fa fa-check"></i><b>11.2.2</b> DO-WHILE Loop</a></li>
+<li class="chapter" data-level="11.2.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do-until-loop"><i class="fa fa-check"></i><b>11.2.3</b> DO-UNTIL Loop</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#retain-statement-and-longitudinal-data-operations"><i class="fa fa-check"></i><b>11.3</b> RETAIN Statement and Longitudinal Data Operations</a></li>
+<li class="chapter" data-level="11.4" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#learning-coding-by-examples-6"><i class="fa fa-check"></i><b>11.4</b> Learning COding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sas-arrays.html"><a href="sas-arrays.html"><i class="fa fa-check"></i><b>12</b> SAS Arrays</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="sas-arrays.html"><a href="sas-arrays.html#array-syntax"><i class="fa fa-check"></i><b>12.1</b> Array <strong>Syntax</strong></a></li>
+<li class="chapter" data-level="12.2" data-path="sas-arrays.html"><a href="sas-arrays.html#methods-of-specifying-array-elements"><i class="fa fa-check"></i><b>12.2</b> Methods of Specifying ARRAY Elements</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="sas-arrays.html"><a href="sas-arrays.html#explicit-definition"><i class="fa fa-check"></i><b>12.2.1</b> Explicit Definition</a></li>
+<li class="chapter" data-level="12.2.2" data-path="sas-arrays.html"><a href="sas-arrays.html#specify-a-range-of-elements"><i class="fa fa-check"></i><b>12.2.2</b> Specify A Range of Elements</a></li>
+<li class="chapter" data-level="12.2.3" data-path="sas-arrays.html"><a href="sas-arrays.html#select-all-variables-between-a-start-and-end-variable"><i class="fa fa-check"></i><b>12.2.3</b> Select All Variables Between A Start and End Variable</a></li>
+<li class="chapter" data-level="12.2.4" data-path="sas-arrays.html"><a href="sas-arrays.html#using-automatic-variable"><i class="fa fa-check"></i><b>12.2.4</b> Using Automatic Variable</a></li>
+<li class="chapter" data-level="12.2.5" data-path="sas-arrays.html"><a href="sas-arrays.html#sas-created-elements"><i class="fa fa-check"></i><b>12.2.5</b> SAS Created Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="sas-arrays.html"><a href="sas-arrays.html#use-of-array"><i class="fa fa-check"></i><b>12.3</b> Use of Array</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="sas-arrays.html"><a href="sas-arrays.html#referencing-elements-of-an-array"><i class="fa fa-check"></i><b>12.3.1</b> Referencing Elements of an Array</a></li>
+<li class="chapter" data-level="12.3.2" data-path="sas-arrays.html"><a href="sas-arrays.html#array-operators"><i class="fa fa-check"></i><b>12.3.2</b> Array Operators</a></li>
+<li class="chapter" data-level="12.3.3" data-path="sas-arrays.html"><a href="sas-arrays.html#array-with-loops"><i class="fa fa-check"></i><b>12.3.3</b> ARRAY with Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="sas-arrays.html"><a href="sas-arrays.html#reshape-data"><i class="fa fa-check"></i><b>12.4</b> Reshape Data</a></li>
+<li class="chapter" data-level="12.5" data-path="sas-arrays.html"><a href="sas-arrays.html#learning-coding-by-examples-7"><i class="fa fa-check"></i><b>12.5</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html"><i class="fa fa-check"></i><b>13</b> Output Deliver System (ODS)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-basics"><i class="fa fa-check"></i><b>13.1</b> ODS Basics</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#some-technical-terms"><i class="fa fa-check"></i><b>13.1.1</b> Some Technical Terms</a></li>
+<li class="chapter" data-level="13.1.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#sas-default-destination-listing"><i class="fa fa-check"></i><b>13.1.2</b> SAS Default Destination: LISTING</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-syntax"><i class="fa fa-check"></i><b>13.2</b> ODS Syntax</a></li>
+<li class="chapter" data-level="13.3" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#flexibility-of-ods"><i class="fa fa-check"></i><b>13.3</b> Flexibility of ODS</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#html"><i class="fa fa-check"></i><b>13.3.1</b> HTML</a></li>
+<li class="chapter" data-level="13.3.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#multiple-ods-putputs"><i class="fa fa-check"></i><b>13.3.2</b> Multiple ODS Putputs</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-styles"><i class="fa fa-check"></i><b>13.4</b> ODS Styles</a></li>
+<li class="chapter" data-level="13.5" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#learning-coding-by-examples-8"><i class="fa fa-check"></i><b>13.5</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html"><i class="fa fa-check"></i><b>14</b> Generating Analysis Reports</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#proc-report-syntax"><i class="fa fa-check"></i><b>14.1</b> PROC REPORT Syntax</a></li>
+<li class="chapter" data-level="14.2" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#ods-reports"><i class="fa fa-check"></i><b>14.2</b> ODS Reports</a></li>
+<li class="chapter" data-level="14.3" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#learning-coding-by-examples-9"><i class="fa fa-check"></i><b>14.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html"><i class="fa fa-check"></i><b>15</b> Basics of SAS MACRO</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macro-variables"><i class="fa fa-check"></i><b>15.1</b> MACRO Variables</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#defining-macro-variables"><i class="fa fa-check"></i><b>15.1.1</b> Defining MACRO Variables</a></li>
+<li class="chapter" data-level="15.1.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#use-of-macro-variables"><i class="fa fa-check"></i><b>15.1.2</b> Use of MACRO Variables</a></li>
+<li class="chapter" data-level="15.1.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#combining-macro-variables-with-text"><i class="fa fa-check"></i><b>15.1.3</b> Combining Macro Variables with Text</a></li>
+<li class="chapter" data-level="15.1.4" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macro-quoting"><i class="fa fa-check"></i><b>15.1.4</b> Macro Quoting</a></li>
+<li class="chapter" data-level="15.1.5" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#system-automatics-macro-variables"><i class="fa fa-check"></i><b>15.1.5</b> System Automatics MACRO Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#sas-macro"><i class="fa fa-check"></i><b>15.2</b> SAS MACRO</a></li>
+<li class="chapter" data-level="15.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macros-with-parameters"><i class="fa fa-check"></i><b>15.3</b> MACROs with Parameters</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#positional-parameter"><i class="fa fa-check"></i><b>15.3.1</b> Positional Parameter</a></li>
+<li class="chapter" data-level="15.3.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#keyword-parameter"><i class="fa fa-check"></i><b>15.3.2</b> Keyword Parameter</a></li>
+<li class="chapter" data-level="15.3.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#mixed-parameter-list"><i class="fa fa-check"></i><b>15.3.3</b> Mixed Parameter List</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#learning-coding-by-examples-10"><i class="fa fa-check"></i><b>15.4</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><center><BR><BR><a href="https://github.com/rstudio/bookdown" target="blank"><font color = "blue" size = 2> Published with bookdown</font></a></center></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA311: Stats Comp. &amp; Data Mgmt.</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="combining-data-sets" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Combining Data Sets<a href="combining-data-sets.html#combining-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In real-world applications, aggregating information from different data sources is a routine job for data and analytic professionals. There are two basic types of ways of combining data
+sets.</p>
+<p><img src="img08/w08-combingDataMethods.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Before we move to individual combining methods, we use the following flowchart to explain the process of how the data step creates SAS data records.</p>
+<p><img src="img08/w08-DataStepProcessing02.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Next, we create 5 working data sets based on the <code>penguin</code> data using the following code.</p>
+<pre><code>FILENAME pguin URL &quot;https://raw.githubusercontent.com/pengdsci/sta553/main/w02-penguins.csv&quot;;
+
+PROC IMPORT DATAFILE = pguin
+    OUT = penguin        
+    DBMS = CSV  
+    REPLACE;
+    GETNAMES = YES;
+RUN;
+
+DATA numeric_penguin;  /* define a new data set */
+   SET Penguin;    /* copy the data original data*/
+     body_mass = input(body_mass_g, 8.);  /* conversion */
+     flipper_length = input(flipper_length_mm, 8.);
+     bill_depth = input(bill_depth_mm, 8.);
+     bill_length = input(bill_length_mm, 8.);
+     ID = VAR1;
+    KEEP ID body_massflipper_length bill_depth bill_length;
+RUN;
+
+DATA char_penguin;
+  SET penguin;
+  ID = VAR1;
+  DROP VAR1;
+RUN;
+
+DATA Adelie Chinstra Gentoo;
+  SET penguin;
+  IF species = &#39;Adelie&#39; THEN OUTPUT Adelie;
+  IF species = &#39;Chinstra&#39; THEN OUTPUT Chinstra;
+  IF species = &#39;Gentoo&#39; THEN OUTPUT Gentoo;
+RUN;</code></pre>
+<p>A glance at the four working data sets is given in the following figure.</p>
+<p><img src="img08/w08-workingDataSet.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="stackingconcatenating" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Stacking/Concatenating<a href="combining-data-sets.html#stackingconcatenating" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To <strong>append the observations</strong> from one data set to another data set, we concatenate them by specifying the data set names in the SET statement. When SAS concatenates, data sets in the SET statement are read <em>sequentially</em>, in the order in which they are listed. The new data set contains all the variables and the total number of observations from all input data sets.</p>
+<p>The syntax is</p>
+<pre><code>DATA concat;
+    SET dataset_a dataset_b;
+RUN;
+</code></pre>
+<p>This above code assumes that both data sets have the same variables with the same names. If the same variable with different names, the resulting data set will treat the variables with different names as two different variables, therefore, missing values will be produced. Similarly, if a variable is not in one of the source data sets, the resulting data set will also end up with missing values.</p>
+<p>In case of the same variable with different names, we can use <code>REMAE = (old_name = new_name)</code> to rename any variable. At the same time, we may also need to include an indicator variable in the resulting data set to indicate the source of every record.</p>
+<pre><code>/* sex in different data sets has different names  */
+DATA combined_penguin;
+  SET Adelie(RENAME=(Adelie_sex = sex))
+      Chinstra(RENAME=(Chinstra_sex = sex))
+      Gentoo(RENAME=(Gentoo_sex = sex));
+RUN; 
+
+PROC PRINT DATA = combined_penguin;
+RUN;
+</code></pre>
+<p>The resulting combined data set is given below. We can see that the names of sex variables in different data sets have been changed to <code>sex</code>.</p>
+<p><img src="img08/w08-workingDataSet.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="in-statement-and-ghost-variable" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> <code>IN</code> Statement and <code>ghost</code> Variable<a href="combining-data-sets.html#in-statement-and-ghost-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The issue in the previous combined data set is that the species information is lost. We need to bring that information back to the data set. Therefore different ways to bring this information back. One way to do this is to add a species variable in the individual data sets before concatenating them.</p>
+<p>The other way is to use <code>IN =</code> to bring an invisible <code>ghost</code> indicator variable. The reason I call it a “ghost” variable is because you cannot print it out and view the variable!</p>
+<p>However, we can define the variable explicitly pick up the values of the <em>ghost</em> variable, and print the explicitly defined variable to see the values of the <em>ghost</em> variable.</p>
+<pre><code>/* sex in different data sets has different names  */
+DATA combined_penguin;
+  SET Adelie(RENAME=(Adelie_sex = sex) IN = Adelie)
+      Chinstra(RENAME=(Chinstra_sex = sex) IN = Chinstra)
+      Gentoo(RENAME=(Gentoo_sex = sex) IN = Gentoo);
+RUN; 
+
+TITLE &quot;IN Statement - implicit indicator&quot;;
+PROC PRINT DATA = combined_penguin;
+RUN;</code></pre>
+<p><img src="img08/w08-IN-invisibleIndicator.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><code>IN</code> statement defined an indicator variable but it did not appear in the combined data set. But we can use the value of the invisible indicator to define the actual <code>species</code> variable using a conditional statement (<code>IF-THEN</code>) as explained in the following code.</p>
+<pre><code>/* sex in different data sets has different names  */
+DATA combined_penguin;
+  SET Adelie(RENAME=(Adelie_sex = sex) IN = Adelie)
+      Chinstra(RENAME=(Chinstra_sex = sex) IN = Chinstra)
+      Gentoo(RENAME=(Gentoo_sex = sex) IN = Gentoo);
+      IF Adelie THEN species = &#39;Adelie&#39;;
+      IF Chinstra THEN species = &#39;Chinstra&#39;;
+      IF Gentoo THEN species = &#39;Gentoo&#39;;
+RUN; 
+
+TITLE &quot;IN Statement joint with IF-THEN&quot;;
+PROC PRINT DATA = combined_penguin;
+RUN;</code></pre>
+<p><img src="img08/w08-IN-Indicator-IF-THEN.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>The above printout indicates that the variable `species ’ has been successfully added to the combined data set.</p>
+</div>
+<div id="interleaving-data-sets" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Interleaving Data Sets<a href="combining-data-sets.html#interleaving-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If we use a BY statement when you concatenate data sets, the result is interleaving. Interleaving intersperses observations from two or more data sets, based on one or more common variables.</p>
+<ul>
+<li><p><strong>Each input data set must be sorted or indexed in ascending order based on the BY variable(s)</strong>.</p></li>
+<li><p>The observations in the interleaved data sets are not combined; they are copied from the original data sets in the order of the values of the BY variable.</p></li>
+<li><p>Observations in each BY group in each data set in the SET statement are read sequentially, in the order in which the data sets and BY variables are listed until all observations have been processed.</p></li>
+<li><p>Observations in the output data set <strong>are arranged by the values of the BY variable</strong>.</p></li>
+</ul>
+<p>The new data set contains all the variables and the total number of observations from all input data sets.</p>
+<p>The general syntax is</p>
+<pre><code>DATA interlv;
+        SET dataset_a dataset_b;
+        BY num;
+     RUN;</code></pre>
+<p>The following is a toy example.</p>
+<pre><code>
+DATA Animal;
+INPUT common $ animal $;
+DATALINES;
+a Ant
+a Ape
+b Bird
+c Cat
+d Dog
+e Eagle
+;
+RUN;
+
+DATA plant;
+INPUT common $ plant $;
+DATALINES;
+a Apple
+b Banna
+c Coconut
+c Celery
+d Dewberry
+e Eggplant
+;
+RUN;
+
+* Sort the data by the common variable;
+
+PROC SORT DATA = Animal;
+BY Common;
+RUN;
+
+PROC SORT DATA = plant;
+BY common;
+RUN;
+
+DATA InterleaveData;
+SET animal plant;
+BY common;
+RUN;
+
+TITLE &quot;Interleaving Data Sets&quot;;
+PROC PRINT DATA = InterleaveData;
+RUN;</code></pre>
+<p>The output data set</p>
+<p><img src="img08/w08-interleaveData.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>This method is commonly used in creating longitudinal data sets.</p>
+</div>
+<div id="merging-by-matching" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Merging by Matching<a href="combining-data-sets.html#merging-by-matching" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sometimes we need to combine observations from two or more data sets into a
+single observation in a new data set according to the values of a same-named
+variable. This is match-merging, which uses a MERGE statement rather than a
+SET statement to combine data sets. Each input data set must be sorted or
+indexed in ascending order based on the BY variable(s). During match-merging,
+SAS sequentially checks each observation of each data set to see whether
+the BY values match, then writes the combined observation to the new data set.</p>
+<p>We next merge the combined penguin data set and the 4th penguin data set with only numerical variables. Since the numerical variables in the 4th data set have their corresponding character variables, we will drop these character variables that have their corresponding numerical version.</p>
+<p>We can do this by dropping these character variables first and then merging them. Next, we will do this by dropping when merging.</p>
+<p>**Keep in mind that we must sort the <code>by-variable</code> when we use the <code>BY</code> statement.</p>
+<pre><code>
+
+PROC SORT DATA = combined_penguin;
+BY ID;
+RUN;
+
+PROC SORT DATA = numeric_penguin;
+BY ID;
+RUN;
+
+/** merge two data sets **/
+DATA merge_data;
+MERGE combined_penguin
+      numeric_penguin;
+  BY ID;
+  DROP flipper_length_mm body_mass_g bill_depth_mm bill_length_mm;
+RUN;
+
+TITLE &quot;Merge Data&quot;;
+PROC PRINT DATA = merge_data;
+RUN;</code></pre>
+<p><img src="img08/w08-MergeData.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="summary-of-some-key-words-and-statements" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Summary of Some KEY Words and Statements<a href="combining-data-sets.html#summary-of-some-key-words-and-statements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><strong>Execution of Merging</strong>: After compiling the DATA step, SAS sequentially match-merges observations by moving the pointers down each observation of each data set and checking to see whether the BY values match.
+<ul>
+<li>If Yes, the observations are written to the <code>PDV</code> (<code>program data vector</code>) in the order in which the data sets appear in the MERGE statement. Values of any same-named variable are overwritten by values of the same-named variable in subsequent data sets. SAS writes the combined observation to the new data set and retains the values in the PDV until the BY value changes in all the data sets.</li>
+<li>If No, SAS determines which of the values comes first and writes the observation that contains this value to the <code>PDV</code>. Then the observation is written to the new data set.</li>
+<li>When the BY value changes in all the input data sets, the PDV is initialized to missing. The DATA step merge continues to process every observation in each data set until it has processed all observations in all data sets.</li>
+</ul></li>
+<li><strong>Handling Unmatched Observations and Missing Values</strong>: All observations that are written to the PDV, including observations that have missing data and no matching BY values, are written to the output data set.
+<ul>
+<li>If an observation contains missing values for a variable, then the observation in the output data set contains the missing values as well. Observations that have missing values for the BY variable appear at the top of the output data set.</li>
+<li>If an input data set doesn’t have a matching BY value, then the observation in the output data set contains missing values for the variables that are unique to that input data set.</li>
+</ul></li>
+<li><strong>Renaming Variables</strong>: Sometimes you might have same-named variables in more than one input data set. In this case, match-merging overwrites values of the same-named variable in the first data set with values of the same-named variable in subsequent data sets.
+<ul>
+<li>To prevent overwriting, use the RENAME= data set option in the MERGE statement to rename variables</li>
+</ul></li>
+<li><strong>Excluding Unmatched Observations</strong> By default, match-merging combines all observations in all input data sets. However, we might want to select only observations that match two or more input data sets.
+<ul>
+<li>To exclude unmatched observations, use the <code>IN =</code> data set option and the subsetting IF statement in your DATA step. The <code>IN =</code> data set option creates a variable (‘ghost’ variable because you cannot see it) to indicate whether the data set contributed data to the current observation.</li>
+<li>The subsetting IF statement then checks the <code>IN =</code> values and writes to the merged data set only observations that appear in the data sets for which <code>IN =</code> is specified.</li>
+</ul></li>
+<li><strong>Selecting Variables</strong>: We can specify the variables you want to drop or keep by using the <code>DROP =</code> and <code>KEEP =</code> data set options.
+<ul>
+<li>When match-merging, you can specify these options in either the DATA statement or the MERGE statement, depending on whether or not you want to process values of the variables in that DATA step.</li>
+<li>When used in the DATA statement, the <code>DROP =</code> option simply drops the variables from the new data set. However, they are still read from the original data set and are available within the DATA step.</li>
+</ul></li>
+<li><strong>Summary</strong>
+<ul>
+<li>We can rename any number of variables in each occurrence of the <code>RENAME =</code> option.</li>
+<li>In match-merging, the <code>IN =</code> data set option can apply to any data set in the MERGE statement. The <code>RENAME =, DROP =</code>, and <code>KEEP =</code> options can apply to any data set in the DATA or <code>MERGE</code> statements.</li>
+<li>Use the <code>KEEP =</code> option instead of the <code>DROP =</code> option if more variables are dropped than kept.</li>
+<li>When we specify multiple data set options for a particular data set, enclose them in a single set of parentheses.</li>
+</ul></li>
+</ul>
+</div>
+<div id="learning-coding-by-examples-4" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Learning Coding by Examples<a href="combining-data-sets.html#learning-coding-by-examples-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following examples explain most of the methods of combining data sets. Some new statements and keywords are also used in some of these examples.</p>
+<p>The related working data sets can be found using the following URLs:</p>
+<ol style="list-style-type: decimal">
+<li><p><a href="https://raw.githubusercontent.com/pengdsci/STA311/main/w07-us-counties.csv" class="uri">https://raw.githubusercontent.com/pengdsci/STA311/main/w07-us-counties.csv</a></p></li>
+<li><p><a href="https://raw.githubusercontent.com/pengdsci/STA311/main/w08-Edu01.csv" class="uri">https://raw.githubusercontent.com/pengdsci/STA311/main/w08-Edu01.csv</a></p></li>
+<li><p><a href="https://raw.githubusercontent.com/pengdsci/STA311/main/w08-Unemp01.csv" class="uri">https://raw.githubusercontent.com/pengdsci/STA311/main/w08-Unemp01.csv</a></p></li>
+<li><p><a href="https://raw.githubusercontent.com/pengdsci/STA311/main/w08-PovEst01.csv" class="uri">https://raw.githubusercontent.com/pengdsci/STA311/main/w08-PovEst01.csv</a></p></li>
+</ol>
+<pre><code>/***********************************************************
+             Merging SAS Data Sets
+
+Topics: 1. Concepts of a relational database- primary key
+        2. One-to-one reading: Use with caution!
+        3. concatenating
+        4. Interleaving
+        5. Match-merging
+        6. Data set options in the merging process: 
+           (1) renaming variables
+           (2) excluding unmatched observations
+           (3) Selecting variables
+***************************************************************/
+DM &#39;CLEAR OUT&#39;;
+DM &#39;CLEAR LOG&#39;;
+
+/****** Permanent Library   *****/
+LIBNAME my311 &quot;C:\STA311\w08&quot;;
+OPTIONS PS = 94 LS =75 NONUMBER NODATE;
+
+/***************************************************
+          Topic 1: one-to-one reading
+****************************************************/
+
+/* Let&#39;s first use two tiny datasets to show the process
+   of one-to-one reading                            */
+DATA one;
+    INPUT ID VarA $ VarB $;
+    DATALINES;
+    10 A1 B1
+    20 A2 B2
+    30 A3 B3
+  ;
+RUN;
+
+DATA two;
+   INPUT ID VarB $ VarC $;
+   DATALINES;
+   40 B4 C1
+   50 B5 C2
+   ;
+RUN;
+
+/** Here is the process: Two common variables (ID and VarB) are in both datasets 
+
+Step 1: SAS picks the first record in the data set ONE and puts it in the 
+        input buffer:
+
+             ID     VarA      VarB      VarC
+             10      A1        B1       .
+
+Step 2: SAS picks the first record in data set TWO to put in the buffer and 
+        creates the first record in the combined data set. Here is what SAS 
+        actually does in the 2nd step
+    (1). The values of the common variables will be overwritten by the 
+         corresponding values in the same row of the second data set.
+    (2). The total number of rows will be equal to the smaller number of 
+         rows in the two data sets.
+Based on the above reading process, the first complete record in the combined 
+the data set should be of the following form:
+
+             ID       VarA      VarB      VarC 
+             40        A1       B4         C1
+       (overwritten)       (overwritten)
+
+Step 3: SAS picks up the 2nd record from ONE and puts it in the buffer
+             
+            ID        VarA         VarB      VarC
+            20         A2           B2         .
+ 
+Step 4: SAS moves to TWO picks up the 2nd record and repeats step 2. 
+        After fishing over-writing, the 2nd complete record in the combined 
+        data set will have the following form:
+
+            ID        VarA         VarB      VarC
+            50         A2           B5        C2
+      (overwritten)          (overwritten)
+
+SAS will stop reading since TWO has only two rows:
+
+The final combined set has two records:
+
+             ID       VarA      VarB      VarC 
+             40        A1       B4         C1
+             50        A2       B5         C2
+**/
+
+DATA onetwo;
+   SET one;
+   SET two;
+RUN;
+
+PROC PRINT DATA = onetwo;
+TITLE &quot;ONE 2 TWO&quot;;
+RUN;
+
+/** Example 2: Because of the way SAS processes the one2one reading
+             by updating the values of the common variables with the
+             ones in the second dataset, you will get different combined
+             if you reverse the order of the two SET statements!!!   **/
+
+DATA twoone;
+   SET two;
+   SET one;
+RUN;
+
+PROC PRINT DATA = twoone;
+TITLE &quot;TWO 2 ONE&quot;;
+RUN;
+
+/**  Example 3: A slightly larger data set. You should be able
+                to figure out when you can use one-to-one reading
+                methods to create a combined dataset correctly! **/
+
+ DATA one2oneread;
+    SET patients;
+    SET scale;
+ RUN;
+
+ PROC PRINT NOOBS;
+    TITLE &#39;The one2oneread data set&#39;;
+ RUN;
+
+/*****************************************************************
+               Topic 2: Concatenating
+*****************************************************************/
+
+/** Example 1. Simple stacking- all datasets have the same variable names, 
+              types ...  **/
+DATA one;
+    INPUT ID VarA $ VarB $;
+    DATALINES;
+    10 A1 B1
+    20 A2 B2
+    30 A3 B3
+  ;
+RUN;
+
+DATA two;
+   INPUT ID VarB $ VarA $;
+   DATALINES;
+   40 B4 A4
+   50 B5 A5
+   ;
+RUN;
+
+DATA Concatenate_1_2;
+  SET one two;
+RUN;
+
+PROC PRINT DATA = Concatenate_1_2;
+TITLE &quot;Stacking with same variable names, type, length, ...&quot;;
+RUN;
+
+/** Example 2. Two data sets have the same type of information but with 
+               different variable names. You have two different ways to 
+               combine these types of data sets:
+    (1). Create a new data set based on one of the data sets and make 
+         variables with the same name, types, and length first, then 
+         concatenate the two data sets
+    (2). Use the RENAME option to rename the variables in the data step of 
+         concatenating two or more data sets   **/
+         
+DATA data_one;
+    INPUT Subj VariableA $ VarB $;
+    DATALINES;
+    10 A1 B1
+    20 A2 B2
+    30 A3 B3
+  ;
+RUN;
+
+DATA data_two;
+   INPUT ID VarB $ VarA $;
+   DATALINES;
+   40 B4 A4
+   50 B5 A5
+   ;
+RUN;
+
+/* We use the RENAME option in the following data step to stack the two 
+   data sets with different variable names
+   
+     RENAME = (old1=new1 old2=new2 .... oldk=newk);
+ 
+*/
+DATA Concat_one_two;
+SET data_one (RENAME = (SUBJ=ID VariableA = VarA))
+    data_two;
+RUN;
+QUIT;
+
+PROC PRINT DATA = Concat_one_two;
+TITLE &quot;Concatenating datasets: with rename option&quot;;
+RUN;
+
+/**
+Example 3. We can also stack two or more data sets with different variables
+           but with a set of common variables (maybe with different names) 
+           that will be combined in a new data set.
+
+           Options RENAME and DROP can be used in the data step. 
+
+           We expect the combined data set to have ID and VarB only!
+**/
+
+DATA Dataone;
+    INPUT SUBJ VarA $ VariableB $ VarD $;
+    DATALINES;
+    10 A1 B1 D1
+    20 A2 B2 D2
+    30 A3 B3 D3
+  ;
+RUN;
+
+DATA Datatwo;
+   INPUT ID VarB $ VarC $;
+   DATALINES;
+   40 B4 C1
+   50 B5 C2
+   ;
+RUN;
+
+DATA Dataone_datatwo;
+     /** DROP =  var1 var2  (no parenthesis is needed for a list of 
+                multiple variables!!!)                           **/
+SET  dataone(RENAME = (SUBJ=ID VariableB=VarB) DROP = VarA VarD)
+     datatwo(DROP = VarC);
+RUN;
+
+PROC PRINT DATA = Dataone_datatwo;
+TITLE &quot;STacking: RENAME and DROP options&quot;;
+RUN;
+
+
+/**************************************************************************
+        Topic 3: Merging data set - interleaving data sets
+**************************************************************************/
+
+DATA DataA;
+    INPUT year x;
+    DATALINES;
+    2000 1
+    2003 4
+    2001 2
+    2002 3
+    ;
+RUN;
+ 
+DATA DataB;
+    INPUT year x;
+    DATALINES;
+    2001 5
+    2002 6
+    2003 7
+    2004 8
+    ;
+RUN;
+ 
+/**
+Caution: Whenever using the BY statement,  you have to
+         SORT the data first!
+**/
+PROC SORT DATA = DataA;
+BY year;
+RUN;
+
+PROC SORT DATA = DataB;
+BY Year;
+RUN;
+
+/** interleaving the two sorted data sets  **/
+DATA DataC;
+    SET DataA DataB;
+    BY year;
+RUN;
+ 
+PROC PRINT DATA = DataC NOOBS;
+    TITLE &#39;The interleaved three data set&#39;;
+RUN;
+
+/**************************************************************************
+                   Topic 4: Merging by Matching  
+***************************************************************************/
+
+/** Example 1. Simple match-merging **/
+DATA demog;
+    INPUT subj gender $ age;
+    DATALINES;
+    1000 M 42
+    1001 M 20
+    1002 F 53
+    1003 F 40
+    1004 M 29
+    ;
+RUN;
+ 
+DATA status;
+    INPUT subj disease $ test $ ;
+    DATALINES;
+    1000 Y Y
+    1001 N Y
+    1002 N N
+    1003 Y Y
+    1004 N N
+    ;
+RUN;
+ 
+/** Caution: It is always a good practice to sort the source datasets
+             before match-merge the data sets. In our example, the
+             source data sets were naturally ordered by year. We can simply 
+             match-merge the source data sets                     **/
+
+PROC SORT DATA = demog;
+BY subj;
+RUN;
+
+PROC SORT DATA = status;
+BY subj;
+RUN;
+
+DATA patients;
+    MERGE demog status;
+    BY subj;
+RUN;
+ 
+PROC PRINT DATA=patients NOOBS;
+    TITLE &#39;The patients&#39; data set&#39;;
+RUN;
+
+/** Example 2. Match-merge two datasets and exclude unmatched observations:
+Consider a situation: You have large data sets with many patients&#39; data.  We only extract a subset of the data set based on a given subset of patients.
+
+**/
+
+DATA allvoids;  /** the large data set with more patients&#39; data **/
+    INPUT id v_date : mmddyy8. void_no volume;
+    FORMAT v_date mmddyy8.;
+    DATALINES;
+    110011  01/01/06 1 250
+    110011  01/01/06 2 300
+    110011  01/01/06 3 302
+    110011  01/01/06 4 231
+    110012  01/02/06 1 305
+    110012  01/02/06 2 225
+    110012  01/02/06 3 400
+    110013  01/04/06 1 300
+    110013  01/04/06 2 333
+    110013  01/04/06 3 401
+    110013  01/04/06 4 404
+    110014  01/06/06 1 398
+    110014  01/06/06 2 413
+;
+RUN;
+
+/** subset of patients to be included in an analysis **/
+DATA patients;
+    INPUT id v_date : mmddyy8.;   /* informat  */
+    FORMAT v_date mmddyy8.;       /* display format */
+    DATALINES;
+    110011 01/01/06
+    110012 01/02/06
+    110013 01/04/06
+    ;
+RUN;
+
+/** If the two sets are merged by matching the two KEYs (ID and V_date)  **/ 
+DATA analysis;
+    MERGE patients allvoids;
+    BY id v_date;
+RUN;
+      
+PROC PRINT DATA=analysis NOOBS; 
+    TITLE &#39;The analysis data set&#39;; 
+RUN;
+
+
+/** The resulting datasets still have data for other patients!! **/
+/************************************************************************
+                              IN option!
+*************************************************************************/
+/** One way to fix this problem is to introduce new variables to indicate 
+    each individual record coming from the corresponding source data sets.
+    
+   IN = option will do the trick. 
+   
+   DASET01 (IN = FRMdata01): FRMdata01 is a &quot;ghost&quot; indicator variable in
+                             in the resulting dataset: FRMdata01 = 1, the    
+                             record is from DASET01, FRMdata01 = 0, the 
+                             record is NOT from DASET01.
+                             The reason I call it a &quot;ghost&quot; variable is because
+                             we cannot print it out and view the variable! 
+
+   However, you can define variables explicitly and pick up the values of the
+   &quot;ghost&quot; variable and print the explicitly defined variable to see the 
+   values of the &quot;ghost&quot; variable.
+
+  Although you cannot see the &quot;ghost&quot; variable, you can use it to define
+  conditional statements. **/
+
+    
+/** Example 3: &quot;ghost&quot; variables!  **/
+DATA ghost_variables;
+    MERGE patients (IN = inpatients)
+          allvoids (IN = inallvoids);
+    BY id v_date;
+RUN;
+      
+PROC PRINT DATA = ghost_variables;* NOOBS; 
+    TITLE &#39;Cannot see the &quot;ghost&quot; variables!! &#39;; 
+RUN;
+
+/** Example 4: View the values of the &quot;ghost&quot; variables!!  **/
+
+DATA ghost_views;
+    MERGE patients (IN = inpatients)
+          allvoids (IN = inallvoids);
+    BY id v_date;
+    ghost01 = inpatients;  /* Add ghost01 to the resulting data set  */
+    ghost02 = inallvoids;  /* Add ghost02 to the resulting data set  */
+    /** We will study methods of manipulating datasets. Adding a variable
+        to an existing data set is one of the topics!!              **/
+RUN;
+      
+PROC PRINT DATA = ghost_views;* NOOBS; 
+    TITLE &#39;View the values of the &quot;ghost&quot; variable!!!&#39;; 
+RUN;
+
+/** Example 5: Define the required data sets that have on 
+                 patients in the patients&#39; dataset.  
+              Using the explicit indicator variables!!!! 
+       **/
+
+DATA final_data_with_explicit_dummy;
+    MERGE patients (IN = inpatients)
+          allvoids (IN = inallvoids);
+    BY id v_date;
+    ghost01 = inpatients;
+    ghost02 = inallvoids;
+    IF ghost01 = ghost02;
+    DROP ghost01 ghost02; /* DROPPING the explicit dummy variables */
+RUN;
+
+PROC PRINT DATA = final_data_with_explicit_dummy;
+TITLE &quot;Final Data: Using explicit indicator variables&quot;;
+RUN;
+
+/** Example 6: Define the required data sets that have on
+              patients in the patients&#39; dataset.
+              Using the implicit ghost variables! 
+       **/
+
+DATA final_data_with_inplicit_ghosts;
+    MERGE patients (IN = inpatients)
+          allvoids (IN = inallvoids);
+    BY id v_date;
+    IF inpatients = inallvoids; /* only keep records where both ghost 
+                                 variables are equal! */
+RUN;
+
+PROC PRINT DATA = final_data_with_inplicit_ghosts;
+TITLE &quot;Final Data: Using explicit ghost variables&quot;;
+RUN;
+
+
+/*****************************************************************************
+
+          Topic 5: Working with the real-world data
+                      COVID-19 DATA SET 
+
+******************************************************************************/
+/** import all relevant data sets **/
+PROC IMPORT OUT= county_covid 
+            DATAFILE= &quot;C:\STA311\w08\w07-us-counties.csv&quot; 
+            DBMS=CSV REPLACE;
+     GETNAMES=YES;
+     GUESSINGROWS = 30000;
+     DATAROW=2; 
+RUN;
+
+PROC IMPORT OUT= edu01 
+            DATAFILE= &quot;C:\STA311\w08\w08-Edu01.csv&quot; 
+            DBMS=CSV REPLACE;
+     GETNAMES=YES;
+     GUESSINGROWS = 30000;
+     DATAROW=2; 
+RUN;
+
+PROC IMPORT OUT= unemploy 
+            DATAFILE= &quot;C:\STA311\w08\w08-Unemp01.csv&quot; 
+            DBMS=CSV REPLACE;
+     GETNAMES=YES;
+     GUESSINGROWS = 30000;
+     DATAROW=2; 
+RUN;
+
+PROC IMPORT OUT= poverty 
+            DATAFILE= &quot;C:\STA311\w08\w08-PovEst01.csv&quot; 
+            DBMS=CSV REPLACE;
+     GETNAMES=YES;
+     GUESSINGROWS = 30000;
+     DATAROW=2; 
+RUN;
+
+/** checking the contents of the SAS data sets created 
+    in the above procedures   **/
+PROC CONTENTS DATA = county_covid; 
+RUN;
+
+PROC CONTENTS DATA = edu01; 
+RUN;
+
+PROC CONTENTS DATA = unemploy;
+RUN;
+
+PROC CONTENTS DATA = poverty;
+RUN;
+
+/***
+Covid-19
+1.cases
+2.county
+3.date
+4.deaths
+5.fips
+6.state
+
+Edu
+1.ASDeg
+2.BSplus
+3.BelowHS
+4.County
+5.FIPSCode
+6.HSonly
+7.State
+
+Unemployment
+1.FIPStxt
+2.Med_income_18
+3.Stabr
+4.Unemp_rate_19
+5.area_name
+
+Poverty
+1. Area_name
+2.FIPStxt
+3.PCTPOV017_2018
+4.PCYPOC517_2018
+5.PCTPOVALL_2018
+6.Stabr
+***/
+
+/** Every county had many records: we created a subset to
+    include on the record on Sept. 27, 2020          **/
+DATA COVID19_CURRENT;
+SET county_covid;
+IF DATE = &#39;27SEP2020&#39;d;  /*  */
+KEEP FIPS CASES DEATHS county;
+RUN;
+
+/** FIPSCode is the primary key  **/
+PROC SORT DATA =COVID19_CURRENT;
+BY FIPS;
+RUN;
+
+/** FIPS is the primary key: need to rename FIPSCode as FIPS  **/
+DATA EDUCATION;
+SET EDU01(RENAME=(FIPSCode=FIPS));
+RUN;
+
+PROC SORT DATA = EDUCATION;
+BY FIPS;
+RUN;
+
+/** FIPS is the primary key: need to rename FIPStext as FIPS  **/
+DATA UNEMPLOYMENT;
+SET unemploy (RENAME=(FIPStxt=FIPS));
+DROP Stabr;
+RUN;
+
+PROC SORT DATA =UNEMPLOYMENT;
+BY FIPS;
+RUN;
+
+/** FIPS is the primary key: need to rename FIPStext as FIPS  **/
+DATA Poverty_01;
+SET poverty(RENAME=(FIPStxt=FIPS));
+DROP stabr;
+RUN;
+
+PROC SORT DATA = Poverty_01;
+BY FIPS;
+RUN;
+
+/** FIPS is the primary key. Hidden dummy variables are logical  **/
+DATA Analytic_data;
+MERGE COVID19_CURRENT(IN = ghost1)
+      EDUCATION(IN = ghost2)
+      UNEMPLOYMENT(IN = ghost3 )
+      Poverty_01(IN = ghost4);
+BY FIPS;
+IF ghost1 * ghost2 * ghost3 * ghost4 = 1;  
+                /* Keep all FIPS that have a complete 
+                   or partial record in all four data sets */
+RUN;
+
+
+/******************************************************************
+   There are a lot of different methods to combine data sources
+   using different tools. Some of them are more effective than others.
+   These methods will be introduced in more advanced SAS programming
+   or other database programming such as MySQL. SAS PROC SQL uses the
+   standard SQL syntax.
+*******************************************************************/</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="subsetting-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modifying-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pengdsci/STA311EB/edit/master/08-CombiningData.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["STA311EB.pdf", "STA311EB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

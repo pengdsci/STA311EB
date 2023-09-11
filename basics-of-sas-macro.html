@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 15 Basics of SAS MACRO | STA311: Stats Comp. &amp; Data Mgmt.</title>
+  <meta name="description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 15 Basics of SAS MACRO | STA311: Stats Comp. &amp; Data Mgmt." />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 15 Basics of SAS MACRO | STA311: Stats Comp. &amp; Data Mgmt." />
+  
+  <meta name="twitter:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  
+
+<meta name="author" content="Cheng Peng" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="generating-analysis-reports.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><center><font color = "darkred" size = 3>STA311 E-Pack</font><br><font color = "darkred" size = 4> <b>Stats Comp & Data Mgmt.</b><br><br><img src = "311.png"  width="85" height="115"></center></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html"><i class="fa fa-check"></i><b>2</b> Basics of SAS System</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-data-and-variables"><i class="fa fa-check"></i><b>2.1</b> SAS Data and Variables</a></li>
+<li class="chapter" data-level="2.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-code-structure"><i class="fa fa-check"></i><b>2.2</b> SAS Code Structure</a></li>
+<li class="chapter" data-level="2.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-libraries"><i class="fa fa-check"></i><b>2.3</b> SAS Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#first-sas-code-hello-world"><i class="fa fa-check"></i><b>2.4</b> First SAS Code: “Hello World!”</a></li>
+<li class="chapter" data-level="2.5" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-log-files"><i class="fa fa-check"></i><b>2.5</b> SAS Log Files</a></li>
+<li class="chapter" data-level="2.6" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-output"><i class="fa fa-check"></i><b>2.6</b> SAS Output</a></li>
+<li class="chapter" data-level="2.7" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#some-sas-tutorial-from-sas-inc."><i class="fa fa-check"></i><b>2.7</b> Some SAS Tutorial from SAS Inc.</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#description-of-the-sas-program"><i class="fa fa-check"></i><b>2.7.1</b> Description of the SAS Program</a></li>
+<li class="chapter" data-level="2.7.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-graphical-user-interface"><i class="fa fa-check"></i><b>2.7.2</b> SAS Graphical User Interface</a></li>
+<li class="chapter" data-level="2.7.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#writing-sas-code"><i class="fa fa-check"></i><b>2.7.3</b> Writing SAS Code</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html"><i class="fa fa-check"></i><b>3</b> Coding Conventions and Best Practices</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-file-and-program-structures"><i class="fa fa-check"></i><b>3.1</b> SAS file and Program Structures</a></li>
+<li class="chapter" data-level="3.2" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#naming-conventions-and-sas-program-structure"><i class="fa fa-check"></i><b>3.2</b> Naming Conventions and SAS Program Structure</a></li>
+<li class="chapter" data-level="3.3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-data-structure"><i class="fa fa-check"></i><b>3.3</b> SAS Data Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#some-best-coding-practices"><i class="fa fa-check"></i><b>3.4</b> Some Best Coding Practices</a></li>
+<li class="chapter" data-level="3.5" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#learning-sas-coding-by-examples"><i class="fa fa-check"></i><b>3.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html"><i class="fa fa-check"></i><b>4</b> Methods of SAS Data Input</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#specifying-variable-length"><i class="fa fa-check"></i><b>4.1</b> Specifying Variable Length</a></li>
+<li class="chapter" data-level="4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#methods-of-data-input"><i class="fa fa-check"></i><b>4.2</b> Methods of Data Input</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#list-input"><i class="fa fa-check"></i><b>4.2.1</b> List Input</a></li>
+<li class="chapter" data-level="4.2.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#column-input"><i class="fa fa-check"></i><b>4.2.2</b> Column Input</a></li>
+<li class="chapter" data-level="4.2.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formatted-input-delimited-input"><i class="fa fa-check"></i><b>4.2.3</b> Formatted Input (Delimited Input)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#summary---three-input-styles"><i class="fa fa-check"></i><b>4.2.4</b> Summary - Three Input Styles</a></li>
+<li class="chapter" data-level="4.2.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#mixed-input"><i class="fa fa-check"></i><b>4.2.5</b> Mixed Input</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#handling-special-structured-data"><i class="fa fa-check"></i><b>4.3</b> Handling Special Structured Data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#data-file-containing-comments-and-descriptions"><i class="fa fa-check"></i><b>4.3.1</b> Data File Containing Comments and Descriptions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-line-for-the-record"><i class="fa fa-check"></i><b>4.3.2</b> Multi-line for the Record</a></li>
+<li class="chapter" data-level="4.3.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-records-in-the-same-line"><i class="fa fa-check"></i><b>4.3.3</b> Multi-records In the Same Line</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#making-better-line-outputs"><i class="fa fa-check"></i><b>4.4</b> Making Better Line Outputs</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#options-statement"><i class="fa fa-check"></i><b>4.4.1</b> OPTIONS Statement</a></li>
+<li class="chapter" data-level="4.4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#titles-and-footnotes"><i class="fa fa-check"></i><b>4.4.2</b> Titles and Footnotes</a></li>
+<li class="chapter" data-level="4.4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#labeling-variables"><i class="fa fa-check"></i><b>4.4.3</b> Labeling Variables</a></li>
+<li class="chapter" data-level="4.4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formats-and-user-define-formats"><i class="fa fa-check"></i><b>4.4.4</b> Formats and User Define Formats</a></li>
+<li class="chapter" data-level="4.4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#a-note-on-sas-dates"><i class="fa fa-check"></i><b>4.4.5</b> A Note on SAS Dates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#learning-sas-coding-by-examples-1"><i class="fa fa-check"></i><b>4.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html"><i class="fa fa-check"></i><b>5</b> Read Data from Other Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#more-infile-options"><i class="fa fa-check"></i><b>5.1</b> More INFILE Options</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dlm"><i class="fa fa-check"></i><b>5.1.1</b> <code>DLM</code></a></li>
+<li class="chapter" data-level="5.1.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dsd"><i class="fa fa-check"></i><b>5.1.2</b> <code>DSD</code></a></li>
+<li class="chapter" data-level="5.1.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#missover"><i class="fa fa-check"></i><b>5.1.3</b> <code>MISSOVER</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-in-existing-sas-data-sets"><i class="fa fa-check"></i><b>5.2</b> Reading in Existing SAS Data Sets</a></li>
+<li class="chapter" data-level="5.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-data-via-wizard"><i class="fa fa-check"></i><b>5.3</b> Reading Data via Wizard</a></li>
+<li class="chapter" data-level="5.4" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#loading-data-proc-import"><i class="fa fa-check"></i><b>5.4</b> Loading Data PROC IMPORT</a></li>
+<li class="chapter" data-level="5.5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#read-data-with-url"><i class="fa fa-check"></i><b>5.5</b> Read Data with URL</a></li>
+<li class="chapter" data-level="5.6" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#learning-coding-by-examples"><i class="fa fa-check"></i><b>5.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#frequency-table-analysis"><i class="fa fa-check"></i><b>6.1</b> Frequency Table Analysis</a></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Numerical Summary Statistics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-means"><i class="fa fa-check"></i><b>6.2.1</b> <code>PROC MEANS</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-univariate"><i class="fa fa-check"></i><b>6.2.2</b> <code>PROC UNIVARIATE</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#learning-coding-by-examples-1"><i class="fa fa-check"></i><b>6.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html"><i class="fa fa-check"></i><b>7</b> Basic Statistics Graphics</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#boxplot"><i class="fa fa-check"></i><b>7.1</b> Boxplot</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-box-plot"><i class="fa fa-check"></i><b>7.1.1</b> Basic Box Plot</a></li>
+<li class="chapter" data-level="7.1.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#boxplots-for-categories"><i class="fa fa-check"></i><b>7.1.2</b> Boxplots for Categories</a></li>
+<li class="chapter" data-level="7.1.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-box-plot"><i class="fa fa-check"></i><b>7.1.3</b> Panel Box Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#bar-charts"><i class="fa fa-check"></i><b>7.2</b> Bar Charts</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-bar-chart-for-one-variable"><i class="fa fa-check"></i><b>7.2.1</b> Basic Bar Chart for One Variable</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#stacked-bar-charts"><i class="fa fa-check"></i><b>7.2.2</b> Stacked Bar Charts</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#bar-charts-with-means-and-error-bars"><i class="fa fa-check"></i><b>7.2.3</b> Bar Charts with Means and Error Bars</a></li>
+<li class="chapter" data-level="7.2.4" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-bar-charts"><i class="fa fa-check"></i><b>7.2.4</b> Panel Bar Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#histogram"><i class="fa fa-check"></i><b>7.3</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#histogram-with-density-curves"><i class="fa fa-check"></i><b>7.3.1</b> Histogram with Density Curves</a></li>
+<li class="chapter" data-level="7.3.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#overlaid-histograms"><i class="fa fa-check"></i><b>7.3.2</b> Overlaid Histograms</a></li>
+<li class="chapter" data-level="7.3.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-histogram"><i class="fa fa-check"></i><b>7.3.3</b> Panel Histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#scatter-plots"><i class="fa fa-check"></i><b>7.4</b> Scatter Plots</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-scatter-plot-for-two-numeric-variables"><i class="fa fa-check"></i><b>7.4.1</b> Basic Scatter Plot for Two Numeric Variables</a></li>
+<li class="chapter" data-level="7.4.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#scatter-plot-with-least-squares-regression-line"><i class="fa fa-check"></i><b>7.4.2</b> Scatter Plot With Least Squares Regression Line</a></li>
+<li class="chapter" data-level="7.4.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-scatter-plot"><i class="fa fa-check"></i><b>7.4.3</b> Panel Scatter Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#pair-wise-scatter-plot"><i class="fa fa-check"></i><b>7.5</b> Pair-wise Scatter Plot</a></li>
+<li class="chapter" data-level="7.6" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#learning-coding-by-examples-2"><i class="fa fa-check"></i><b>7.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="subsetting-data.html"><a href="subsetting-data.html"><i class="fa fa-check"></i><b>8</b> Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="subsetting-data.html"><a href="subsetting-data.html#selecting-columns"><i class="fa fa-check"></i><b>8.1</b> Selecting Columns</a></li>
+<li class="chapter" data-level="8.2" data-path="subsetting-data.html"><a href="subsetting-data.html#selecting-rows"><i class="fa fa-check"></i><b>8.2</b> Selecting Rows</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="subsetting-data.html"><a href="subsetting-data.html#partial-reading"><i class="fa fa-check"></i><b>8.2.1</b> Partial Reading</a></li>
+<li class="chapter" data-level="8.2.2" data-path="subsetting-data.html"><a href="subsetting-data.html#conditional-selecting-methods"><i class="fa fa-check"></i><b>8.2.2</b> Conditional Selecting Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="subsetting-data.html"><a href="subsetting-data.html#subsetting-by-splitting"><i class="fa fa-check"></i><b>8.3</b> Subsetting by Splitting</a></li>
+<li class="chapter" data-level="8.4" data-path="subsetting-data.html"><a href="subsetting-data.html#learning-coding-by-examples-3"><i class="fa fa-check"></i><b>8.4</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>9</b> Combining Data Sets</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="combining-data-sets.html"><a href="combining-data-sets.html#stackingconcatenating"><i class="fa fa-check"></i><b>9.1</b> Stacking/Concatenating</a></li>
+<li class="chapter" data-level="9.2" data-path="combining-data-sets.html"><a href="combining-data-sets.html#in-statement-and-ghost-variable"><i class="fa fa-check"></i><b>9.2</b> <code>IN</code> Statement and <code>ghost</code> Variable</a></li>
+<li class="chapter" data-level="9.3" data-path="combining-data-sets.html"><a href="combining-data-sets.html#interleaving-data-sets"><i class="fa fa-check"></i><b>9.3</b> Interleaving Data Sets</a></li>
+<li class="chapter" data-level="9.4" data-path="combining-data-sets.html"><a href="combining-data-sets.html#merging-by-matching"><i class="fa fa-check"></i><b>9.4</b> Merging by Matching</a></li>
+<li class="chapter" data-level="9.5" data-path="combining-data-sets.html"><a href="combining-data-sets.html#summary-of-some-key-words-and-statements"><i class="fa fa-check"></i><b>9.5</b> Summary of Some KEY Words and Statements</a></li>
+<li class="chapter" data-level="9.6" data-path="combining-data-sets.html"><a href="combining-data-sets.html#learning-coding-by-examples-4"><i class="fa fa-check"></i><b>9.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modifying-data.html"><a href="modifying-data.html"><i class="fa fa-check"></i><b>10</b> Modifying Data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modifying-data.html"><a href="modifying-data.html#sas-functions-date-and-others"><i class="fa fa-check"></i><b>10.1</b> SAS Functions: Date and Others</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="modifying-data.html"><a href="modifying-data.html#using-date-functions"><i class="fa fa-check"></i><b>10.1.1</b> Using Date Functions</a></li>
+<li class="chapter" data-level="10.1.2" data-path="modifying-data.html"><a href="modifying-data.html#other-related-sas-functions"><i class="fa fa-check"></i><b>10.1.2</b> Other Related SAS Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="modifying-data.html"><a href="modifying-data.html#automatic-variables"><i class="fa fa-check"></i><b>10.2</b> Automatic Variables</a></li>
+<li class="chapter" data-level="10.3" data-path="modifying-data.html"><a href="modifying-data.html#calculating-new-variables"><i class="fa fa-check"></i><b>10.3</b> Calculating New Variables</a></li>
+<li class="chapter" data-level="10.4" data-path="modifying-data.html"><a href="modifying-data.html#logical-expressions"><i class="fa fa-check"></i><b>10.4</b> Logical Expressions</a></li>
+<li class="chapter" data-level="10.5" data-path="modifying-data.html"><a href="modifying-data.html#operators-with-where-statement"><i class="fa fa-check"></i><b>10.5</b> Operators with WHERE statement</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="modifying-data.html"><a href="modifying-data.html#where-between-and"><i class="fa fa-check"></i><b>10.5.1</b> <code>WHERE-BETWEEN-AND</code></a></li>
+<li class="chapter" data-level="10.5.2" data-path="modifying-data.html"><a href="modifying-data.html#where-contains-or"><i class="fa fa-check"></i><b>10.5.2</b> <code>WHERE-CONTAINS or ?</code></a></li>
+<li class="chapter" data-level="10.5.3" data-path="modifying-data.html"><a href="modifying-data.html#where-is-missing-or-is-null"><i class="fa fa-check"></i><b>10.5.3</b> <code>WHERE-IS MISSING or IS NULL</code></a></li>
+<li class="chapter" data-level="10.5.4" data-path="modifying-data.html"><a href="modifying-data.html#where-like"><i class="fa fa-check"></i><b>10.5.4</b> <code>WHERE-LIKE</code></a></li>
+<li class="chapter" data-level="10.5.5" data-path="modifying-data.html"><a href="modifying-data.html#where"><i class="fa fa-check"></i><b>10.5.5</b> <code>WHERE =*</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="modifying-data.html"><a href="modifying-data.html#learning-coding-by-examples-5"><i class="fa fa-check"></i><b>10.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html"><i class="fa fa-check"></i><b>11</b> String Functions and Basic Loops</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#string-functions"><i class="fa fa-check"></i><b>11.1</b> String Functions</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#concatenation-cat-cats-catx-and"><i class="fa fa-check"></i><b>11.1.1</b> Concatenation CAT, CATS, CATX, and <code>||</code></a></li>
+<li class="chapter" data-level="11.1.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#substr"><i class="fa fa-check"></i><b>11.1.2</b> SUBSTR</a></li>
+<li class="chapter" data-level="11.1.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#string-function-for-handling-blanks"><i class="fa fa-check"></i><b>11.1.3</b> String Function for Handling Blanks</a></li>
+<li class="chapter" data-level="11.1.4" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#compress-vs-compbl"><i class="fa fa-check"></i><b>11.1.4</b> COMPRESS vs COMPBL</a></li>
+<li class="chapter" data-level="11.1.5" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#change-character-case-functions"><i class="fa fa-check"></i><b>11.1.5</b> Change Character Case Functions</a></li>
+<li class="chapter" data-level="11.1.6" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#search-character-functions"><i class="fa fa-check"></i><b>11.1.6</b> Search Character Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#basic-loops"><i class="fa fa-check"></i><b>11.2</b> Basic Loops</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do--loop"><i class="fa fa-check"></i><b>11.2.1</b> DO -loop</a></li>
+<li class="chapter" data-level="11.2.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do-while-loop"><i class="fa fa-check"></i><b>11.2.2</b> DO-WHILE Loop</a></li>
+<li class="chapter" data-level="11.2.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do-until-loop"><i class="fa fa-check"></i><b>11.2.3</b> DO-UNTIL Loop</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#retain-statement-and-longitudinal-data-operations"><i class="fa fa-check"></i><b>11.3</b> RETAIN Statement and Longitudinal Data Operations</a></li>
+<li class="chapter" data-level="11.4" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#learning-coding-by-examples-6"><i class="fa fa-check"></i><b>11.4</b> Learning COding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sas-arrays.html"><a href="sas-arrays.html"><i class="fa fa-check"></i><b>12</b> SAS Arrays</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="sas-arrays.html"><a href="sas-arrays.html#array-syntax"><i class="fa fa-check"></i><b>12.1</b> Array <strong>Syntax</strong></a></li>
+<li class="chapter" data-level="12.2" data-path="sas-arrays.html"><a href="sas-arrays.html#methods-of-specifying-array-elements"><i class="fa fa-check"></i><b>12.2</b> Methods of Specifying ARRAY Elements</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="sas-arrays.html"><a href="sas-arrays.html#explicit-definition"><i class="fa fa-check"></i><b>12.2.1</b> Explicit Definition</a></li>
+<li class="chapter" data-level="12.2.2" data-path="sas-arrays.html"><a href="sas-arrays.html#specify-a-range-of-elements"><i class="fa fa-check"></i><b>12.2.2</b> Specify A Range of Elements</a></li>
+<li class="chapter" data-level="12.2.3" data-path="sas-arrays.html"><a href="sas-arrays.html#select-all-variables-between-a-start-and-end-variable"><i class="fa fa-check"></i><b>12.2.3</b> Select All Variables Between A Start and End Variable</a></li>
+<li class="chapter" data-level="12.2.4" data-path="sas-arrays.html"><a href="sas-arrays.html#using-automatic-variable"><i class="fa fa-check"></i><b>12.2.4</b> Using Automatic Variable</a></li>
+<li class="chapter" data-level="12.2.5" data-path="sas-arrays.html"><a href="sas-arrays.html#sas-created-elements"><i class="fa fa-check"></i><b>12.2.5</b> SAS Created Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="sas-arrays.html"><a href="sas-arrays.html#use-of-array"><i class="fa fa-check"></i><b>12.3</b> Use of Array</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="sas-arrays.html"><a href="sas-arrays.html#referencing-elements-of-an-array"><i class="fa fa-check"></i><b>12.3.1</b> Referencing Elements of an Array</a></li>
+<li class="chapter" data-level="12.3.2" data-path="sas-arrays.html"><a href="sas-arrays.html#array-operators"><i class="fa fa-check"></i><b>12.3.2</b> Array Operators</a></li>
+<li class="chapter" data-level="12.3.3" data-path="sas-arrays.html"><a href="sas-arrays.html#array-with-loops"><i class="fa fa-check"></i><b>12.3.3</b> ARRAY with Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="sas-arrays.html"><a href="sas-arrays.html#reshape-data"><i class="fa fa-check"></i><b>12.4</b> Reshape Data</a></li>
+<li class="chapter" data-level="12.5" data-path="sas-arrays.html"><a href="sas-arrays.html#learning-coding-by-examples-7"><i class="fa fa-check"></i><b>12.5</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html"><i class="fa fa-check"></i><b>13</b> Output Deliver System (ODS)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-basics"><i class="fa fa-check"></i><b>13.1</b> ODS Basics</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#some-technical-terms"><i class="fa fa-check"></i><b>13.1.1</b> Some Technical Terms</a></li>
+<li class="chapter" data-level="13.1.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#sas-default-destination-listing"><i class="fa fa-check"></i><b>13.1.2</b> SAS Default Destination: LISTING</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-syntax"><i class="fa fa-check"></i><b>13.2</b> ODS Syntax</a></li>
+<li class="chapter" data-level="13.3" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#flexibility-of-ods"><i class="fa fa-check"></i><b>13.3</b> Flexibility of ODS</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#html"><i class="fa fa-check"></i><b>13.3.1</b> HTML</a></li>
+<li class="chapter" data-level="13.3.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#multiple-ods-putputs"><i class="fa fa-check"></i><b>13.3.2</b> Multiple ODS Putputs</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-styles"><i class="fa fa-check"></i><b>13.4</b> ODS Styles</a></li>
+<li class="chapter" data-level="13.5" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#learning-coding-by-examples-8"><i class="fa fa-check"></i><b>13.5</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html"><i class="fa fa-check"></i><b>14</b> Generating Analysis Reports</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#proc-report-syntax"><i class="fa fa-check"></i><b>14.1</b> PROC REPORT Syntax</a></li>
+<li class="chapter" data-level="14.2" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#ods-reports"><i class="fa fa-check"></i><b>14.2</b> ODS Reports</a></li>
+<li class="chapter" data-level="14.3" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#learning-coding-by-examples-9"><i class="fa fa-check"></i><b>14.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html"><i class="fa fa-check"></i><b>15</b> Basics of SAS MACRO</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macro-variables"><i class="fa fa-check"></i><b>15.1</b> MACRO Variables</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#defining-macro-variables"><i class="fa fa-check"></i><b>15.1.1</b> Defining MACRO Variables</a></li>
+<li class="chapter" data-level="15.1.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#use-of-macro-variables"><i class="fa fa-check"></i><b>15.1.2</b> Use of MACRO Variables</a></li>
+<li class="chapter" data-level="15.1.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#combining-macro-variables-with-text"><i class="fa fa-check"></i><b>15.1.3</b> Combining Macro Variables with Text</a></li>
+<li class="chapter" data-level="15.1.4" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macro-quoting"><i class="fa fa-check"></i><b>15.1.4</b> Macro Quoting</a></li>
+<li class="chapter" data-level="15.1.5" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#system-automatics-macro-variables"><i class="fa fa-check"></i><b>15.1.5</b> System Automatics MACRO Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#sas-macro"><i class="fa fa-check"></i><b>15.2</b> SAS MACRO</a></li>
+<li class="chapter" data-level="15.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macros-with-parameters"><i class="fa fa-check"></i><b>15.3</b> MACROs with Parameters</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#positional-parameter"><i class="fa fa-check"></i><b>15.3.1</b> Positional Parameter</a></li>
+<li class="chapter" data-level="15.3.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#keyword-parameter"><i class="fa fa-check"></i><b>15.3.2</b> Keyword Parameter</a></li>
+<li class="chapter" data-level="15.3.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#mixed-parameter-list"><i class="fa fa-check"></i><b>15.3.3</b> Mixed Parameter List</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#learning-coding-by-examples-10"><i class="fa fa-check"></i><b>15.4</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><center><BR><BR><a href="https://github.com/rstudio/bookdown" target="blank"><font color = "blue" size = 2> Published with bookdown</font></a></center></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA311: Stats Comp. &amp; Data Mgmt.</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basics-of-sas-macro" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> Basics of SAS MACRO<a href="basics-of-sas-macro.html#basics-of-sas-macro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The SAS Macro language is another language that rests on top of regular SAS code. It allows us to assign a name to groups of SAS programming statements. From that point on, we can work with the name rather than with the text itself.</p>
+<p>Macros are particularly useful if we want to make your SAS programs more flexible and allow them to be used in different situations without having to rewrite entire programs</p>
+<p>The programmatic role of SAS MACROs is similar to functions/routines in other programming languages. Whenever there are repetitive data and analytic tasks in SAS coding, we need MACROs.</p>
+<p><code>SAS MACROs</code> consist of collections of</p>
+<ul>
+<li>regular SAS program statements,</li>
+<li>macro variables,</li>
+<li>macro statements and</li>
+<li>macro functions that are contained within a %MACRO and a %MEND.</li>
+</ul>
+<div id="macro-variables" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> MACRO Variables<a href="basics-of-sas-macro.html#macro-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>SAS MACRO variables can be defined and used anywhere in a SAS program, except data lines (i.e. raw data). A MACRO variable contains one value that remains constant until explicitly changed. <strong>We can also consider a MACRO variable as a string replacement method!</strong></p>
+<div id="defining-macro-variables" class="section level3 hasAnchor" number="15.1.1">
+<h3><span class="header-section-number">15.1.1</span> Defining MACRO Variables<a href="basics-of-sas-macro.html#defining-macro-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are a number of SAS system-defined MACRO variables. User-defined MACRO variables are based on the syntax given below.</p>
+<pre><code>%LET macrovar = value;</code></pre>
+<ul>
+<li><code>macrovar</code>: MACRO variable name that follows the regular SAS naming conventions</li>
+<li><code>value</code>: any string or macro expression
+<ul>
+<li>stored as a character type</li>
+<li>length 0-32k characters</li>
+<li>Math expressions are not evaluated</li>
+<li>Quotations not needed</li>
+</ul></li>
+<li>Leading/trailing blanks in the value must be removed</li>
+</ul>
+<p><strong>Examples of MACRO Variables</strong></p>
+<p><img src="img14/w14-MACROVariableExample.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="use-of-macro-variables" class="section level3 hasAnchor" number="15.1.2">
+<h3><span class="header-section-number">15.1.2</span> Use of MACRO Variables<a href="basics-of-sas-macro.html#use-of-macro-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To use a macro variable, precede the macro variable name with an ampersand (&amp;), something like <code>&amp;macrovar</code>.</p>
+<p><code>&amp;macrovar</code> will be replaced with whatever text was assigned to the MACRO variable.</p>
+<p><strong>Example</strong> We still use the <code>Cars</code> data in the <code>SASHELP</code> library.</p>
+<pre><code> %LET var_list = Horsepower     Invoice     MPG_City MSRP;
+
+  TITLE &quot;Using a Macro Variable List&quot;;
+  PROC MEANS DATA = SASHELP.Cars n mean min max ;
+  VAR &amp;var_list;   /* calling MACRO variable */
+RUN;
+</code></pre>
+<p>In the code, <code>&amp;var_list</code> was replaced with <code>Horsepower, nvoice, MPG_City, MSRP</code>.</p>
+<p><img src="img14/w14-macro-example01.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>Example 2</strong> Random number generation.</p>
+<pre><code>%LET n = 3;
+
+DATA generate;
+   DO Subj = 1 TO &amp;n;   /* &amp;n = 3  */
+      x = int(100*RANUNI(0) + 1);  /* ranuni(0): 0 is seed */
+      OUTPUT;
+   END;
+RUN;</code></pre>
+<p>The output is</p>
+<p><img src="img14/w14-RandomNumGeneration.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="combining-macro-variables-with-text" class="section level3 hasAnchor" number="15.1.3">
+<h3><span class="header-section-number">15.1.3</span> Combining Macro Variables with Text<a href="basics-of-sas-macro.html#combining-macro-variables-with-text" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>MACRO</code> variables can be appended to text or variable names:</p>
+<pre><code>varname&amp;macrovar</code></pre>
+<p>Or prepended:</p>
+<pre><code>&amp;macrovar.text</code></pre>
+<p>We need to insert a <code>.</code> between the macro variable and the text so SAS knows where the text begins.</p>
+<p>Or connected to other macro variables:</p>
+<pre><code>&amp;macvar1&amp;macvar2</code></pre>
+<p>The following example explains the above concept.</p>
+<p><img src="img14/w14-CombinigMACROVariables.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><strong>Example 3</strong> When concatenating a data set to a macro variable containing the <code>libname</code>, you need to use double decimal points instead of one.</p>
+<p><img src="img14/w14-CombinigMACROVariables02.png" width="60%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="macro-quoting" class="section level3 hasAnchor" number="15.1.4">
+<h3><span class="header-section-number">15.1.4</span> Macro Quoting<a href="basics-of-sas-macro.html#macro-quoting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>MACRO</code> variables can not resolve single quotes – we must use double quotes. Therefore, we cannot use single quotes in a TITLE whenever calling a MACRO in it. See the following example.</p>
+<p><img src="img14/w14-MACROinTITLE.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="system-automatics-macro-variables" class="section level3 hasAnchor" number="15.1.5">
+<h3><span class="header-section-number">15.1.5</span> System Automatics MACRO Variables<a href="basics-of-sas-macro.html#system-automatics-macro-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>SAS has a few system-automatic MACRO variables we can call for various needs. The next example calls the system time when printing out results from data or procedure steps.</p>
+<p><img src="img14/w14-CallingAutomaticMacroVar.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="sas-macro" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> SAS MACRO<a href="basics-of-sas-macro.html#sas-macro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>“A macro is stored text identified by a name.”</strong></p>
+<p>It is used for</p>
+<ul>
+<li>generating repetitive pieces of SAS code;</li>
+<li>conditionally executing code.</li>
+</ul>
+<p>The definition of MACRO begins with a %MACRO statement and ends with a %MEND statement. Coding beginning with % signs is evaluated by the macro processor.</p>
+<p><img src="img14/w14-MACRO-DefinitionCalling.png" width="60%" style="display: block; margin: auto;" /></p>
+<ul>
+<li><p><code>%MACRO</code> <em>macro-name</em>: begins the macro definition and assigns a name to the macro</p></li>
+<li><p><em>macro text</em></p>
+<ul>
+<li>any text</li>
+<li>regular SAS statements or steps</li>
+<li>macro variables, functions, or statements</li>
+<li>combination of the above</li>
+</ul></li>
+<li><p><code>%MEND</code> <em>macro-name</em>: ends the macro definition. <code>macro-name</code> is optional.</p></li>
+</ul>
+<p><strong>Comments on MACRO Name</strong>: A MACRO name must satisfy the following conditions</p>
+<ul>
+<li>not an SAS statement, therefore, doesn’t require a semi-colon</li>
+<li>can be placed anywhere in a program except in data lines</li>
+<li>Submitting a macro definition complies with the macro.</li>
+<li>If the macro compiles successfully, SAS will run the generated SAS code.</li>
+</ul>
+<p>There are two major types of MACROs: with and without parameters. The following MACRO does have parameters to pass into.</p>
+<p><strong>Example 4</strong>: MACRO with no parameters to pass in.</p>
+<pre><code>/* Define MACRO variable*/
+%LET a = blood;
+%LET x = sex;
+
+/* Define a MACRO */
+%MACRO sortx;
+    PROC SORT DATA = &amp;a;
+    BY &amp;x;
+    RUN;
+
+    PROC MEANS DATA = &amp;a;
+    BY &amp;x;
+    RUN;
+%MEND sortx;
+
+/* Call MACRO*/
+%sortx;
+</code></pre>
+</div>
+<div id="macros-with-parameters" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> MACROs with Parameters<a href="basics-of-sas-macro.html#macros-with-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can use <code>%LET</code> statement to define a MACRO variable. Another way to define the MACRO variable is to use parameters.</p>
+<p>Parameters pass variable values to macros in the form of MACRO variables. There are 2 types of parameters:</p>
+<ul>
+<li>positional</li>
+<li>keyword</li>
+</ul>
+<div id="positional-parameter" class="section level3 hasAnchor" number="15.3.1">
+<h3><span class="header-section-number">15.3.1</span> Positional Parameter<a href="basics-of-sas-macro.html#positional-parameter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In positional parametric MACROs, the order of the parameters in the definition of MACRO MUST BE IDENTICAL to the one in the MACRO call.</p>
+<p><img src="img14/w14-MACRO-positionalPar.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>The parameter list is defined in the <code>%MACRO</code> statement and contains names of macro variables referenced only within the macro. To call this macro and provide values for the macro parameters you list the values you want to substitute for each parameter in the macro call statement. Values are substituted for the parameter variables using a one-to-one correspondence.</p>
+<ul>
+<li><code>%MACRO</code> macro-name(p1, …, pn);
+<ul>
+<li>enclosed in parentheses</li>
+<li>separated with commas</li>
+<li>Following SAS naming conventions</li>
+<li>referenced as a macro variable within the macro (&amp;p1, &amp;p2, etc )</li>
+</ul></li>
+<li>Macro call values: %macro-name(v1, …, vn)
+<ul>
+<li>enclosed in parentheses</li>
+<li>separated with commas</li>
+<li>are substituted for the parameters using a one-to-one correspondence v1 ==&gt; p1</li>
+<li>Use commas as placeholders to substitute a null value for positional parameters.</li>
+</ul></li>
+</ul>
+<p><img src="img14/w14-PositionalMACRO.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="keyword-parameter" class="section level3 hasAnchor" number="15.3.2">
+<h3><span class="header-section-number">15.3.2</span> Keyword Parameter<a href="basics-of-sas-macro.html#keyword-parameter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We have used this type of MACRO when generating styled ODS tables and SG graphics in early chapters. The following pseud-code outlines the definition of this type of MACRO.</p>
+<pre><code>/* Definition */
+%MACRO macro-name (KEY1=, ...,KEYn=);
+    text (data, procedure steps, or other commands, )
+%MEND macro-name;
+
+/* MACRO call*/
+%macro-name (KEY1=val1, ...,KEYn=valn)
+</code></pre>
+<ul>
+<li><p>The keyword parameters are defined in the %MACRO statement. KEYn is the name of the macro variable followed by an <code>=</code>. VALUE is the default value assigned to the macro variable.</p></li>
+<li><p>To call this macro and substitute different values you must indicate the macro variable (KEYn) followed by an <code>=</code> and the value you want to substitute. You can specify keyword parameters in any order. Parameters not defined are assigned the default value.</p></li>
+</ul>
+<p><strong>Comments on the Definition</strong>:</p>
+<ul>
+<li><p><strong>Macro parameters</strong>: <code>%MACRO</code> macro-name(KEY1=value, …, KEYn=value);</p></li>
+<li><p>enclosed in parentheses, separated by commas</p></li>
+<li><p>assigned a default value (null is allowed)</p></li>
+<li><p>referred to as a macro variable within the macro (&amp;KEYn)</p></li>
+<li><p>keyword complies with SAS naming conventions</p></li>
+<li><p><strong>Macro call values</strong>: %macro-name (KEY1=value, …, KEYn=value)</p>
+<ul>
+<li>enclosed in parentheses, separated by commas</li>
+<li>can be null values, text, macro variable references</li>
+<li>can be listed in any order</li>
+<li>can be omitted from the call (default used)</li>
+</ul></li>
+</ul>
+<p>The example shows the definition of MACRO with parameters and MACRO calls.</p>
+<p><img src="img14/w14-parameterMACROdefANDcall.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="mixed-parameter-list" class="section level3 hasAnchor" number="15.3.3">
+<h3><span class="header-section-number">15.3.3</span> Mixed Parameter List<a href="basics-of-sas-macro.html#mixed-parameter-list" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Although it is unnecessary to define mixed parametric MACRO from a practical perspective, it is still a valid MACRO.</p>
+<p>The following pseudo-code defines a MACRO with mixed parameter inputs.</p>
+<pre><code>%MACRO macro-name (p1, …, pn, key=value, …,key=value);
+    text
+%MEND macro-name;
+
+%macro-name (v1, …, vn, key=value, …, key=value)
+</code></pre>
+<p>Note that all positional parameters must be listed in order before any keyword parameters.</p>
+<p><img src="img14/w14-mixParameterMacroDefCall.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="learning-coding-by-examples-10" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> Learning Coding by Examples<a href="basics-of-sas-macro.html#learning-coding-by-examples-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section contains more examples of SAS MACROs using direct input small data sets.</p>
+<pre><code>/**********************************************************
+         Topics 1: Introduction
+                2: MACRO variable
+                3: General MACRO
+                4: MACRO with Parameters
+***********************************************************/
+
+OPTIONS PS = 26 LS = 72 NODATE NONUMBER;
+TITLE &quot;&quot;;
+FOOTNOTE &quot;&quot;;
+
+/** Working Data Set  **/
+DATA MODELS;
+    INFILE DATALINES;
+    INPUT Model $ 1-12 Class $ Price Frame$ 28-38;
+    DATALINES;
+Black Bora   Track     796 Aluminum
+Delta Breeze Road      399 CroMoly
+Jet Stream   Track    1130 CroMoly
+Mistral      Road     1995 Carbon Comp
+Nor&#39;easter   Mountain  899 Aluminum
+Santa Ana    Mountain  459 Aluminum
+Scirocco     Mountain 2256 Titanium
+Trade Wind   Road      759 Aluminum
+;
+RUN;
+
+/*****************************************************************
+    Topic #1: Introduction
+   
+   Q. What is SAS MACRO?
+   A. A SAS MACRO is a SAS facility of text replacement.
+
+     There are two SAS MACROs: MACRO variable and MACRO program
+
+    A SAS MACRO Variable replaces the small scale of texts in SAS programs.
+    A SAS MACRO Program replaces large-scale texts in SAS programs.
+     
+   Macro triggers: &amp; %
+         &amp; - Macro variable resolution
+         % - Macro invocation 
+ 
+  %LET statement - defining a SAS MACRO variable
+
+  %MACRO macro_program_name(list of parameters);
+     Text replacement/text filler...
+  %MEND macro_program_name;  
+
+  Note: Macro naming convention - can be up to 32 characters in length. 
+
+ ******************************************************************/
+
+/** Example 1: explicit definition of SAS MACRO variable using %LET statement.**/
+%LET my_macro_var1 = 3+4;   /* plain text value          */
+%LET my_macro_var2 = &#39;3+4&#39;; /* string with single quote  */
+%LET my_macro_var3 = &quot; 3+4 &quot;; /* string with double quote  */
+
+/**  **/
+DATA TEST_MACRO_VAR;
+my_var = 3 + 4;
+macro_var1 = &amp;my_macro_var1;  /* &amp;my_macro_var1 = 3 + 4 */
+macro_var2 = &amp;my_macro_var2;  /* &amp;my_macro_var1 = &#39;3+4&#39; */
+macro_var3 = &amp;my_macro_var3;  /* &amp;my_macro_var1 = &quot;3+4&quot; */
+RUN;
+
+PROC PRINT DATA = TEST_MACRO_VAR;
+RUN;
+
+PROC CONTENTS DATA = TEST_MACRO_VAR;
+RUN;
+
+/**  Example 2: text/string replacement in titles and footnotes     **/
+/** Calling a macro in a string such as in title and footnote, double 
+    quote must be used to resolve the value of the MACRO variable.  **/
+PROC PRINT DATA = TEST_MACRO_VAR;
+TITLE1 &quot;1-Calling macro_var1 (single-quote): &amp;my_macro_var1&quot;;
+TITLE2 &#39;2-Calling macro_var1 (single-quote): &amp;my_macro_var1&#39;;
+TITLE3 &quot;3-Calling macro_var2 (double-quote): &amp;my_macro_var2&quot;;
+TITLE4 &#39;4-Calling macro_var2 (single-quote): &amp;my_macro_var2&#39;;
+TITLE5 &quot;5-Calling macro_var3 (double-quote): &amp;my_macro_var3&quot;;
+TITLE6 &#39;6-Calling macro_var3 (single-quote): &amp;my_macro_var3&#39;;
+RUN;
+
+
+/**********************************
+     Topic #2: MACRO Variable
+***********************************/
+
+%LET bikeclass = Mountain;     /* Definition of MACRO variable  */
+
+/** Example 1: Subsetting without using MACRO variable **/
+PROC PRINT DATA = models NOOBS;
+    WHERE Class = &#39;Mountain&#39;;
+    FORMAT Price dollar6.;
+    TITLE &quot;Current Models of Mountain Bicycles 01&quot;;
+RUN;
+
+/** Example 2: Use a macro variable - bikeclass  **/
+PROC PRINT DATA = models NOOBS;
+    WHERE Class = &quot;&amp;bikeclass&quot;;
+    FORMAT Price dollar6.;
+    TITLE &quot;Current Models of &amp;bikeclass Bicycles 02&quot;;
+RUN;
+
+/** Example 3. Make a title macro variable **/
+
+%LET mytitle = STA311 Week #14 SAS Code;
+
+PROC PRINT DATA = MODELS;
+TITLE &amp;mytitle;
+RUN;
+
+/***************************************
+   Topic 3: MACRO with no Parameter
+
+This MACRO is useful when a chunk of code 
+appears repeatedly in the program.
+
+The general form of a macro is
+
+%MACRO macro-name;
+     macro-text
+%MEND macro-name;
+
+****************************************/
+
+/** Example 1: When we develop a SAS program, we frequently print out the
+    most created data set to check the correctness of the code. Normally we
+    write a PROC PRINT step to see the content of the most recently created
+    data. We can write a SAS MACRO to avoid writing the PROC PRINT every time.
+ **/
+
+%MACRO printit;         /* open the macro statement*/
+DM CLEAR OUT;
+PROC PRINT;
+    TITLE &#39;Most Currently Created Data&#39;;
+RUN;
+TITLE &quot;&quot;;
+%MEND printit;          /* close the macro statement*/
+
+/** create a SAS data set and then use %printit to print it out  **/
+DATA testdat;
+var1 = 123;
+var2 = &quot;123&quot;;
+RUN;
+
+%printit;
+
+PROC CONTENTS DATA = testdat;
+RUN;
+
+
+
+/** Example 2. set of MACRO statements **/
+DATA myDATA;
+INPUT var1 var2 var3;
+DATALINES;
+1 3 6
+4 3 9
+6 5 2
+12 4 5
+;
+RUN;
+
+%printit;
+
+/** macro for variable transformation **/
+%MACRO comput;
+var4 = var1 + var2;
+var5 = var1 - var2;
+var6 = var1 + var2 + var3;
+%MEND comput;
+
+DATA MyNEWData;
+SET myDATA;
+%comput;      
+RUN;
+
+%printit;
+
+
+/***********************************
+   Topic 4: MACRO with parameters
+************************************/
+
+/** Think about sorting different variables in the 
+data set and then print it out. For each printout, we
+want to add titles with information on sorting
+variables.
+
+To avoid writing multiple procedures due to sorting
+the data with different variables, we can SAS MACRO.
+
+Two types of MACRO parameters: Positional and Keyword
+ 
+(1) Positional:  %MACRO macro_name(sortseq, sortvar)
+(2) Keyword:     %MACRO macro_name(sortseq =, sortvar =)
+**/
+
+
+/** Working Data Set  **/
+DATA MODELS;
+    INFILE DATALINES;
+    INPUT Model $ 1-12 Class $ Price Frame$ 28-38;
+    DATALINES;
+Black Bora   Track     796 Aluminum
+Delta Breeze Road      399 CroMoly
+Jet Stream   Track    1130 CroMoly
+Mistral      Road     1995 Carbon Comp
+Nor&#39;easter   Mountain  899 Aluminum
+Santa Ana    Mountain  459 Aluminum
+Scirocco     Mountain 2256 Titanium
+Trade Wind   Road      759 Aluminum
+;
+RUN;
+
+
+/** Example 1: MACRO with positional parameter  **/
+%MACRO PositionalSortPrint(sortseq, sortvar, out);
+    PROC SORT data = MODELS out = models&amp;out;
+        by &amp;sortseq &amp;sortvar;
+    RUN;
+
+    PROC PRINT data = models&amp;out  noobs;
+        title1  &#39;Current Models:&#39;;
+        title2 &quot;Sorted by &amp;sortseq &amp;sortvar: OUTPUT&amp;out&quot;;
+        var Model Class Frame Price;
+        format price dollar6.;
+    RUN;
+%MEND PositionalSortPrint;
+
+%PositionalSortPrint(DESCENDING, Price, 01)
+%PositionalSortPrint(Price, DESCENDING, 02) /* order of values were messed up!!!! */
+
+%PositionalSortPrint( , Price, 03)
+%PositionalSortPrint( , Class, 04)
+%PositionalSortPrint( DESCENDING, Class, 05)
+
+
+/** Example 2: MACRO with keyword parameter  **/
+%MACRO KeywordSortPrint(sortseq =, sortvar =, out =  );
+    PROC SORT data = models out = models&amp;out;
+        by &amp;sortseq &amp;sortvar;
+    RUN;
+
+    PROC PRINT data = models&amp;out noobs;
+        title  &#39;Current Models&#39;;
+        title2 &quot;Sorted by &amp;sortseq &amp;sortvar: OUTPUT&amp;out&quot;;
+        var Model Class Frame Price;
+        format price dollar6.;
+    RUN;
+%MEND KeywordSortPrint;
+
+%KeywordSortPrint(sortseq = Descending, sortvar = Price, out = 06)
+%KeywordSortPrint(sortseq =, sortvar = Price, out = 07)
+%KeywordSortPrint(sortvar = Price, sortseq = Descending, out = 08)</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="generating-analysis-reports.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pengdsci/STA311EB/edit/master/14-macro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["STA311EB.pdf", "STA311EB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

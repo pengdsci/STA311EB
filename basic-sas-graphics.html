@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Basic SAS Graphics | STA311: Stats Comp. &amp; Data Mgmt.</title>
+  <meta name="description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Basic SAS Graphics | STA311: Stats Comp. &amp; Data Mgmt." />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Basic SAS Graphics | STA311: Stats Comp. &amp; Data Mgmt." />
+  
+  <meta name="twitter:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  
+
+<meta name="author" content="Cheng Peng" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="descriptive-statistics.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><center><font color = "darkred" size = 3>STA311 E-Pack</font><br><font color = "darkred" size = 4> <b>Stats Comp & Data Mgmt.</b><br><br><img src = "311.png"  width="85" height="115"></center></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html"><i class="fa fa-check"></i><b>2</b> Basics of SAS System</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-data-and-variables"><i class="fa fa-check"></i><b>2.1</b> SAS Data and Variables</a></li>
+<li class="chapter" data-level="2.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-code-structure"><i class="fa fa-check"></i><b>2.2</b> SAS Code Structure</a></li>
+<li class="chapter" data-level="2.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-libraries"><i class="fa fa-check"></i><b>2.3</b> SAS Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#first-sas-code-hello-world"><i class="fa fa-check"></i><b>2.4</b> First SAS Code: “Hello World!”</a></li>
+<li class="chapter" data-level="2.5" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-log-files"><i class="fa fa-check"></i><b>2.5</b> SAS Log Files</a></li>
+<li class="chapter" data-level="2.6" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-output"><i class="fa fa-check"></i><b>2.6</b> SAS Output</a></li>
+<li class="chapter" data-level="2.7" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#some-sas-tutorial-from-sas-inc."><i class="fa fa-check"></i><b>2.7</b> Some SAS Tutorial from SAS Inc.</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#description-of-sas-program"><i class="fa fa-check"></i><b>2.7.1</b> Description of SAS Program</a></li>
+<li class="chapter" data-level="2.7.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-graphical-user-interface"><i class="fa fa-check"></i><b>2.7.2</b> SAS Graphical User Interface</a></li>
+<li class="chapter" data-level="2.7.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#writting-sas-code"><i class="fa fa-check"></i><b>2.7.3</b> Writting SAS Code</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html"><i class="fa fa-check"></i><b>3</b> Coding Conventions and Best Practices</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-file-and-program-structures"><i class="fa fa-check"></i><b>3.1</b> SAS file and Program Structures</a></li>
+<li class="chapter" data-level="3.2" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#naming-conventions-and-sas-program-structure"><i class="fa fa-check"></i><b>3.2</b> Naming Conventions and SAS Program Structure</a></li>
+<li class="chapter" data-level="3.3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-data-structure"><i class="fa fa-check"></i><b>3.3</b> SAS Data Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#some-best-coding-practices"><i class="fa fa-check"></i><b>3.4</b> Some Best Coding Practices</a></li>
+<li class="chapter" data-level="3.5" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#learning-sas-coding-by-examples"><i class="fa fa-check"></i><b>3.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html"><i class="fa fa-check"></i><b>4</b> Methods of SAS Data Input</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#specifying-variable-length"><i class="fa fa-check"></i><b>4.1</b> Specifying Variable Length</a></li>
+<li class="chapter" data-level="4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#methods-of-data-input"><i class="fa fa-check"></i><b>4.2</b> Methods of Data Input</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#list-input"><i class="fa fa-check"></i><b>4.2.1</b> List Input</a></li>
+<li class="chapter" data-level="4.2.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#column-input"><i class="fa fa-check"></i><b>4.2.2</b> Column Input</a></li>
+<li class="chapter" data-level="4.2.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formatted-input-delimited-input"><i class="fa fa-check"></i><b>4.2.3</b> Formatted Input (Delimited Input)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#summary---three-input-styles"><i class="fa fa-check"></i><b>4.2.4</b> Summary - Three Input Styles</a></li>
+<li class="chapter" data-level="4.2.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#mixed-input"><i class="fa fa-check"></i><b>4.2.5</b> Mixed Input</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#handling-special-structured-data"><i class="fa fa-check"></i><b>4.3</b> Handling Special Structured Data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#data-file-containing-comments-and-descriptions"><i class="fa fa-check"></i><b>4.3.1</b> Data File Containing Comments and Descriptions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-line-for-the-the-record"><i class="fa fa-check"></i><b>4.3.2</b> Multi-line for the the Record</a></li>
+<li class="chapter" data-level="4.3.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-records-in-the-same-line"><i class="fa fa-check"></i><b>4.3.3</b> Multi-records In the Same Line</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#making-better-line-outputs"><i class="fa fa-check"></i><b>4.4</b> Making Better Line Outputs</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#options-statement"><i class="fa fa-check"></i><b>4.4.1</b> OPTIONS Statement</a></li>
+<li class="chapter" data-level="4.4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#titles-and-footnote"><i class="fa fa-check"></i><b>4.4.2</b> Titles and Footnote</a></li>
+<li class="chapter" data-level="4.4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#labeling-variables"><i class="fa fa-check"></i><b>4.4.3</b> Labeling Variables</a></li>
+<li class="chapter" data-level="4.4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formats-and-user-define-formats"><i class="fa fa-check"></i><b>4.4.4</b> Formats and User Define Formats</a></li>
+<li class="chapter" data-level="4.4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#a-note-on-sas-dates"><i class="fa fa-check"></i><b>4.4.5</b> A Note on SAS Dates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#learning-sas-coding-by-examples-1"><i class="fa fa-check"></i><b>4.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html"><i class="fa fa-check"></i><b>5</b> Read Data from Other Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#more-infile-options"><i class="fa fa-check"></i><b>5.1</b> More INFILE Options</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dlm"><i class="fa fa-check"></i><b>5.1.1</b> <code>DLM</code></a></li>
+<li class="chapter" data-level="5.1.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dsd"><i class="fa fa-check"></i><b>5.1.2</b> <code>DSD</code></a></li>
+<li class="chapter" data-level="5.1.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#missover"><i class="fa fa-check"></i><b>5.1.3</b> <code>MISSOVER</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-in-existing-sas-data-sets"><i class="fa fa-check"></i><b>5.2</b> Reading in Existing SAS Data Sets</a></li>
+<li class="chapter" data-level="5.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-data-via-wizard"><i class="fa fa-check"></i><b>5.3</b> Reading Data via Wizard</a></li>
+<li class="chapter" data-level="5.4" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#loading-data-proc-import"><i class="fa fa-check"></i><b>5.4</b> Loading Data PROC IMPORT</a></li>
+<li class="chapter" data-level="5.5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#read-data-with-url"><i class="fa fa-check"></i><b>5.5</b> Read Data with URL</a></li>
+<li class="chapter" data-level="5.6" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#learning-coding-by-examples"><i class="fa fa-check"></i><b>5.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#feqquency-table-analysis"><i class="fa fa-check"></i><b>6.1</b> Feqquency Table Analysis</a></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Numerical Summary Statistics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-means"><i class="fa fa-check"></i><b>6.2.1</b> <code>PROC MEANS</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-univariate"><i class="fa fa-check"></i><b>6.2.2</b> <code>PROC UNIVARIATE</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#learning-coding-by-examples-1"><i class="fa fa-check"></i><b>6.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basic-sas-graphics.html"><a href="basic-sas-graphics.html"><i class="fa fa-check"></i><b>7</b> Basic SAS Graphics</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basic-sas-graphics.html"><a href="basic-sas-graphics.html#boxplot"><i class="fa fa-check"></i><b>7.1</b> Boxplot</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="basic-sas-graphics.html"><a href="basic-sas-graphics.html#basic-box-plot"><i class="fa fa-check"></i><b>7.1.1</b> Basic Box Plot</a></li>
+<li class="chapter" data-level="7.1.2" data-path="basic-sas-graphics.html"><a href="basic-sas-graphics.html#boxplots-for-categories"><i class="fa fa-check"></i><b>7.1.2</b> Boxplots for Categories</a></li>
+<li class="chapter" data-level="7.1.3" data-path="basic-sas-graphics.html"><a href="basic-sas-graphics.html#panel-box-plot"><i class="fa fa-check"></i><b>7.1.3</b> Panel Box Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="basic-sas-graphics.html"><a href="basic-sas-graphics.html#bar-charts"><i class="fa fa-check"></i><b>7.2</b> Bar Charts</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basic-sas-graphics.html"><a href="basic-sas-graphics.html#basic-bar-chart-for-one-variable"><i class="fa fa-check"></i><b>7.2.1</b> Basic Bar Chart for One Variable</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basic-sas-graphics.html"><a href="basic-sas-graphics.html#stacked-bar-charts"><i class="fa fa-check"></i><b>7.2.2</b> Stacked Bar Charts</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basic-sas-graphics.html"><a href="basic-sas-graphics.html#bar-charts-with-means-and-error-bars"><i class="fa fa-check"></i><b>7.2.3</b> Bar Charts with Means and Error Bars</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><center><BR><BR><a href="https://github.com/rstudio/bookdown" target="blank"><font color = "blue" size = 2> Published with bookdown</font></a></center></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA311: Stats Comp. &amp; Data Mgmt.</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basic-sas-graphics" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Basic SAS Graphics<a href="basic-sas-graphics.html#basic-sas-graphics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Making high quality statistical graphics is not an easy task in early versions of SAS. Since SAS 9.2, <code>ODS graphics</code>was introduced and supported by several SAS products (see the following list).</p>
+<p><img src="img06/w06-OdsGraphicSupportedSASProducts.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>The current SAS license at WCU has a few SAS products and allof them support ODS graphics.</p>
+<p><img src="img06/w06-WCUSASlicenseInfo.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>The OnDemand SAS Studio (free) has much longer list of SAS products than the current WCU’s SAS license.</p>
+<p><img src="img06/w06-SASStudioOnDemand.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>We will not systematically introduce SAS ODS (Output Deliver System) and ODS hraphics, instead, we only demonstrate hpw to use SAS PROC SGPLOT, PROC SGSCATTER, PROC SGPANEL to create basic statistics graphics such as bar charts, scatter plots, line graphs, etc.</p>
+<p>Quite different from the traditional SAS graphics, graphs created with ODS graphics will be in <code>Results Window</code>, not in <code>Graph Window</code>. We can double‐click on the graphics icon to view the file, using local windows graphics viewer.Graphs will be automatically be saved as .png (portable network graphics) format
+files that are
+* Raster graphics;
+* Compact format;
+* Usable in most windows applications.</p>
+<p>For convenience, we still use the penguin data set as our working data set to make various statistics graphics.</p>
+<p><a href="https://raw.githubusercontent.com/pengdsci/sta553/main/w02-penguins.csv" class="uri">https://raw.githubusercontent.com/pengdsci/sta553/main/w02-penguins.csv</a></p>
+<pre><code>FILENAME pguin URL &quot;https://raw.githubusercontent.com/pengdsci/sta553/main/w02-penguins.csv&quot;;
+
+PROC IMPORT DATAFILE = pguin
+    OUT = penguin        
+    DBMS = CSV  
+    REPLACE;
+    GETNAMES = YES;
+RUN;
+
+DATA new_penguin;  /* define a new data set */
+   SET Penguin;    /* copy the data original data*/
+   body_mass = input(body_mass_g, 8.);  /* conversion */
+   flipper_length = input(flipper_length_mm, 8.);
+   bill_depth = input(bill_depth_mm, 8.);
+   bill_length = input(bill_length_mm, 8.);
+RUN;</code></pre>
+<p>We will only include the minimum graphical features in all graphics. More complex SAS graphics will be discusses late if time permits.</p>
+<div id="boxplot" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Boxplot<a href="basic-sas-graphics.html#boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Box plot is a graphical representation of five-number-summary. It is used to get rough idea of distribution of the underlying continuous variable.</p>
+<div id="basic-box-plot" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Basic Box Plot<a href="basic-sas-graphics.html#basic-box-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The next example draws a basic vertical box-plot.</p>
+<pre><code>TITLE &quot;Vertical Box-plot of Body Mass Index&quot;;
+PROC SGPLOT DATA = new_penguin;
+    VBOX body_mass; 
+RUN;</code></pre>
+<p><img src="img06/w06-Vboxplot.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="boxplots-for-categories" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Boxplots for Categories<a href="basic-sas-graphics.html#boxplots-for-categories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If we want to compare the distributions of body mass index among three species of penguins, the follow code will create three box plots for the purpose of comparisons.</p>
+<pre><code>TITLE &quot;Vertical Box-plot of Body Mass Index by species&quot;;
+PROC SGPLOT DATA = new_penguin;
+    VBOX body_mass / category= species; 
+RUN;</code></pre>
+<p><img src="img06/w06-BoxplotbySpecies.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="panel-box-plot" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Panel Box Plot<a href="basic-sas-graphics.html#panel-box-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Further, we could also compare the distribution between <code>species</code> across <code>island</code>. The following panel box plots serve the purpose.</p>
+<pre><code>TITLE &quot;Panel Box-plot of Body Mass Index by species across island&quot;;
+PROC SGPANEL DATA = new_penguin;
+    PANELBY island / ROWS = 1 COLUMNS = 3;
+    VBOX body_mass / category= species; 
+RUN;</code></pre>
+<p><img src="img06/w06-PanelBoxPlot.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="bar-charts" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Bar Charts<a href="basic-sas-graphics.html#bar-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bar charts are used to visually display the distribution of categorical variable. This section will illustrate several different bar chart for different purposes. There are three categorical variables in the penguin data set, we will use them in different examples.</p>
+<div id="basic-bar-chart-for-one-variable" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Basic Bar Chart for One Variable<a href="basic-sas-graphics.html#basic-bar-chart-for-one-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We first make a bar cart for species.</p>
+<pre><code>TITLE &quot;Vertical Baar Chart of Species&quot;;
+PROC SGPLOT DATA = new_penguin;
+    VBAR species; 
+RUN;</code></pre>
+<p><img src="img06/w06-VbarChart.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="stacked-bar-charts" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Stacked Bar Charts<a href="basic-sas-graphics.html#stacked-bar-charts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A stacked bar chart can be used to compare the distributions of two categorical variables.</p>
+<pre><code>TITLE &quot;Stacked Bar Chart of Species&quot;;
+PROC SGPLOT DATA = new_penguin;
+    VBAR species/GROUP= sex; 
+RUN;</code></pre>
+<p><img src="img06/w06-stackedBarChart.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="bar-charts-with-means-and-error-bars" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Bar Charts with Means and Error Bars<a href="basic-sas-graphics.html#bar-charts-with-means-and-error-bars" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In some fields such as health and biological sciences, it is common to visualize means and standard deviations (standard errors) of different groups for comparison. The bar chart of means and errors is the right choice.</p>
+<pre><code>TITLE &quot;Means and Standard Errors by Species&quot;;
+PROC SGPLOT DATA = new_penguin;
+    VBAR species/RESPONSE = body_mass
+                 LIMITSTAT = stddev
+                 LIMITS = upper 
+                 STAT = mean; 
+RUN;</code></pre>
+<p><img src="img06/w06-ErrorBar.png" width="100%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="descriptive-statistics.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pengdsci/STA311EB/edit/master/06-SASGraphics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["STA311EB.pdf", "STA311EB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

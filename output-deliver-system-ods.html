@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 13 Output Deliver System (ODS) | STA311: Stats Comp. &amp; Data Mgmt.</title>
+  <meta name="description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 13 Output Deliver System (ODS) | STA311: Stats Comp. &amp; Data Mgmt." />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 13 Output Deliver System (ODS) | STA311: Stats Comp. &amp; Data Mgmt." />
+  
+  <meta name="twitter:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  
+
+<meta name="author" content="Cheng Peng" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sas-arrays.html"/>
+<link rel="next" href="generating-analysis-reports.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><center><font color = "darkred" size = 3>STA311 E-Pack</font><br><font color = "darkred" size = 4> <b>Stats Comp & Data Mgmt.</b><br><br><img src = "311.png"  width="85" height="115"></center></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html"><i class="fa fa-check"></i><b>2</b> Basics of SAS System</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-data-and-variables"><i class="fa fa-check"></i><b>2.1</b> SAS Data and Variables</a></li>
+<li class="chapter" data-level="2.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-code-structure"><i class="fa fa-check"></i><b>2.2</b> SAS Code Structure</a></li>
+<li class="chapter" data-level="2.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-libraries"><i class="fa fa-check"></i><b>2.3</b> SAS Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#first-sas-code-hello-world"><i class="fa fa-check"></i><b>2.4</b> First SAS Code: “Hello World!”</a></li>
+<li class="chapter" data-level="2.5" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-log-files"><i class="fa fa-check"></i><b>2.5</b> SAS Log Files</a></li>
+<li class="chapter" data-level="2.6" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-output"><i class="fa fa-check"></i><b>2.6</b> SAS Output</a></li>
+<li class="chapter" data-level="2.7" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#some-sas-tutorial-from-sas-inc."><i class="fa fa-check"></i><b>2.7</b> Some SAS Tutorial from SAS Inc.</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#description-of-the-sas-program"><i class="fa fa-check"></i><b>2.7.1</b> Description of the SAS Program</a></li>
+<li class="chapter" data-level="2.7.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-graphical-user-interface"><i class="fa fa-check"></i><b>2.7.2</b> SAS Graphical User Interface</a></li>
+<li class="chapter" data-level="2.7.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#writing-sas-code"><i class="fa fa-check"></i><b>2.7.3</b> Writing SAS Code</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html"><i class="fa fa-check"></i><b>3</b> Coding Conventions and Best Practices</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-file-and-program-structures"><i class="fa fa-check"></i><b>3.1</b> SAS file and Program Structures</a></li>
+<li class="chapter" data-level="3.2" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#naming-conventions-and-sas-program-structure"><i class="fa fa-check"></i><b>3.2</b> Naming Conventions and SAS Program Structure</a></li>
+<li class="chapter" data-level="3.3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-data-structure"><i class="fa fa-check"></i><b>3.3</b> SAS Data Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#some-best-coding-practices"><i class="fa fa-check"></i><b>3.4</b> Some Best Coding Practices</a></li>
+<li class="chapter" data-level="3.5" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#learning-sas-coding-by-examples"><i class="fa fa-check"></i><b>3.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html"><i class="fa fa-check"></i><b>4</b> Methods of SAS Data Input</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#specifying-variable-length"><i class="fa fa-check"></i><b>4.1</b> Specifying Variable Length</a></li>
+<li class="chapter" data-level="4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#methods-of-data-input"><i class="fa fa-check"></i><b>4.2</b> Methods of Data Input</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#list-input"><i class="fa fa-check"></i><b>4.2.1</b> List Input</a></li>
+<li class="chapter" data-level="4.2.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#column-input"><i class="fa fa-check"></i><b>4.2.2</b> Column Input</a></li>
+<li class="chapter" data-level="4.2.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formatted-input-delimited-input"><i class="fa fa-check"></i><b>4.2.3</b> Formatted Input (Delimited Input)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#summary---three-input-styles"><i class="fa fa-check"></i><b>4.2.4</b> Summary - Three Input Styles</a></li>
+<li class="chapter" data-level="4.2.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#mixed-input"><i class="fa fa-check"></i><b>4.2.5</b> Mixed Input</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#handling-special-structured-data"><i class="fa fa-check"></i><b>4.3</b> Handling Special Structured Data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#data-file-containing-comments-and-descriptions"><i class="fa fa-check"></i><b>4.3.1</b> Data File Containing Comments and Descriptions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-line-for-the-record"><i class="fa fa-check"></i><b>4.3.2</b> Multi-line for the Record</a></li>
+<li class="chapter" data-level="4.3.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-records-in-the-same-line"><i class="fa fa-check"></i><b>4.3.3</b> Multi-records In the Same Line</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#making-better-line-outputs"><i class="fa fa-check"></i><b>4.4</b> Making Better Line Outputs</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#options-statement"><i class="fa fa-check"></i><b>4.4.1</b> OPTIONS Statement</a></li>
+<li class="chapter" data-level="4.4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#titles-and-footnotes"><i class="fa fa-check"></i><b>4.4.2</b> Titles and Footnotes</a></li>
+<li class="chapter" data-level="4.4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#labeling-variables"><i class="fa fa-check"></i><b>4.4.3</b> Labeling Variables</a></li>
+<li class="chapter" data-level="4.4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formats-and-user-define-formats"><i class="fa fa-check"></i><b>4.4.4</b> Formats and User Define Formats</a></li>
+<li class="chapter" data-level="4.4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#a-note-on-sas-dates"><i class="fa fa-check"></i><b>4.4.5</b> A Note on SAS Dates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#learning-sas-coding-by-examples-1"><i class="fa fa-check"></i><b>4.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html"><i class="fa fa-check"></i><b>5</b> Read Data from Other Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#more-infile-options"><i class="fa fa-check"></i><b>5.1</b> More INFILE Options</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dlm"><i class="fa fa-check"></i><b>5.1.1</b> <code>DLM</code></a></li>
+<li class="chapter" data-level="5.1.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dsd"><i class="fa fa-check"></i><b>5.1.2</b> <code>DSD</code></a></li>
+<li class="chapter" data-level="5.1.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#missover"><i class="fa fa-check"></i><b>5.1.3</b> <code>MISSOVER</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-in-existing-sas-data-sets"><i class="fa fa-check"></i><b>5.2</b> Reading in Existing SAS Data Sets</a></li>
+<li class="chapter" data-level="5.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-data-via-wizard"><i class="fa fa-check"></i><b>5.3</b> Reading Data via Wizard</a></li>
+<li class="chapter" data-level="5.4" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#loading-data-proc-import"><i class="fa fa-check"></i><b>5.4</b> Loading Data PROC IMPORT</a></li>
+<li class="chapter" data-level="5.5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#read-data-with-url"><i class="fa fa-check"></i><b>5.5</b> Read Data with URL</a></li>
+<li class="chapter" data-level="5.6" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#learning-coding-by-examples"><i class="fa fa-check"></i><b>5.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#frequency-table-analysis"><i class="fa fa-check"></i><b>6.1</b> Frequency Table Analysis</a></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Numerical Summary Statistics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-means"><i class="fa fa-check"></i><b>6.2.1</b> <code>PROC MEANS</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-univariate"><i class="fa fa-check"></i><b>6.2.2</b> <code>PROC UNIVARIATE</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#learning-coding-by-examples-1"><i class="fa fa-check"></i><b>6.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html"><i class="fa fa-check"></i><b>7</b> Basic Statistics Graphics</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#boxplot"><i class="fa fa-check"></i><b>7.1</b> Boxplot</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-box-plot"><i class="fa fa-check"></i><b>7.1.1</b> Basic Box Plot</a></li>
+<li class="chapter" data-level="7.1.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#boxplots-for-categories"><i class="fa fa-check"></i><b>7.1.2</b> Boxplots for Categories</a></li>
+<li class="chapter" data-level="7.1.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-box-plot"><i class="fa fa-check"></i><b>7.1.3</b> Panel Box Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#bar-charts"><i class="fa fa-check"></i><b>7.2</b> Bar Charts</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-bar-chart-for-one-variable"><i class="fa fa-check"></i><b>7.2.1</b> Basic Bar Chart for One Variable</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#stacked-bar-charts"><i class="fa fa-check"></i><b>7.2.2</b> Stacked Bar Charts</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#bar-charts-with-means-and-error-bars"><i class="fa fa-check"></i><b>7.2.3</b> Bar Charts with Means and Error Bars</a></li>
+<li class="chapter" data-level="7.2.4" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-bar-charts"><i class="fa fa-check"></i><b>7.2.4</b> Panel Bar Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#histogram"><i class="fa fa-check"></i><b>7.3</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#histogram-with-density-curves"><i class="fa fa-check"></i><b>7.3.1</b> Histogram with Density Curves</a></li>
+<li class="chapter" data-level="7.3.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#overlaid-histograms"><i class="fa fa-check"></i><b>7.3.2</b> Overlaid Histograms</a></li>
+<li class="chapter" data-level="7.3.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-histogram"><i class="fa fa-check"></i><b>7.3.3</b> Panel Histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#scatter-plots"><i class="fa fa-check"></i><b>7.4</b> Scatter Plots</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-scatter-plot-for-two-numeric-variables"><i class="fa fa-check"></i><b>7.4.1</b> Basic Scatter Plot for Two Numeric Variables</a></li>
+<li class="chapter" data-level="7.4.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#scatter-plot-with-least-squares-regression-line"><i class="fa fa-check"></i><b>7.4.2</b> Scatter Plot With Least Squares Regression Line</a></li>
+<li class="chapter" data-level="7.4.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-scatter-plot"><i class="fa fa-check"></i><b>7.4.3</b> Panel Scatter Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#pair-wise-scatter-plot"><i class="fa fa-check"></i><b>7.5</b> Pair-wise Scatter Plot</a></li>
+<li class="chapter" data-level="7.6" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#learning-coding-by-examples-2"><i class="fa fa-check"></i><b>7.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="subsetting-data.html"><a href="subsetting-data.html"><i class="fa fa-check"></i><b>8</b> Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="subsetting-data.html"><a href="subsetting-data.html#selecting-columns"><i class="fa fa-check"></i><b>8.1</b> Selecting Columns</a></li>
+<li class="chapter" data-level="8.2" data-path="subsetting-data.html"><a href="subsetting-data.html#selecting-rows"><i class="fa fa-check"></i><b>8.2</b> Selecting Rows</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="subsetting-data.html"><a href="subsetting-data.html#partial-reading"><i class="fa fa-check"></i><b>8.2.1</b> Partial Reading</a></li>
+<li class="chapter" data-level="8.2.2" data-path="subsetting-data.html"><a href="subsetting-data.html#conditional-selecting-methods"><i class="fa fa-check"></i><b>8.2.2</b> Conditional Selecting Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="subsetting-data.html"><a href="subsetting-data.html#subsetting-by-splitting"><i class="fa fa-check"></i><b>8.3</b> Subsetting by Splitting</a></li>
+<li class="chapter" data-level="8.4" data-path="subsetting-data.html"><a href="subsetting-data.html#learning-coding-by-examples-3"><i class="fa fa-check"></i><b>8.4</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>9</b> Combining Data Sets</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="combining-data-sets.html"><a href="combining-data-sets.html#stackingconcatenating"><i class="fa fa-check"></i><b>9.1</b> Stacking/Concatenating</a></li>
+<li class="chapter" data-level="9.2" data-path="combining-data-sets.html"><a href="combining-data-sets.html#in-statement-and-ghost-variable"><i class="fa fa-check"></i><b>9.2</b> <code>IN</code> Statement and <code>ghost</code> Variable</a></li>
+<li class="chapter" data-level="9.3" data-path="combining-data-sets.html"><a href="combining-data-sets.html#interleaving-data-sets"><i class="fa fa-check"></i><b>9.3</b> Interleaving Data Sets</a></li>
+<li class="chapter" data-level="9.4" data-path="combining-data-sets.html"><a href="combining-data-sets.html#merging-by-matching"><i class="fa fa-check"></i><b>9.4</b> Merging by Matching</a></li>
+<li class="chapter" data-level="9.5" data-path="combining-data-sets.html"><a href="combining-data-sets.html#summary-of-some-key-words-and-statements"><i class="fa fa-check"></i><b>9.5</b> Summary of Some KEY Words and Statements</a></li>
+<li class="chapter" data-level="9.6" data-path="combining-data-sets.html"><a href="combining-data-sets.html#learning-coding-by-examples-4"><i class="fa fa-check"></i><b>9.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modifying-data.html"><a href="modifying-data.html"><i class="fa fa-check"></i><b>10</b> Modifying Data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modifying-data.html"><a href="modifying-data.html#sas-functions-date-and-others"><i class="fa fa-check"></i><b>10.1</b> SAS Functions: Date and Others</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="modifying-data.html"><a href="modifying-data.html#using-date-functions"><i class="fa fa-check"></i><b>10.1.1</b> Using Date Functions</a></li>
+<li class="chapter" data-level="10.1.2" data-path="modifying-data.html"><a href="modifying-data.html#other-related-sas-functions"><i class="fa fa-check"></i><b>10.1.2</b> Other Related SAS Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="modifying-data.html"><a href="modifying-data.html#automatic-variables"><i class="fa fa-check"></i><b>10.2</b> Automatic Variables</a></li>
+<li class="chapter" data-level="10.3" data-path="modifying-data.html"><a href="modifying-data.html#calculating-new-variables"><i class="fa fa-check"></i><b>10.3</b> Calculating New Variables</a></li>
+<li class="chapter" data-level="10.4" data-path="modifying-data.html"><a href="modifying-data.html#logical-expressions"><i class="fa fa-check"></i><b>10.4</b> Logical Expressions</a></li>
+<li class="chapter" data-level="10.5" data-path="modifying-data.html"><a href="modifying-data.html#operators-with-where-statement"><i class="fa fa-check"></i><b>10.5</b> Operators with WHERE statement</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="modifying-data.html"><a href="modifying-data.html#where-between-and"><i class="fa fa-check"></i><b>10.5.1</b> <code>WHERE-BETWEEN-AND</code></a></li>
+<li class="chapter" data-level="10.5.2" data-path="modifying-data.html"><a href="modifying-data.html#where-contains-or"><i class="fa fa-check"></i><b>10.5.2</b> <code>WHERE-CONTAINS or ?</code></a></li>
+<li class="chapter" data-level="10.5.3" data-path="modifying-data.html"><a href="modifying-data.html#where-is-missing-or-is-null"><i class="fa fa-check"></i><b>10.5.3</b> <code>WHERE-IS MISSING or IS NULL</code></a></li>
+<li class="chapter" data-level="10.5.4" data-path="modifying-data.html"><a href="modifying-data.html#where-like"><i class="fa fa-check"></i><b>10.5.4</b> <code>WHERE-LIKE</code></a></li>
+<li class="chapter" data-level="10.5.5" data-path="modifying-data.html"><a href="modifying-data.html#where"><i class="fa fa-check"></i><b>10.5.5</b> <code>WHERE =*</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="modifying-data.html"><a href="modifying-data.html#learning-coding-by-examples-5"><i class="fa fa-check"></i><b>10.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html"><i class="fa fa-check"></i><b>11</b> String Functions and Basic Loops</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#string-functions"><i class="fa fa-check"></i><b>11.1</b> String Functions</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#concatenation-cat-cats-catx-and"><i class="fa fa-check"></i><b>11.1.1</b> Concatenation CAT, CATS, CATX, and <code>||</code></a></li>
+<li class="chapter" data-level="11.1.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#substr"><i class="fa fa-check"></i><b>11.1.2</b> SUBSTR</a></li>
+<li class="chapter" data-level="11.1.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#string-function-for-handling-blanks"><i class="fa fa-check"></i><b>11.1.3</b> String Function for Handling Blanks</a></li>
+<li class="chapter" data-level="11.1.4" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#compress-vs-compbl"><i class="fa fa-check"></i><b>11.1.4</b> COMPRESS vs COMPBL</a></li>
+<li class="chapter" data-level="11.1.5" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#change-character-case-functions"><i class="fa fa-check"></i><b>11.1.5</b> Change Character Case Functions</a></li>
+<li class="chapter" data-level="11.1.6" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#search-character-functions"><i class="fa fa-check"></i><b>11.1.6</b> Search Character Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#basic-loops"><i class="fa fa-check"></i><b>11.2</b> Basic Loops</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do--loop"><i class="fa fa-check"></i><b>11.2.1</b> DO -loop</a></li>
+<li class="chapter" data-level="11.2.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do-while-loop"><i class="fa fa-check"></i><b>11.2.2</b> DO-WHILE Loop</a></li>
+<li class="chapter" data-level="11.2.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do-until-loop"><i class="fa fa-check"></i><b>11.2.3</b> DO-UNTIL Loop</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#retain-statement-and-longitudinal-data-operations"><i class="fa fa-check"></i><b>11.3</b> RETAIN Statement and Longitudinal Data Operations</a></li>
+<li class="chapter" data-level="11.4" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#learning-coding-by-examples-6"><i class="fa fa-check"></i><b>11.4</b> Learning COding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sas-arrays.html"><a href="sas-arrays.html"><i class="fa fa-check"></i><b>12</b> SAS Arrays</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="sas-arrays.html"><a href="sas-arrays.html#array-syntax"><i class="fa fa-check"></i><b>12.1</b> Array <strong>Syntax</strong></a></li>
+<li class="chapter" data-level="12.2" data-path="sas-arrays.html"><a href="sas-arrays.html#methods-of-specifying-array-elements"><i class="fa fa-check"></i><b>12.2</b> Methods of Specifying ARRAY Elements</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="sas-arrays.html"><a href="sas-arrays.html#explicit-definition"><i class="fa fa-check"></i><b>12.2.1</b> Explicit Definition</a></li>
+<li class="chapter" data-level="12.2.2" data-path="sas-arrays.html"><a href="sas-arrays.html#specify-a-range-of-elements"><i class="fa fa-check"></i><b>12.2.2</b> Specify A Range of Elements</a></li>
+<li class="chapter" data-level="12.2.3" data-path="sas-arrays.html"><a href="sas-arrays.html#select-all-variables-between-a-start-and-end-variable"><i class="fa fa-check"></i><b>12.2.3</b> Select All Variables Between A Start and End Variable</a></li>
+<li class="chapter" data-level="12.2.4" data-path="sas-arrays.html"><a href="sas-arrays.html#using-automatic-variable"><i class="fa fa-check"></i><b>12.2.4</b> Using Automatic Variable</a></li>
+<li class="chapter" data-level="12.2.5" data-path="sas-arrays.html"><a href="sas-arrays.html#sas-created-elements"><i class="fa fa-check"></i><b>12.2.5</b> SAS Created Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="sas-arrays.html"><a href="sas-arrays.html#use-of-array"><i class="fa fa-check"></i><b>12.3</b> Use of Array</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="sas-arrays.html"><a href="sas-arrays.html#referencing-elements-of-an-array"><i class="fa fa-check"></i><b>12.3.1</b> Referencing Elements of an Array</a></li>
+<li class="chapter" data-level="12.3.2" data-path="sas-arrays.html"><a href="sas-arrays.html#array-operators"><i class="fa fa-check"></i><b>12.3.2</b> Array Operators</a></li>
+<li class="chapter" data-level="12.3.3" data-path="sas-arrays.html"><a href="sas-arrays.html#array-with-loops"><i class="fa fa-check"></i><b>12.3.3</b> ARRAY with Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="sas-arrays.html"><a href="sas-arrays.html#reshape-data"><i class="fa fa-check"></i><b>12.4</b> Reshape Data</a></li>
+<li class="chapter" data-level="12.5" data-path="sas-arrays.html"><a href="sas-arrays.html#learning-coding-by-examples-7"><i class="fa fa-check"></i><b>12.5</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html"><i class="fa fa-check"></i><b>13</b> Output Deliver System (ODS)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-basics"><i class="fa fa-check"></i><b>13.1</b> ODS Basics</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#some-technical-terms"><i class="fa fa-check"></i><b>13.1.1</b> Some Technical Terms</a></li>
+<li class="chapter" data-level="13.1.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#sas-default-destination-listing"><i class="fa fa-check"></i><b>13.1.2</b> SAS Default Destination: LISTING</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-syntax"><i class="fa fa-check"></i><b>13.2</b> ODS Syntax</a></li>
+<li class="chapter" data-level="13.3" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#flexibility-of-ods"><i class="fa fa-check"></i><b>13.3</b> Flexibility of ODS</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#html"><i class="fa fa-check"></i><b>13.3.1</b> HTML</a></li>
+<li class="chapter" data-level="13.3.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#multiple-ods-putputs"><i class="fa fa-check"></i><b>13.3.2</b> Multiple ODS Putputs</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-styles"><i class="fa fa-check"></i><b>13.4</b> ODS Styles</a></li>
+<li class="chapter" data-level="13.5" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#learning-coding-by-examples-8"><i class="fa fa-check"></i><b>13.5</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html"><i class="fa fa-check"></i><b>14</b> Generating Analysis Reports</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#proc-report-syntax"><i class="fa fa-check"></i><b>14.1</b> PROC REPORT Syntax</a></li>
+<li class="chapter" data-level="14.2" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#ods-reports"><i class="fa fa-check"></i><b>14.2</b> ODS Reports</a></li>
+<li class="chapter" data-level="14.3" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#learning-coding-by-examples-9"><i class="fa fa-check"></i><b>14.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html"><i class="fa fa-check"></i><b>15</b> Basics of SAS MACRO</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macro-variables"><i class="fa fa-check"></i><b>15.1</b> MACRO Variables</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#defining-macro-variables"><i class="fa fa-check"></i><b>15.1.1</b> Defining MACRO Variables</a></li>
+<li class="chapter" data-level="15.1.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#use-of-macro-variables"><i class="fa fa-check"></i><b>15.1.2</b> Use of MACRO Variables</a></li>
+<li class="chapter" data-level="15.1.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#combining-macro-variables-with-text"><i class="fa fa-check"></i><b>15.1.3</b> Combining Macro Variables with Text</a></li>
+<li class="chapter" data-level="15.1.4" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macro-quoting"><i class="fa fa-check"></i><b>15.1.4</b> Macro Quoting</a></li>
+<li class="chapter" data-level="15.1.5" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#system-automatics-macro-variables"><i class="fa fa-check"></i><b>15.1.5</b> System Automatics MACRO Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#sas-macro"><i class="fa fa-check"></i><b>15.2</b> SAS MACRO</a></li>
+<li class="chapter" data-level="15.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macros-with-parameters"><i class="fa fa-check"></i><b>15.3</b> MACROs with Parameters</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#positional-parameter"><i class="fa fa-check"></i><b>15.3.1</b> Positional Parameter</a></li>
+<li class="chapter" data-level="15.3.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#keyword-parameter"><i class="fa fa-check"></i><b>15.3.2</b> Keyword Parameter</a></li>
+<li class="chapter" data-level="15.3.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#mixed-parameter-list"><i class="fa fa-check"></i><b>15.3.3</b> Mixed Parameter List</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#learning-coding-by-examples-10"><i class="fa fa-check"></i><b>15.4</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><center><BR><BR><a href="https://github.com/rstudio/bookdown" target="blank"><font color = "blue" size = 2> Published with bookdown</font></a></center></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA311: Stats Comp. &amp; Data Mgmt.</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="output-deliver-system-ods" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Output Deliver System (ODS)<a href="output-deliver-system-ods.html#output-deliver-system-ods" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We have introduced three Base SAS statistical graphics procedures (SGPLOT, SGSCATTER, and SGPANEL) that use ODS Graphics and provide a convenient syntax for creating a variety of graphs from raw data or procedure output.</p>
+<p>This chapter will introduce ODS in a little more detail. We will also learn how ODS manages procedure output and displays it in a variety of destinations, such as HTML and RTF.</p>
+<div id="ods-basics" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> ODS Basics<a href="output-deliver-system-ods.html#ods-basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>ODS creates the output in the form of output objects. Each output object is comprised of two components.</p>
+<ul>
+<li>The data component contains the results of a procedure or a DATA step.</li>
+<li>The table definition tells SAS how to render the results.</li>
+</ul>
+<p>Once SAS creates all the output objects from an executed program, it then just needs to figure out where to send the objects.</p>
+<p>SAS ODS destinations (i.e., file format)
+(0). LISTING (SAS default ODS destination)
+(1). HTML
+(2). OUTPUT
+(3). Printer Family format: PDF or PS
+(4). RTF</p>
+<div id="some-technical-terms" class="section level3 hasAnchor" number="13.1.1">
+<h3><span class="header-section-number">13.1.1</span> Some Technical Terms<a href="output-deliver-system-ods.html#some-technical-terms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Destinations</strong> – Destinations are the file types and locations to which ODS routes the output from SAS.
+<ul>
+<li>ODS can be used to route quality presentation files, suitable for publishing, to various destinations, including LISTING (default), HTML, RTF, PRINTER, and PDF.</li>
+<li>ODS can also store results in a SAS data set when we use the ODS OUTPUT statement.</li>
+</ul></li>
+<li><strong>Objects</strong> – Output objects are created by ODS to store the formatted results of most SAS procedures. One can select output objects to tailor the results. An output object consists of
+<ul>
+<li>the tabular data component from a SAS procedure.</li>
+<li>Formatting instructions provided by a table template that is unique to that SAS procedure.</li>
+</ul></li>
+<li><strong>Styles</strong> – Styles define the presentation attributes of a report, such as font and color. ODS uses style definitions, or templates, to enhance the visual appearance of the output in those destinations that support styles. Note that styles do not apply to the LISTING and OUTPUT destinations.</li>
+</ul>
+</div>
+<div id="sas-default-destination-listing" class="section level3 hasAnchor" number="13.1.2">
+<h3><span class="header-section-number">13.1.2</span> SAS Default Destination: LISTING<a href="output-deliver-system-ods.html#sas-default-destination-listing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The default ODS destination is <code>LISTING</code>. This is where SAS sends the output. This ODS destination is the standard output window.</p>
+<p>If we choose a specific ODS destination other than <code>LISTING</code> and don’t want to print out anything in the output window. We should <strong>close</strong> this ODS destination using the command ODS <code>LISTING CLOSE</code> before opening other ODS destinations.</p>
+<p>It is a good practice to keep LISTING open since it is more convenient when checking the output results and debugging the code.</p>
+</div>
+</div>
+<div id="ods-syntax" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> ODS Syntax<a href="output-deliver-system-ods.html#ods-syntax" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The basic syntax of ODS is given by</p>
+<pre><code>ODS output-type
+    PATH path-name
+    FILE = Filename-and-Path
+    STYLE = Style-Name;
+
+  PROC some proc;
+
+ODS output-type CLOSE;</code></pre>
+<ul>
+<li><p><code>output-type</code> - output file destination chosen from HTML, PDF, RTF, etc. The default is LISTING and is on. If we don’t want to print the outputs in the output window, we can close the default destination.</p></li>
+<li><p><code>PATH</code> represents the statement used in the case of HTML output. In other types of output, we include the path in the file name.</p></li>
+<li><p><code>STYLE</code> represents one of the in-built styles available in the SAS environment. We will discuss different output styles later in more detail.</p></li>
+</ul>
+<p>The following figure demonstrates a simple ODS application.</p>
+<p><img src="img12/w12-ods-annotated-example.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>In the above example, the output file destination is RTF, and the output file PATH and FILE name are combined. We did not specify an output style, the default style was used. Since the default output destination LISTING was not closed, the results were also sent to the output window.</p>
+<p>After executing the ODS code block, we can open the output file in the specified file location and view the content of the file as shown below.</p>
+<p><img src="img12/w12-output-file-location.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="flexibility-of-ods" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Flexibility of ODS<a href="output-deliver-system-ods.html#flexibility-of-ods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section demonstrates the flexibility of using ODS to generate different SAS output results.</p>
+<div id="html" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> HTML<a href="output-deliver-system-ods.html#html" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The HTML format output is favorable in many cases particularly when the result is published on the web together with other results to give users a better experience when consuming the analytic outcomes. ODS can generate HTML outputs with different output styles to make HTML aesthetically better.</p>
+<p>The following example shows how to generate ODS HTML outputs using PATH and FILE separately and jointly.</p>
+<p><img src="img12/w12-ODS-HTML.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="multiple-ods-putputs" class="section level3 hasAnchor" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> Multiple ODS Putputs<a href="output-deliver-system-ods.html#multiple-ods-putputs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can also generate multiple ODS outputs in a single data or procedure step. The following is an illustrative example that generates three different outputs at once.</p>
+<p><img src="img12/w12-multiple-ODS-outputs.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>In the above example, we close LISTING before opening other destinations. But LISTING was opened at the very end to allow the default destination for the future outputs. The ODS files were successfully generated and sent to the designated location.</p>
+<p><img src="img12/w12-three-ods-files-location.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="ods-styles" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> ODS Styles<a href="output-deliver-system-ods.html#ods-styles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When we output information to a SAS ODS format, the tables, graphs, and text are defined with default colors and fonts. There are several built-in ODS styles that we can select. Each style is based on some theme or purpose.</p>
+<p>Using these different styles appropriately will make analytic communications more effective and more professional. For example, when publishing the analysis results on the web page or creating web-based presentations, we can choose output styles that are consistent with the overall design of the web pages or the presentations in terms of background colors, font size/ families, etc.</p>
+<p>The following is a partial list of ODS styles.</p>
+<p><img src="img12/w12-built-in-styles.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>An example of Raven-style ODS output is given below.</p>
+<p><img src="img12/w12-ODS-Raven-style.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Note that when creating styled ODS outputs in PDF or RTF, the combined PATH and FILE should be used. The standalone PATH and FILE method will NOT work for these two destinations. Since the default LISTING was not closed, the results were also printed out in the output window.</p>
+<p>Finally, the following figure showcases a few styled ODS outputs with self-explanatory titles.</p>
+<p><img src="img12/w12-styles-showcase.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="learning-coding-by-examples-8" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Learning Coding by Examples<a href="output-deliver-system-ods.html#learning-coding-by-examples-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section gives more examples of ODS with a summary of the ODS. At the very end, an SAS MACRO was used to produce the showcases stylish ODS outputs in the previous section. Mode detailed discussion about SAS MACROs will be given in a later chapter.</p>
+<pre><code>/**************************************************
+      Topics: 1. ODS Basics - Opening and Closing ODS
+              2. ODS with Multiple Procedures
+              3. ODS OUTPUT Enhancements
+              4. Advanced ODS HTML - Enhanced Web Page
+              5. SAS ODS Graphics
+
+Your permanent library should be something like this:
+
+LIBNAME ods &quot;\\Client\C$\cpeng\sta311\ods&quot;;
+***************************************************/
+
+DM &#39;CLEAR LOG&#39;;
+DM &#39;CLEAR OUTPUT&#39;;
+
+/****************************************************************************
+                   Overview of Output Delivery System (ODS)
+
+1. SAS output of procedure (including graphics) shows in the Results window.  
+   Although SAS is creating files on the server (RamCloud) or a local computer 
+   as you add to your results, these are effectively hidden from you in a 
+   temporary folder within C:\temp\SAS Temporary Files\. The graphics will be 
+   wiped out when exiting the SAS session.  
+
+2.  The question is how to save graphics in the designated location, file&#39;s 
+    ODS destination, and in the desired format automatically.
+
+  Format: The format of the output file can be chosen from listing, RTF (for 
+          use in Word documents), pdf, and HTML.
+
+  ODS Destination: The formats of the output files corresponding to the ODS
+         LISTING(default), ODS RTF, ODS PDF, and ODS HTML destinations, 
+         respectively.
+
+  Location: We can provide a physical location to store an output file in the
+            desired format.
+
+
+                                ODS Syntax
+
+ODS output-file-destination  * file destinations: LISTING, RFT, PDF, HTML;
+PATH path name
+FILE = Filename and Path
+STYLE = StyleName; *
+
+PROC some procedures...
+
+ODS output-file-destination CLOSE;
+**********************************************************************/
+
+
+OPTIONS PS = 58 LS = 72 NODATE NONUMBER;
+LIBNAME odsout &#39;C:\STA311\ODS&#39;;
+
+/** Working data sets **/
+DATA PENN_GOLF;
+INPUT @1 SID $3.           
+      @4 Name $18.            /*   informat  */
+      @23 Architect $16.  
+      @40 Year  
+      @45 Type $  
+      @54 Par 
+          Yards 
+          Slope 
+          USGA;
+DATALINES;
+102 Penn State Blue    Willie Park,Jr.  1921 Public   72  6525  128  72.0
+101 Toftrees           Ed Ault          1968 Resort   72  7018  134  74.3
+103 Centre Hills       Alex Findlay     1921 Private  71  6392  128  71.2
+104 Lewistown CC                           . Private  72  6779  125  72.3
+105 State College Elks Lowell Erdman    1973 SemiPri  71  6369  123  70.9
+106 Park Hills CC      James Harrison   1966 SemiPri  70  6004  126  69.3
+107 Sinking Valley CC  Ed Ault          1967 SemiPri  72  6755  132  73.4
+108 Williamsport CC    A.W. Tillinghast 1909 Private  71  6489  131  71.9
+109 Standing Stone GC  Geoffrey Cornish 1973 SemiPri  70  6593  120  71.4
+110 Bucknell GC                         1960 SemiPri  70  6253  132  70.0
+111 Mount Airy Lodge   Hal Purdy        1972 Resort   72  7123  140  74.3
+;
+RUN;
+
+/** By default, the ODS LISTING is open. So you will see the output  **/
+PROC PRINT DATA = PENN_GOLF;
+RUN;
+
+
+/***************************************************************************
+    Topic #1:  ODS Basics - Opening and Closing ODS
+
+1) ODS creates your output in the form of output objects. Each output 
+   object is comprised of two components. 
+   (a)  The data component contains the results ?think about numbers
+        ?of a procedure or a DATA step. 
+   (b)  The table definition tells SAS how to render the results 
+        ?think about structure.
+
+2. Once SAS creates all of the output objects from an executed program, 
+   it then just needs to figure out where to send the objects. 
+
+SAS ODS destinations
+
+(1). LISTING (default output)
+(2). Printer Family format: PDF or PS
+(3). RTF
+(4). HTML
+****************************************************************************/
+
+/*************/
+/** Example 0: Default ODS destination - LISTING. It is open by default. 
+               If you close the LISTING destination, The PROC PRINT procedure
+               will not print out anything in the output window.          **/
+
+ODS LISTING CLOSE;         /* close the ODS LISTING, the log file will give 
+                              an error message   */
+
+PROC PRINT DATA = PENN_GOLF;
+RUN; 
+
+/*  Log File
+WARNING: No output destinations are active.
+NOTE: There were 11 observations read from the data set WORK.PENN_GOLF.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+*/
+
+/* We next open ODS LISTING and then print out the same data */
+
+
+OPTIONS PS =30 LS = 120 NODATE NONUMBER;  /*  Adjust page size and line size 
+                                       to make a better-looking output */
+ODS LISTING;              /* Open the ODS LISTING, the log file will give 
+                             NO error message   */
+
+PROC PRINT DATA = PENN_GOLF;
+TITLE &quot;Some Golf Courses in PENN&quot;;
+RUN; 
+
+/****************************************************************/
+/*    Example 1: Opening and Closing ODS Destinations - PDF     */
+
+/*    Need to specify the physical location to save the generated file with 
+      an appropriate name and the correct file destination (extension).   */ 
+
+ODS LISTING CLOSE;
+
+ODS PDF FILE = &#39;C:\STA311\ODS\golf00.pdf&#39;;
+PROC PRINT DATA = PENN_GOLF NOOBS;
+   TITLE &#39;Some of the penngolf data set variables: PDF&#39;;
+   ID name;
+   VAR year type par yards;
+RUN;
+ODS PDF CLOSE;   /* Always close the ODS destination after finishing
+                    the current block   */
+/* Note: I did close ODS LISTING, When I ran the above block, a PDF file was 
+   generated and sent to the folder. At the same time, the output was also 
+   generated in the output window. */
+ODS LISTING;
+
+/****************************************************************/
+/*    Example 2: Opening and Closing ODS Destinations - HTML    */
+
+ODS HTML file = &#39;C:\STA311\ODS\golf0.html&#39;;
+PROC PRINT  DATA = PENN_GOLF NOOBS;
+   TITLE &#39;Some of the penngolf data set variables: HTML&#39;;
+   ID name;
+   VAR year type par yards;
+RUN;
+ODS HTML CLOSE;
+
+
+/***************************************************************/
+/*    Example 3: Opening and Closing ODS Destinations - RTF    */
+
+ODS RTF file = &#39;C:\STA311\ODS\golf0.rtf&#39;;
+PROC PRINT DATA = PENN_GOLF NOOBS;
+   TITLE &#39;Some of the penngolf data set variables: RTF&#39;;
+   ID name;
+   VAR year type par yards;
+RUN;
+ODS RTF CLOSE;
+
+/*********************/
+/*** IMPORTANT!!!  ***/
+/*********************/
+
+ODS LISTING;  /*  It is a good practice to leave ODS LISTING open at the end 
+                  of a code block.  */
+
+
+/*******************************************/
+/** Example 4. A more efficient approach: 
+              We can also generate all three different file at the procedure**/
+
+ODS LISTING CLOSE;   /* close the listing destination before creating RTF,
+                        HTML and PDF */
+
+ODS RTF file = &#39;C:\STA311\ODS\golf01.rtf&#39;;
+ODS HTML file = &#39;C:\STA311\ODS\golf01.HTML&#39;;
+ODS PDF file = &#39;C:\STA311\ODS\golf01.pdf&#39;;
+PROC PRINT  DATA = PENN_GOLF NOOBS;
+   TITLE &#39;Some of the penngolf data set variables: Multiple ODS Destinations&#39;;
+   ID name;
+   VAR year type par yards;
+RUN;
+ODS PDF CLOSE;
+ODS HTML CLOSE;
+ODS RTF CLOSE;
+
+ODS LISTING; /* Open this destination for the next output in the output window */
+
+
+/***************************************************************************
+                  Topic #2: ODS OUTPUT Enhancements
+
+BODYTITLE -
+STYLE = option: changes the appearance of the default HTML output by using 
+       one of the many predefined style templates built into SAS.
+SELECT statement: tells SAS the specific output objects that we want to display. 
+To select specific output objects, simply place an ODS SELECT statement 
+within the relevant procedure.
+****************************************************************************/
+
+/** Example 1: Bodytitle **/
+ODS LISTING CLOSE;   /* Close LOSTING before generating ODS output */
+
+ODS RTF file = &#39;C:\STA311\ODS\bodytitle.rtf&#39;
+BODYTITLE;   /*  BODYTITLE option in the ODS RTF statement tells SAS to 
+     instead put titles and footnotes in the main part of the RTF document. */  
+   
+PROC PRINT DATA = penn_golf;* NOOBS;
+     TITLE &#39;Some Par 72 Pennsylvania Golf Courses&#39;;
+     ID name;
+     VAR year type yards;
+     WHERE par = 72;
+RUN;
+ODS RTF CLOSE;
+
+ODS LISTING;   /* Open LISTING for next LISTING outputs   */
+
+
+/****  Available STYLEs ****/
+PROC TEMPLATE; /* This procedure will print out all available styles in the 
+                  output window */
+    LIST STYLES;
+RUN;
+
+/****************************************
+ 2     Styles.Analysis              Style
+ 3     Styles.BarrettsBlue          Style
+ 4     Styles.BlockPrint            Style
+ 5     Styles.DTree                 Style
+ 6     Styles.Daisy                 Style
+ 7     Styles.Default               Style
+ 8     Styles.Dove                  Style
+ 9     Styles.EGDefault             Style
+10     Styles.Excel                 Style
+11     Styles.FancyPrinter          Style
+12     Styles.Festival              Style
+13     Styles.FestivalPrinter       Style
+14     Styles.Gantt                 Style
+15     Styles.GrayscalePrinter      Style
+16     Styles.HTMLBlue              Style
+17     Styles.Harvest               Style
+18     Styles.HighContrast          Style
+19     Styles.HighContrastLarge     Style
+20     Styles.Journal               Style
+21     Styles.Journal1a             Style
+22     Styles.Journal2              Style
+23     Styles.Journal2a             Style
+24     Styles.Journal3              Style
+25     Styles.Journal3a             Style
+26     Styles.Listing               Style
+27     Styles.Meadow                Style
+28     Styles.MeadowPrinter         Style
+29     Styles.Minimal               Style
+30     Styles.MonochromePrinter     Style
+31     Styles.Monospace             Style
+32     Styles.Moonflower            Style
+33     Styles.Netdraw               Style
+34     Styles.NoFontDefault         Style
+35     Styles.Normal                Style
+36     Styles.NormalPrinter         Style
+37     Styles.Ocean                 Style
+38     Styles.Pearl                 Style
+39     Styles.PearlJ                Style
+40     Styles.Plateau               Style
+41     Styles.PowerPointDark        Style
+42     Styles.PowerPointLight       Style
+43     Styles.Printer               Style
+44     Styles.Raven                 Style
+45     Styles.Rtf                   Style
+46     Styles.Sapphire              Style
+47     Styles.SasDocPrinter         Style
+48     Styles.SasWeb                Style
+49     Styles.Seaside               Style
+50     Styles.SeasidePrinter        Style
+51     Styles.Snow                  Style
+52     Styles.StatDoc               Style
+53     Styles.Statistical           Style
+54     Styles.Word                  Style
+55     Styles.vaDark                Style
+56     Styles.vaHighContrast        Style
+57     Styles.vaLight               Style
+********************************************/
+
+/***********************/
+/** Example 2: Style  **/
+ODS LISTING CLOSE;
+ODS HTML file = &#39;C:\STA311\ODS\meadow.html&#39;
+        style = meadow; /** STYLE= option to tell SAS to use the meadow 
+                            style when displaying the HTML output **/
+PROC PRINT DATA = penn_golf NOOBS;
+TITLE &#39;Some of the penngolf data set variables&#39;;
+ID name;
+VAR year type par yards;
+RUN;
+ 
+ODS HTML CLOSE;
+ODS LISTING;
+
+/************************************************************/
+/** Example 3: create a data set using ODS output statement**/
+
+PROC SORT DATA = PENN_GOLF;
+BY PAR;
+RUN;
+
+PROC MEANS DATA = PENN_GOLF;
+    BY par;
+    VAR yards;
+    TITLE &#39;Pennsylvania Golf Courses by Par&#39;;
+    ODS OUTPUT Summary = summout;
+RUN;
+
+ODS LISTING CLOSE;
+ODS HTML file = &#39;C:\STA311\ODS\PowerPointLight.html&#39;
+        style = PowerPointLight; /* Use a different ODS HTML style */
+
+PROC PRINT DATA  = summout NOOBS;
+    TITLE &#39;The summout data set&#39;;
+RUN;
+
+ODS HTML CLOSE;
+ODS LISTING;
+
+/************************************/
+/** Example 4.  SELECT - statement **/
+
+PROC SORT DATA = penn_golf OUT = golfbypar;
+    BY par;
+RUN;
+
+ODS LISTING CLOSE;
+ODS HTML file = &#39;C:\STA311\ODS\Statistical.html&#39;
+        style = Statistical; /* Use a different ODS HTML style */
+PROC MEANS data = golfbypar;
+    by par;
+    title &#39;Par 70 Golf Courses&#39;;
+    ODS SELECT Means.ByGroup1.Summary;
+RUN;
+
+ODS HTML CLOSE;
+ODS LISTING;
+
+
+/**************************************************************************
+   Topic #3: Advanced ODS HTML - Enhanced Web Page
+                            (Optional)
+
+When we create an HTML in the above topic 2,  we simply open 
+the HTML destination using the HTML keyword in the ODS statement. Simple enough! 
+
+In this topic, we&#39;ll extend what we learned by:
+
+1. creating HTML output from multiple procedures at once;
+2. creating HTML output with a table of contents; and
+3. using options to specify links and paths.
+
+ODS HTML Specifications:
+
+1. BODY= option tells SAS where we want to store the HTML output generated 
+         from the subsequent PRINT and REPORT procedures. 
+2. CONTENTS= option tells SAS where we want to store the table of contents. 
+3. FRAME= option gives SAS a place to store the HTML page containing 
+          the integrated table of contents and body file. 
+
+Note that the FRAME= option and the CONTENTS= option go together. That is,
+if we include the FRAME= option in your ODS HTML statement, you must also 
+include the CONTENTS= option.
+************************************************************************/
+
+ODS LISTING CLOSE;
+ODS HTML BODY = &#39;C:\STA311\ODS\golf3.html&#39;
+         CONTENTS = &#39;C:\STA311\ODS\golf3toc.html&#39;
+         FRAME = &#39;C:\STA311\ODS\golf3frame.html&#39;;
+
+/* PROC PRINT  */
+PROC PRINT DATA = penn_golf NOOBS;
+    TITLE &#39;Some Par 72 Pennsylvania Golf Courses&#39;;
+    ID name;
+    VAR year type yards;
+    WHERE par = 72;
+RUN;
+
+/* PROC REPORT --- will study PROC REPORT next week, more details to come.... */
+PROC REPORT DATA = penn_golf NOWINDOWS HEADLINE HEADSKIP;
+    TITLE &#39;Average Size of Some PA Courses&#39;;
+    COLUMN type par yards;
+    DEFINE type /GROUP;
+    DEFINE yards / ANALYSIS MEAN FORMAT = 6.1 WIDTH = 10;
+    DEFINE par / ANALYSIS MEAN FORMAT = 4.1 WIDTH = 10;
+RUN;
+ 
+ODS HTML CLOSE;
+ODS LISTING;
+
+
+/******************************************************
+      Topic #4:  ODS Graphics
+*******************************************************/
+
+/* Woeking dataset taken from James Forbes&#39; Altimeter (1857)
+    Bringing water to a boil throughout the Alps */
+
+DATA forbes;
+    INPUT id boil pressure;
+    LABEL boil = &quot;Boiling Point (degrees F)&quot;
+          pressure = &quot;Air Pressure (inches Hg)&quot;;
+    DATALINES;
+    1   194.5   20.79
+    2   194.3   20.79
+    3   197.9   22.40
+    4   198.4   22.67
+    5   199.4   23.15
+    6   199.9   23.35
+    7   200.9   23.89
+    8   201.1   23.99
+    9   201.4   24.02
+   10   201.3   24.01
+   11   203.6   25.14
+   12   204.6   26.57
+   13   209.5   28.49
+   14   208.6   27.76
+   15   210.7   29.04
+   16   211.9   29.88
+   17   212.2   30.06
+;
+RUN;
+
+
+/* Titles affect all forms of output */
+TITLE &quot;Boiling Point and Altitude&quot;;
+TITLE2 &quot;James D. Forbes, 1857&quot;;
+
+/****  Example 1 ****/
+/* RTF output, for MS Word documents */
+ODS RTF FILE =&quot;C:\STA311\ODS\graphics-example.rtf&quot;;
+PROC SGPLOT DATA = forbes;
+    SCATTER Y = boil X= pressure;
+    RUN;
+ODS RTF CLOSE;
+
+
+
+/**** Example 2  ****/
+/* PDF output, for Acrobat documents */
+ODS PDF FILE = &quot;C:\STA311\ODS\graphics-example.pdf&quot;;
+
+PROC SGPLOT DATA = forbes;
+    SCATTER Y = boil X = pressure;
+    RUN;
+ODS PDF CLOSE;
+
+
+
+/**** Example 3  ****/
+/* PNG output, for a variety of uses */
+ODS HTML GPATH = &quot;C:\STA311\ODS&quot;;
+
+PROC SGPLOT DATA = forbes;
+    SCATTER Y = boil X = pressure;
+    RUN;
+
+ODS HTML CLOSE;
+
+
+* No need to close the HTML destination;
+
+/**** Example 4 ****/
+/* As a final note, remember that you could
+    save output from a single PROC to more
+    than one output destination, simultaneously.
+    We could have done all three like this:
+*/
+
+ODS RTF FILE=&quot;C:\STA311\ODS\graphics-example-02.rtf&quot;;
+ODS PDF FILE = &quot;C:\STA311\ODS\graphics-example-02.pdf&quot;;
+ODS HTML GPATH = &quot;C:\STA311\ODS&quot;;
+
+PROC SGPLOT DATA = forbes;
+    SCATTER Y = boil X = pressure;
+    RUN;
+
+ODS RTF CLOSE;
+ODS PDF CLOSE;
+
+
+/***********************************************************************
+  Topic #5: Other format graphics with ODS
+
+(1) Saving multiple graphs using the sashelp.class data to draw
+scatterplots of weight by age and weight by height.  Save these in
+all three formats discussed here.
+
+(2) JPG files Look up the ODS HTML command and find the DEVICE option 
+(Base SAS - Output Delivery System User&#39;s Guide - ODS Statements).
+Save files from exercise (1) in jpg or jpeg format.
+***********************************************************************/
+
+/******************/
+/* Example 1      
+*******************/
+TITLE;
+ODS RTF FILE = &quot;C:\STA311\ODS\graphics-example-03.rtf&quot;;
+ODS PDF FILE = &quot;C:\STA311\ODS\graphics-example-03.pdf&quot;;
+ODS HTML GPATH = &quot;C:\STA311\ODS\&quot;;
+
+PROC SGPLOT DATA = sashelp.class;
+    SCATTER Y = weight X = age;
+
+PROC SGPLOT DATA = sashelp.class;
+    SCATTER Y = weight X = height;
+run;
+
+ODS RTF CLOSE;
+ODS PDF CLOSE;
+
+
+/********************
+* Example 2
+*********************/
+ODS HTML GPATH = &quot;C:\STA311\ODS\&quot; DEVICE = jpg;
+
+PROC SGPLOT DATA = sashelp.class;
+    SCATTER Y = weight X = age;
+
+PROC SGPLOT DATA = sashelp.class;
+    SCATTER Y = weight X = height;
+run;
+
+
+
+/********************************************
+**        Optional Topic: MACRO;
+*********************************************/
+
+/*** Sample ODS Styles in HTML *****
+Since I repeat the same process to generate outputs in different ODS styles,
+I will write a SAS MACRO to avoid copying and pasting and make several MACRO
+calls to accomplish our task. Writing SAS MACROs is outside the scope of this
+class.
+*****************************************************************************/
+
+/* column input */
+DATA Orange; /* stored in the temporary library */
+INPUT state $ 1-10 early 12-14 late 16-18;
+DATALINES;
+Florida    130  90
+California  37  26
+Texas      1.3 .15
+Arizona    .65 .85
+;
+RUN;
+
+
+%MACRO ODSSTYLE(STYLE = );
+ODS HTML
+    FILE =&quot;C:\STA311\ODS\myOrange&amp;STYLE..HTML&quot;
+    STYLE =&amp;STYLE;
+PROC PRINT DATA = Orange;
+    TITLE &quot;Output Style &amp;STYLE: HTML&quot;;
+RUN;
+ODS HTML CLOSE;   /* ODS must be closed! */
+%MEND; 
+
+
+%ODSSTYLE(STYLE=HARVEST);
+%ODSSTYLE(STYLE=Ocean);
+%ODSSTYLE(STYLE=MeadowPrinter);
+%ODSSTYLE(STYLE=PowerPointDark);
+%ODSSTYLE(STYLE=Excel);
+%ODSSTYLE(STYLE=BlockPrint);
+%ODSSTYLE(STYLE=BarrettsBlue);
+%ODSSTYLE(STYLE=EGDefault);
+</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sas-arrays.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="generating-analysis-reports.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pengdsci/STA311EB/edit/master/12-ODS.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["STA311EB.pdf", "STA311EB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

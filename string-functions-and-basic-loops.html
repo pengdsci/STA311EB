@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 String Functions and Basic Loops | STA311: Stats Comp. &amp; Data Mgmt.</title>
+  <meta name="description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 String Functions and Basic Loops | STA311: Stats Comp. &amp; Data Mgmt." />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 String Functions and Basic Loops | STA311: Stats Comp. &amp; Data Mgmt." />
+  
+  <meta name="twitter:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  
+
+<meta name="author" content="Cheng Peng" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modifying-data.html"/>
+<link rel="next" href="sas-arrays.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><center><font color = "darkred" size = 3>STA311 E-Pack</font><br><font color = "darkred" size = 4> <b>Stats Comp & Data Mgmt.</b><br><br><img src = "311.png"  width="85" height="115"></center></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html"><i class="fa fa-check"></i><b>2</b> Basics of SAS System</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-data-and-variables"><i class="fa fa-check"></i><b>2.1</b> SAS Data and Variables</a></li>
+<li class="chapter" data-level="2.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-code-structure"><i class="fa fa-check"></i><b>2.2</b> SAS Code Structure</a></li>
+<li class="chapter" data-level="2.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-libraries"><i class="fa fa-check"></i><b>2.3</b> SAS Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#first-sas-code-hello-world"><i class="fa fa-check"></i><b>2.4</b> First SAS Code: “Hello World!”</a></li>
+<li class="chapter" data-level="2.5" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-log-files"><i class="fa fa-check"></i><b>2.5</b> SAS Log Files</a></li>
+<li class="chapter" data-level="2.6" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-output"><i class="fa fa-check"></i><b>2.6</b> SAS Output</a></li>
+<li class="chapter" data-level="2.7" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#some-sas-tutorial-from-sas-inc."><i class="fa fa-check"></i><b>2.7</b> Some SAS Tutorial from SAS Inc.</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#description-of-the-sas-program"><i class="fa fa-check"></i><b>2.7.1</b> Description of the SAS Program</a></li>
+<li class="chapter" data-level="2.7.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-graphical-user-interface"><i class="fa fa-check"></i><b>2.7.2</b> SAS Graphical User Interface</a></li>
+<li class="chapter" data-level="2.7.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#writing-sas-code"><i class="fa fa-check"></i><b>2.7.3</b> Writing SAS Code</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html"><i class="fa fa-check"></i><b>3</b> Coding Conventions and Best Practices</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-file-and-program-structures"><i class="fa fa-check"></i><b>3.1</b> SAS file and Program Structures</a></li>
+<li class="chapter" data-level="3.2" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#naming-conventions-and-sas-program-structure"><i class="fa fa-check"></i><b>3.2</b> Naming Conventions and SAS Program Structure</a></li>
+<li class="chapter" data-level="3.3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-data-structure"><i class="fa fa-check"></i><b>3.3</b> SAS Data Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#some-best-coding-practices"><i class="fa fa-check"></i><b>3.4</b> Some Best Coding Practices</a></li>
+<li class="chapter" data-level="3.5" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#learning-sas-coding-by-examples"><i class="fa fa-check"></i><b>3.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html"><i class="fa fa-check"></i><b>4</b> Methods of SAS Data Input</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#specifying-variable-length"><i class="fa fa-check"></i><b>4.1</b> Specifying Variable Length</a></li>
+<li class="chapter" data-level="4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#methods-of-data-input"><i class="fa fa-check"></i><b>4.2</b> Methods of Data Input</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#list-input"><i class="fa fa-check"></i><b>4.2.1</b> List Input</a></li>
+<li class="chapter" data-level="4.2.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#column-input"><i class="fa fa-check"></i><b>4.2.2</b> Column Input</a></li>
+<li class="chapter" data-level="4.2.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formatted-input-delimited-input"><i class="fa fa-check"></i><b>4.2.3</b> Formatted Input (Delimited Input)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#summary---three-input-styles"><i class="fa fa-check"></i><b>4.2.4</b> Summary - Three Input Styles</a></li>
+<li class="chapter" data-level="4.2.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#mixed-input"><i class="fa fa-check"></i><b>4.2.5</b> Mixed Input</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#handling-special-structured-data"><i class="fa fa-check"></i><b>4.3</b> Handling Special Structured Data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#data-file-containing-comments-and-descriptions"><i class="fa fa-check"></i><b>4.3.1</b> Data File Containing Comments and Descriptions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-line-for-the-record"><i class="fa fa-check"></i><b>4.3.2</b> Multi-line for the Record</a></li>
+<li class="chapter" data-level="4.3.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-records-in-the-same-line"><i class="fa fa-check"></i><b>4.3.3</b> Multi-records In the Same Line</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#making-better-line-outputs"><i class="fa fa-check"></i><b>4.4</b> Making Better Line Outputs</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#options-statement"><i class="fa fa-check"></i><b>4.4.1</b> OPTIONS Statement</a></li>
+<li class="chapter" data-level="4.4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#titles-and-footnotes"><i class="fa fa-check"></i><b>4.4.2</b> Titles and Footnotes</a></li>
+<li class="chapter" data-level="4.4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#labeling-variables"><i class="fa fa-check"></i><b>4.4.3</b> Labeling Variables</a></li>
+<li class="chapter" data-level="4.4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formats-and-user-define-formats"><i class="fa fa-check"></i><b>4.4.4</b> Formats and User Define Formats</a></li>
+<li class="chapter" data-level="4.4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#a-note-on-sas-dates"><i class="fa fa-check"></i><b>4.4.5</b> A Note on SAS Dates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#learning-sas-coding-by-examples-1"><i class="fa fa-check"></i><b>4.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html"><i class="fa fa-check"></i><b>5</b> Read Data from Other Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#more-infile-options"><i class="fa fa-check"></i><b>5.1</b> More INFILE Options</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dlm"><i class="fa fa-check"></i><b>5.1.1</b> <code>DLM</code></a></li>
+<li class="chapter" data-level="5.1.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dsd"><i class="fa fa-check"></i><b>5.1.2</b> <code>DSD</code></a></li>
+<li class="chapter" data-level="5.1.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#missover"><i class="fa fa-check"></i><b>5.1.3</b> <code>MISSOVER</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-in-existing-sas-data-sets"><i class="fa fa-check"></i><b>5.2</b> Reading in Existing SAS Data Sets</a></li>
+<li class="chapter" data-level="5.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-data-via-wizard"><i class="fa fa-check"></i><b>5.3</b> Reading Data via Wizard</a></li>
+<li class="chapter" data-level="5.4" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#loading-data-proc-import"><i class="fa fa-check"></i><b>5.4</b> Loading Data PROC IMPORT</a></li>
+<li class="chapter" data-level="5.5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#read-data-with-url"><i class="fa fa-check"></i><b>5.5</b> Read Data with URL</a></li>
+<li class="chapter" data-level="5.6" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#learning-coding-by-examples"><i class="fa fa-check"></i><b>5.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#frequency-table-analysis"><i class="fa fa-check"></i><b>6.1</b> Frequency Table Analysis</a></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Numerical Summary Statistics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-means"><i class="fa fa-check"></i><b>6.2.1</b> <code>PROC MEANS</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-univariate"><i class="fa fa-check"></i><b>6.2.2</b> <code>PROC UNIVARIATE</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#learning-coding-by-examples-1"><i class="fa fa-check"></i><b>6.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html"><i class="fa fa-check"></i><b>7</b> Basic Statistics Graphics</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#boxplot"><i class="fa fa-check"></i><b>7.1</b> Boxplot</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-box-plot"><i class="fa fa-check"></i><b>7.1.1</b> Basic Box Plot</a></li>
+<li class="chapter" data-level="7.1.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#boxplots-for-categories"><i class="fa fa-check"></i><b>7.1.2</b> Boxplots for Categories</a></li>
+<li class="chapter" data-level="7.1.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-box-plot"><i class="fa fa-check"></i><b>7.1.3</b> Panel Box Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#bar-charts"><i class="fa fa-check"></i><b>7.2</b> Bar Charts</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-bar-chart-for-one-variable"><i class="fa fa-check"></i><b>7.2.1</b> Basic Bar Chart for One Variable</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#stacked-bar-charts"><i class="fa fa-check"></i><b>7.2.2</b> Stacked Bar Charts</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#bar-charts-with-means-and-error-bars"><i class="fa fa-check"></i><b>7.2.3</b> Bar Charts with Means and Error Bars</a></li>
+<li class="chapter" data-level="7.2.4" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-bar-charts"><i class="fa fa-check"></i><b>7.2.4</b> Panel Bar Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#histogram"><i class="fa fa-check"></i><b>7.3</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#histogram-with-density-curves"><i class="fa fa-check"></i><b>7.3.1</b> Histogram with Density Curves</a></li>
+<li class="chapter" data-level="7.3.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#overlaid-histograms"><i class="fa fa-check"></i><b>7.3.2</b> Overlaid Histograms</a></li>
+<li class="chapter" data-level="7.3.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-histogram"><i class="fa fa-check"></i><b>7.3.3</b> Panel Histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#scatter-plots"><i class="fa fa-check"></i><b>7.4</b> Scatter Plots</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-scatter-plot-for-two-numeric-variables"><i class="fa fa-check"></i><b>7.4.1</b> Basic Scatter Plot for Two Numeric Variables</a></li>
+<li class="chapter" data-level="7.4.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#scatter-plot-with-least-squares-regression-line"><i class="fa fa-check"></i><b>7.4.2</b> Scatter Plot With Least Squares Regression Line</a></li>
+<li class="chapter" data-level="7.4.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-scatter-plot"><i class="fa fa-check"></i><b>7.4.3</b> Panel Scatter Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#pair-wise-scatter-plot"><i class="fa fa-check"></i><b>7.5</b> Pair-wise Scatter Plot</a></li>
+<li class="chapter" data-level="7.6" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#learning-coding-by-examples-2"><i class="fa fa-check"></i><b>7.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="subsetting-data.html"><a href="subsetting-data.html"><i class="fa fa-check"></i><b>8</b> Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="subsetting-data.html"><a href="subsetting-data.html#selecting-columns"><i class="fa fa-check"></i><b>8.1</b> Selecting Columns</a></li>
+<li class="chapter" data-level="8.2" data-path="subsetting-data.html"><a href="subsetting-data.html#selecting-rows"><i class="fa fa-check"></i><b>8.2</b> Selecting Rows</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="subsetting-data.html"><a href="subsetting-data.html#partial-reading"><i class="fa fa-check"></i><b>8.2.1</b> Partial Reading</a></li>
+<li class="chapter" data-level="8.2.2" data-path="subsetting-data.html"><a href="subsetting-data.html#conditional-selecting-methods"><i class="fa fa-check"></i><b>8.2.2</b> Conditional Selecting Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="subsetting-data.html"><a href="subsetting-data.html#subsetting-by-splitting"><i class="fa fa-check"></i><b>8.3</b> Subsetting by Splitting</a></li>
+<li class="chapter" data-level="8.4" data-path="subsetting-data.html"><a href="subsetting-data.html#learning-coding-by-examples-3"><i class="fa fa-check"></i><b>8.4</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>9</b> Combining Data Sets</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="combining-data-sets.html"><a href="combining-data-sets.html#stackingconcatenating"><i class="fa fa-check"></i><b>9.1</b> Stacking/Concatenating</a></li>
+<li class="chapter" data-level="9.2" data-path="combining-data-sets.html"><a href="combining-data-sets.html#in-statement-and-ghost-variable"><i class="fa fa-check"></i><b>9.2</b> <code>IN</code> Statement and <code>ghost</code> Variable</a></li>
+<li class="chapter" data-level="9.3" data-path="combining-data-sets.html"><a href="combining-data-sets.html#interleaving-data-sets"><i class="fa fa-check"></i><b>9.3</b> Interleaving Data Sets</a></li>
+<li class="chapter" data-level="9.4" data-path="combining-data-sets.html"><a href="combining-data-sets.html#merging-by-matching"><i class="fa fa-check"></i><b>9.4</b> Merging by Matching</a></li>
+<li class="chapter" data-level="9.5" data-path="combining-data-sets.html"><a href="combining-data-sets.html#summary-of-some-key-words-and-statements"><i class="fa fa-check"></i><b>9.5</b> Summary of Some KEY Words and Statements</a></li>
+<li class="chapter" data-level="9.6" data-path="combining-data-sets.html"><a href="combining-data-sets.html#learning-coding-by-examples-4"><i class="fa fa-check"></i><b>9.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modifying-data.html"><a href="modifying-data.html"><i class="fa fa-check"></i><b>10</b> Modifying Data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modifying-data.html"><a href="modifying-data.html#sas-functions-date-and-others"><i class="fa fa-check"></i><b>10.1</b> SAS Functions: Date and Others</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="modifying-data.html"><a href="modifying-data.html#using-date-functions"><i class="fa fa-check"></i><b>10.1.1</b> Using Date Functions</a></li>
+<li class="chapter" data-level="10.1.2" data-path="modifying-data.html"><a href="modifying-data.html#other-related-sas-functions"><i class="fa fa-check"></i><b>10.1.2</b> Other Related SAS Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="modifying-data.html"><a href="modifying-data.html#automatic-variables"><i class="fa fa-check"></i><b>10.2</b> Automatic Variables</a></li>
+<li class="chapter" data-level="10.3" data-path="modifying-data.html"><a href="modifying-data.html#calculating-new-variables"><i class="fa fa-check"></i><b>10.3</b> Calculating New Variables</a></li>
+<li class="chapter" data-level="10.4" data-path="modifying-data.html"><a href="modifying-data.html#logical-expressions"><i class="fa fa-check"></i><b>10.4</b> Logical Expressions</a></li>
+<li class="chapter" data-level="10.5" data-path="modifying-data.html"><a href="modifying-data.html#operators-with-where-statement"><i class="fa fa-check"></i><b>10.5</b> Operators with WHERE statement</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="modifying-data.html"><a href="modifying-data.html#where-between-and"><i class="fa fa-check"></i><b>10.5.1</b> <code>WHERE-BETWEEN-AND</code></a></li>
+<li class="chapter" data-level="10.5.2" data-path="modifying-data.html"><a href="modifying-data.html#where-contains-or"><i class="fa fa-check"></i><b>10.5.2</b> <code>WHERE-CONTAINS or ?</code></a></li>
+<li class="chapter" data-level="10.5.3" data-path="modifying-data.html"><a href="modifying-data.html#where-is-missing-or-is-null"><i class="fa fa-check"></i><b>10.5.3</b> <code>WHERE-IS MISSING or IS NULL</code></a></li>
+<li class="chapter" data-level="10.5.4" data-path="modifying-data.html"><a href="modifying-data.html#where-like"><i class="fa fa-check"></i><b>10.5.4</b> <code>WHERE-LIKE</code></a></li>
+<li class="chapter" data-level="10.5.5" data-path="modifying-data.html"><a href="modifying-data.html#where"><i class="fa fa-check"></i><b>10.5.5</b> <code>WHERE =*</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="modifying-data.html"><a href="modifying-data.html#learning-coding-by-examples-5"><i class="fa fa-check"></i><b>10.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html"><i class="fa fa-check"></i><b>11</b> String Functions and Basic Loops</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#string-functions"><i class="fa fa-check"></i><b>11.1</b> String Functions</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#concatenation-cat-cats-catx-and"><i class="fa fa-check"></i><b>11.1.1</b> Concatenation CAT, CATS, CATX, and <code>||</code></a></li>
+<li class="chapter" data-level="11.1.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#substr"><i class="fa fa-check"></i><b>11.1.2</b> SUBSTR</a></li>
+<li class="chapter" data-level="11.1.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#string-function-for-handling-blanks"><i class="fa fa-check"></i><b>11.1.3</b> String Function for Handling Blanks</a></li>
+<li class="chapter" data-level="11.1.4" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#compress-vs-compbl"><i class="fa fa-check"></i><b>11.1.4</b> COMPRESS vs COMPBL</a></li>
+<li class="chapter" data-level="11.1.5" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#change-character-case-functions"><i class="fa fa-check"></i><b>11.1.5</b> Change Character Case Functions</a></li>
+<li class="chapter" data-level="11.1.6" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#search-character-functions"><i class="fa fa-check"></i><b>11.1.6</b> Search Character Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#basic-loops"><i class="fa fa-check"></i><b>11.2</b> Basic Loops</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do--loop"><i class="fa fa-check"></i><b>11.2.1</b> DO -loop</a></li>
+<li class="chapter" data-level="11.2.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do-while-loop"><i class="fa fa-check"></i><b>11.2.2</b> DO-WHILE Loop</a></li>
+<li class="chapter" data-level="11.2.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do-until-loop"><i class="fa fa-check"></i><b>11.2.3</b> DO-UNTIL Loop</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#retain-statement-and-longitudinal-data-operations"><i class="fa fa-check"></i><b>11.3</b> RETAIN Statement and Longitudinal Data Operations</a></li>
+<li class="chapter" data-level="11.4" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#learning-coding-by-examples-6"><i class="fa fa-check"></i><b>11.4</b> Learning COding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sas-arrays.html"><a href="sas-arrays.html"><i class="fa fa-check"></i><b>12</b> SAS Arrays</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="sas-arrays.html"><a href="sas-arrays.html#array-syntax"><i class="fa fa-check"></i><b>12.1</b> Array <strong>Syntax</strong></a></li>
+<li class="chapter" data-level="12.2" data-path="sas-arrays.html"><a href="sas-arrays.html#methods-of-specifying-array-elements"><i class="fa fa-check"></i><b>12.2</b> Methods of Specifying ARRAY Elements</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="sas-arrays.html"><a href="sas-arrays.html#explicit-definition"><i class="fa fa-check"></i><b>12.2.1</b> Explicit Definition</a></li>
+<li class="chapter" data-level="12.2.2" data-path="sas-arrays.html"><a href="sas-arrays.html#specify-a-range-of-elements"><i class="fa fa-check"></i><b>12.2.2</b> Specify A Range of Elements</a></li>
+<li class="chapter" data-level="12.2.3" data-path="sas-arrays.html"><a href="sas-arrays.html#select-all-variables-between-a-start-and-end-variable"><i class="fa fa-check"></i><b>12.2.3</b> Select All Variables Between A Start and End Variable</a></li>
+<li class="chapter" data-level="12.2.4" data-path="sas-arrays.html"><a href="sas-arrays.html#using-automatic-variable"><i class="fa fa-check"></i><b>12.2.4</b> Using Automatic Variable</a></li>
+<li class="chapter" data-level="12.2.5" data-path="sas-arrays.html"><a href="sas-arrays.html#sas-created-elements"><i class="fa fa-check"></i><b>12.2.5</b> SAS Created Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="sas-arrays.html"><a href="sas-arrays.html#use-of-array"><i class="fa fa-check"></i><b>12.3</b> Use of Array</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="sas-arrays.html"><a href="sas-arrays.html#referencing-elements-of-an-array"><i class="fa fa-check"></i><b>12.3.1</b> Referencing Elements of an Array</a></li>
+<li class="chapter" data-level="12.3.2" data-path="sas-arrays.html"><a href="sas-arrays.html#array-operators"><i class="fa fa-check"></i><b>12.3.2</b> Array Operators</a></li>
+<li class="chapter" data-level="12.3.3" data-path="sas-arrays.html"><a href="sas-arrays.html#array-with-loops"><i class="fa fa-check"></i><b>12.3.3</b> ARRAY with Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="sas-arrays.html"><a href="sas-arrays.html#reshape-data"><i class="fa fa-check"></i><b>12.4</b> Reshape Data</a></li>
+<li class="chapter" data-level="12.5" data-path="sas-arrays.html"><a href="sas-arrays.html#learning-coding-by-examples-7"><i class="fa fa-check"></i><b>12.5</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html"><i class="fa fa-check"></i><b>13</b> Output Deliver System (ODS)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-basics"><i class="fa fa-check"></i><b>13.1</b> ODS Basics</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#some-technical-terms"><i class="fa fa-check"></i><b>13.1.1</b> Some Technical Terms</a></li>
+<li class="chapter" data-level="13.1.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#sas-default-destination-listing"><i class="fa fa-check"></i><b>13.1.2</b> SAS Default Destination: LISTING</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-syntax"><i class="fa fa-check"></i><b>13.2</b> ODS Syntax</a></li>
+<li class="chapter" data-level="13.3" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#flexibility-of-ods"><i class="fa fa-check"></i><b>13.3</b> Flexibility of ODS</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#html"><i class="fa fa-check"></i><b>13.3.1</b> HTML</a></li>
+<li class="chapter" data-level="13.3.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#multiple-ods-putputs"><i class="fa fa-check"></i><b>13.3.2</b> Multiple ODS Putputs</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-styles"><i class="fa fa-check"></i><b>13.4</b> ODS Styles</a></li>
+<li class="chapter" data-level="13.5" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#learning-coding-by-examples-8"><i class="fa fa-check"></i><b>13.5</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html"><i class="fa fa-check"></i><b>14</b> Generating Analysis Reports</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#proc-report-syntax"><i class="fa fa-check"></i><b>14.1</b> PROC REPORT Syntax</a></li>
+<li class="chapter" data-level="14.2" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#ods-reports"><i class="fa fa-check"></i><b>14.2</b> ODS Reports</a></li>
+<li class="chapter" data-level="14.3" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#learning-coding-by-examples-9"><i class="fa fa-check"></i><b>14.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html"><i class="fa fa-check"></i><b>15</b> Basics of SAS MACRO</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macro-variables"><i class="fa fa-check"></i><b>15.1</b> MACRO Variables</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#defining-macro-variables"><i class="fa fa-check"></i><b>15.1.1</b> Defining MACRO Variables</a></li>
+<li class="chapter" data-level="15.1.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#use-of-macro-variables"><i class="fa fa-check"></i><b>15.1.2</b> Use of MACRO Variables</a></li>
+<li class="chapter" data-level="15.1.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#combining-macro-variables-with-text"><i class="fa fa-check"></i><b>15.1.3</b> Combining Macro Variables with Text</a></li>
+<li class="chapter" data-level="15.1.4" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macro-quoting"><i class="fa fa-check"></i><b>15.1.4</b> Macro Quoting</a></li>
+<li class="chapter" data-level="15.1.5" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#system-automatics-macro-variables"><i class="fa fa-check"></i><b>15.1.5</b> System Automatics MACRO Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#sas-macro"><i class="fa fa-check"></i><b>15.2</b> SAS MACRO</a></li>
+<li class="chapter" data-level="15.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macros-with-parameters"><i class="fa fa-check"></i><b>15.3</b> MACROs with Parameters</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#positional-parameter"><i class="fa fa-check"></i><b>15.3.1</b> Positional Parameter</a></li>
+<li class="chapter" data-level="15.3.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#keyword-parameter"><i class="fa fa-check"></i><b>15.3.2</b> Keyword Parameter</a></li>
+<li class="chapter" data-level="15.3.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#mixed-parameter-list"><i class="fa fa-check"></i><b>15.3.3</b> Mixed Parameter List</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#learning-coding-by-examples-10"><i class="fa fa-check"></i><b>15.4</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><center><BR><BR><a href="https://github.com/rstudio/bookdown" target="blank"><font color = "blue" size = 2> Published with bookdown</font></a></center></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA311: Stats Comp. &amp; Data Mgmt.</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="string-functions-and-basic-loops" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> String Functions and Basic Loops<a href="string-functions-and-basic-loops.html#string-functions-and-basic-loops" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter, we continue to introduce more SAS functions and loops for efficient data manipulation.</p>
+<div id="string-functions" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> String Functions<a href="string-functions-and-basic-loops.html#string-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>SAS has a few convenient string functions that can be used to extract information from string variables or create new string variables.</p>
+<p>Strings in SAS are the values that are enclosed within a pair of single or double quotes. Also, the string variables are declared by adding a space and $ sign at the end of the variable declaration. SAS has many powerful functions to analyze and manipulate strings.</p>
+<p>We introduce some of these commonly used in string variable manipulation. For convenience, we will use <code>PUT</code> function to print out different manipulated strings in the log to see the values (results) of various <code>string</code> functions.</p>
+<p>For those string functions that deal with <strong>blank</strong> (white space) in the string function, we will enclose the outputs in asterisk (*).</p>
+<div id="concatenation-cat-cats-catx-and" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Concatenation CAT, CATS, CATX, and <code>||</code><a href="string-functions-and-basic-loops.html#concatenation-cat-cats-catx-and" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Concatenation is a common operation in manipulating string variables. There are several functions in SAS for this purpose. We use several examples to illustrate how to use these string functions.</p>
+<p>We first define a toy data set to be used in the examples.</p>
+<pre><code>/*create dataset*/
+DATA cats_example;
+    INPUT firstName $ lastName $ points;
+    DATALINES;
+Austin Smith 15
+Brad Stevens 31
+Chad Miller 22
+Dave Michaelson 19
+Eric Schmidt 29
+Frank Wright 20
+Greg Gunner 40
+Harold Anderson 35
+;
+RUN;</code></pre>
+<p><strong>Concatenate Strings with Space in Between</strong></p>
+<pre><code>/*create new dataset with concatenated strings*/
+DATA CAT_data01;
+    set cats_example;
+    fullName = CAT(firstName, lastName);
+    PUT fullName;
+RUN;
+
+TITLE &quot;CAT function&quot;;
+PROC PRINT;     /* no specified data set to print, 
+                 The system will print out the most
+                 recently created data set*/
+RUN;</code></pre>
+<p><img src="img10/w10-CAT-output.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>Concatenate Strings with No Space in Between</strong></p>
+<pre><code>/*create a new dataset with concatenated strings*/
+DATA CATS_data;
+    SET cats_example;
+    fullName = CATS(firstName, lastName);
+    PUT fullName;
+RUN;
+
+/*view new dataset*/
+PROC PRINT; 
+RUN;</code></pre>
+<p><img src="img10/w10-CATS-output.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>Concatenate Strings with Custom Delimiter</strong></p>
+<pre><code>/*create a new dataset with concatenated strings*/
+DATA CATX_data;
+    SET cats_example;
+    fullName = CATX(&#39;-&#39;, firstName, lastName);
+    PUT fullName;
+RUN;
+
+/*view new dataset*/
+PROC PRINT; 
+RUN;</code></pre>
+<p><img src="img10/w10-CATS-output.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>An Alternative of CATX(): <code>||</code></strong></p>
+<p>The double vertical bar (<code>||</code>) joins strings. It’s the oldest method in SAS to combine strings.</p>
+<pre><code>/*create a new dataset with concatenated strings*/
+DATA CATX_data02;
+    SET cats_example;
+    fullName = lastName|| &#39;,&#39;|| firstName; 
+    PUT fullName;
+RUN;
+
+/*view new dataset*/
+PROC PRINT; 
+RUN;</code></pre>
+<p><img src="img10/w10-CATX-alter-output.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Although <code>||</code> is an old concatenation operator, it is still convenient to use. We will use this to explain some string functions that involve blank spaces.</p>
+</div>
+<div id="substr" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> SUBSTR<a href="string-functions-and-basic-loops.html#substr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This function extracts a substring using the start and end positions. In case no end position is mentioned it extracts all the characters till the end of the string.</p>
+<p><strong>Syntax</strong></p>
+<pre><code>SUBSTRN(&#39;stringval&#39;, p1, p2)
+
+/* stringval is the value of the string variable.
+p1 is the start position of extraction.
+p2 is the final position of extraction. */</code></pre>
+<p><strong>Example</strong></p>
+<pre><code>DATA string_examples;
+   LENGTH string1 $ 6 ;
+   String1 = &#39;Hello&#39;;
+   sub_string1 = SUBSTRN(String1, 2, 4) ;
+   /*Extract from position 2 to 4 */
+   sub_string2 = SUBSTRN(String1, 3) ;
+   /*Extract from position 3 onwards */
+   PUT x = string1;       /* print this string in the log*/
+   PUT y = sub_string1;   /* print this string in the log*/
+   PUT z = sub_string2;   /* print this string in the log*/
+RUN;</code></pre>
+<p>The log file contains the resulting substring values.</p>
+<p><img src="img10/w10-SUBSTR-log01.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="string-function-for-handling-blanks" class="section level3 hasAnchor" number="11.1.3">
+<h3><span class="header-section-number">11.1.3</span> String Function for Handling Blanks<a href="string-functions-and-basic-loops.html#string-function-for-handling-blanks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>TRIM and TRIMN</strong></p>
+<ul>
+<li><p>The <code>TRIM</code> function copies a character argument, removes <strong>trailing blanks</strong>, and returns the trimmed argument as a result. <code>If the argument is blank, TRIM returns one blank</code>. <code>TRIM</code> is useful for concatenating because concatenation does not remove trailing blanks.</p></li>
+<li><p>The <code>TRIMN</code> function copies a character argument, removes all trailing blanks, and returns the trimmed argument as a result. If the argument is blank, <code>TRIMN</code> returns a string with a length of zero. <code>TRIMN</code> is useful for concatenating because concatenation does not remove trailing blanks.</p></li>
+<li><p>The <code>TRIMN</code> and <code>TRIM</code> functions are similar. <code>TRIMN</code> returns a string with a length of zero for a blank string. <code>TRIM</code> returns one blank for a blank string.</p></li>
+</ul>
+<pre><code>DATA trim_trimn;
+   x = &quot;A&quot;||trim(&quot;      &quot;)||&quot;B&quot;;
+   y = &quot;A&quot;||trimn(&quot;      &quot;)||&quot;B&quot;;
+   z = &quot;A&quot;|| (&quot;      &quot;)||&quot;B&quot;;
+   PUT x;
+   PUT y;
+   PUT z;
+RUN;</code></pre>
+<p><img src="img10/w10-trim-trimn.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>STRIP, LEFT, and RIGHT</strong></p>
+<ul>
+<li><p>The <code>STRIP</code> function removes <code>leading and trailing</code> spaces.</p></li>
+<li><p>The <code>LEFT</code> function moves leading blanks to the end of the value. <strong>The length of the string does not change</strong>!</p></li>
+<li><p>The <code>RIGHT</code> function returns an argument with trailing blanks moved to the start of the value. The argument’s length does not change.</p></li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code>DATA strip_example;
+  name = &#39;   Hitchy   &#39;;
+  char0 = &quot;*&quot;||Name||&quot;*&quot;;
+  char1 = &quot;*&quot;||STRIP(Name)||&quot;*&quot;;
+  char2 = &quot;*&quot;||LEFT(name)||&quot;*&quot;;
+  char3 = &quot;*&quot;||RIGHT(name)||&quot;*&quot;;
+  PUT char0;
+  PUT char1;
+  PUT char2;
+  PUT char3;
+RUN;</code></pre>
+<p><img src="img10/w10-stripLeftRight.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="compress-vs-compbl" class="section level3 hasAnchor" number="11.1.4">
+<h3><span class="header-section-number">11.1.4</span> COMPRESS vs COMPBL<a href="string-functions-and-basic-loops.html#compress-vs-compbl" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>The <code>COMPRESS</code> function returns a character string with specified characters removed from the original string. The <code>COMPRESS</code> function allows null arguments. A null argument is treated as a string that has a length of zero.</p></li>
+<li><p>The <code>COMPBL</code> function removes multiple blanks in a character string by translating each occurrence of two or more consecutive blanks into a single blank.</p></li>
+<li><p>The <code>COMPRESS</code> function removes every occurrence of the specific character from a string. If we specify a blank as the character to remove from the source string, the <code>COMPRESS</code> function is similar to the COMPBL function.</p></li>
+</ul>
+<p>However, the <code>COMPRESS</code> function removes all blanks from the source string. The <code>COMPBL</code> function compresses multiple blanks to a single blank and has no effect on a single blank.</p>
+<table>
+<colgroup>
+<col width="53%" />
+<col width="46%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Number of Arguments</th>
+<th align="left">Results</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Only the first argument, <code>source</code></td>
+<td align="left">All blanks have been removed. If the argument is completely blank, then the result is a string with a length of zero. If you assign the result to a character variable with a fixed length, then the value of that variable will be padded with blanks to fill its defined length.</td>
+</tr>
+<tr class="even">
+<td align="left">Two arguments, <code>source</code> and <code>chars</code></td>
+<td align="left">All characters that appear in the second argument are removed from the result.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Compressing Blanks</strong></p>
+<pre><code>DATA compress_example;
+    a = &#39;*&#39;||&#39;AB C D &#39;||&#39;*&#39;;
+    x = &#39;*&#39;||compress(a)||&#39;*&#39;;         /* compress blanks  */
+    y = &#39;*&#39;||compress(a,&#39;A &#39;)||&#39;*&#39;;    /* compress `A` and blanks */
+    PUT a;
+    PUT x;
+    PUT y;
+RUN;</code></pre>
+<p><img src="img10/w10-compressBlank.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>Compressing Vowels</strong></p>
+<pre><code>DATA compress_example;
+    str = &#39;123-4567-8901 e 234-5678-9012 i&#39;;
+    a = &#39;*&#39;||str||&#39;*&#39;;
+    x = &#39;*&#39;||compress(str)||&#39;*&#39;;       /* compress blanks  */
+    y = &#39;*&#39;||compress(str,&#39;ei &#39;)||&#39;*&#39;; /* compress `e`,`i` and blanks */
+    PUT a;
+    PUT x;
+    PUT y;
+RUN;</code></pre>
+<p><img src="img10/w10-compressSpecificCharacter.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>COMPBL</strong> example</p>
+<pre><code>DATA compblanks;
+    string =&#39;125    E. Main St.&#39;;
+    orig_str = &quot;*&quot;||string||&quot;*&quot;;
+    street = &quot;*&quot;||compbl(string)||&quot;*&quot;;
+    PUT orig_str;
+    PUT street;
+RUN;</code></pre>
+<p><img src="img10/w10-compBL.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="change-character-case-functions" class="section level3 hasAnchor" number="11.1.5">
+<h3><span class="header-section-number">11.1.5</span> Change Character Case Functions<a href="string-functions-and-basic-loops.html#change-character-case-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Three SAS string functions can change character case: <code>UPCASE LOWECASE, PROPCASE</code>.</p>
+<ul>
+<li><code>UPCASE</code>: returns the uppercase of the text</li>
+<li><code>LOWCASE</code>: returns the lowercase of the text</li>
+<li><code>PROPCASE</code>: returns the word having uppercase in the first letter and lowercase in the rest of the letter.</li>
+</ul>
+<pre><code>DATA compblanks;
+    string =&#39;125    E. Main St.&#39;;
+    orig_str = &quot;*&quot;||string||&quot;*&quot;;
+    str01 = &quot;*&quot;||LOWCASE(string)||&quot;*&quot;;
+    str02 = &quot;*&quot;||UPCASE(string)||&quot;*&quot;;
+    str03 = &quot;*&quot;||PROPCASE(string)||&quot;*&quot;;
+    PUT orig_str;
+    PUT str01;
+    PUT str02;
+    PUT str03;
+RUN;</code></pre>
+<p><img src="img10/w10-lowUpCases.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="search-character-functions" class="section level3 hasAnchor" number="11.1.6">
+<h3><span class="header-section-number">11.1.6</span> Search Character Functions<a href="string-functions-and-basic-loops.html#search-character-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Searching characters in the string function is practically important. For example, if we want to extract dose information from vial labels, we need a search function to be jointly used with other string functions.</p>
+<p>There are several such string search functions in SAS:
+<code>ANYALNUM, ANYALPHA, ANYDIGIT, ANYPUNCT, ANYSPACE, NOTALNUM, NOTALPHA, NOTDIGIT, NOTUPPER, FIND, FINDC, INDEX, INDEXC, INDEXW, VERIFY</code></p>
+<p>The names of the above search functions are self-explanatory. We will pick some of them to illustrate the use of this type of search function. the suffix <code>NUM</code> indicates <strong>numeric</strong> and <code>ALPHA</code> indicates <strong>character</strong>.</p>
+<p><strong>Example</strong></p>
+<pre><code>   STRING = &quot;ABC 123 ?xyz_n_&quot; </code></pre>
+<p><img src="img10/w10-ANYSearchFunction.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>More information about the SAS string function can be found in SAS documentation at <a href="https://support.sas.com/publishing/pubcat/chaps/59343.pdf" class="uri">https://support.sas.com/publishing/pubcat/chaps/59343.pdf</a></p>
+</div>
+</div>
+<div id="basic-loops" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Basic Loops<a href="string-functions-and-basic-loops.html#basic-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Iterative <code>DO loops</code>, <code>DO UNTIL</code>, and <code>DO WHILE</code> provide a wide variety of ways to perform repeated actions on your SAS data sets over and over again without having to write duplicate code or execute the same statements multiple times manually.</p>
+<p><img src="img10/w10-SASloops.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="do--loop" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> DO -loop<a href="string-functions-and-basic-loops.html#do--loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Syntax</strong></p>
+<pre><code>DO index-variable=start TO stop BY increment;
+   SAS statements
+END 
+</code></pre>
+<p><strong>Example 1</strong>: Default increment 1 is used in the loop.</p>
+<pre><code>DATA DOLoop;         /* SAS dataset  */
+     DO i = 1 to 5;  /* I will be a variable in the SAS data set*/
+          Y = i**2;  /* values are 1, 4, 9, 16, 25 , Y will be
+                        another variable in the data set.*/ 
+         OUTPUT;     /*  print out the value at the end of each iteration*/
+     END;
+RUN;</code></pre>
+<p><img src="img10/w10-DOloop.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>Example 2</strong>: By default, each iteration of a DO statement increments the value of the counter by 1, but you can use the BY option to increment the counter by other amounts, including non-integer amounts. For example, each iteration of the following DATA step increments the value i by 0.5.</p>
+<pre><code>DATA DOLoopBy;              /* SAS dataset  */
+     DO i = 1 to 5 BY 0.5;  /* I will be a variable in the SAS data set*/
+        Y = i**2;           /* values are 1, 1.5^2, 2^2 2.5^2,… Y will be
+                               another variable in the data set.     */ 
+        OUTPUT; 
+     END;
+ RUN;</code></pre>
+<p><img src="img10/w10-DOloopBY.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="do-while-loop" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> DO-WHILE Loop<a href="string-functions-and-basic-loops.html#do-while-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>By default, each iteration of a <code>DO</code> statement increments the value of the counter by 1, but you can use the BY option to increment the counter by other amounts, including non-integer amounts. For example, each iteration of the following DATA step increments the value i by 0.5:</p>
+<pre><code>DATA DOLoopBy;                     /* SAS dataset  */
+     DO i = 1 to 5 WHILE (y &lt; 20); /* i will be a variable in the SAS data set*/
+          Y = i**2;                /*  values are 1, 4, 9, 16, 25 , Y will be
+                                       another variable in the data set.  */ 
+         OUTPUT; 
+     END;
+ RUN;</code></pre>
+<p><img src="img10/w10-DO-WHILE.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="do-until-loop" class="section level3 hasAnchor" number="11.2.3">
+<h3><span class="header-section-number">11.2.3</span> DO-UNTIL Loop<a href="string-functions-and-basic-loops.html#do-until-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Using a DO UNTIL loop, SAS executes the DO loop until the expression you’ve specified is true.</p>
+<pre><code>DATA investment; 
+      value = 0;
+      year = 0;
+      DO UNTIL (value &gt;= 5000); 
+              value + 1200;          /* 1st update  */
+              value + value * 0.05;  /* 2nd update  */
+              year + 1;              /* update of year */
+              OUTPUT; 
+      END; 
+RUN;</code></pre>
+<p><img src="img10/w10-DO-UNTIL.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="retain-statement-and-longitudinal-data-operations" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> RETAIN Statement and Longitudinal Data Operations<a href="string-functions-and-basic-loops.html#retain-statement-and-longitudinal-data-operations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>The <code>RETAIN</code> statement simply copies retaining values by telling the SAS not to reset the variables to missing at the beginning of each iteration of the DATA step.</p></li>
+<li><p>If the <code>RETAIN</code> statement is NOT used, SAS will return a missing value at the beginning of each iteration.</p></li>
+</ul>
+<p>Next, we use an example to explain how <code>RETAIN</code> statement works.</p>
+<pre><code>DATA base;
+INPUT id $ 
+      sales
+      vis_date mmddyy10.;
+DATALINES;
+a 235 07/11/1997
+a 324 11/12/1997
+b 321 06/15/1998
+b 319 09/21/1998
+b 357 11/11/1998
+c 279 07/21/1997               
+c 302 10/20/1997                 
+c 314 11/19/1997  
+c 298 12/27/1997                                
+;
+RUN;</code></pre>
+<p><strong>Data Manipulation Task</strong></p>
+<ul>
+<li><p>Count the number of sales per person</p></li>
+<li><p>Calculate the total sales per person</p></li>
+<li><p>Calculate average sales per person</p></li>
+</ul>
+<p>The original data set is a longitudinal data set (i.e., each subject has multiple records taken over time). We need to work with the observation within groups.</p>
+<pre><code>DATA new;
+   SET base;
+   BY id;
+   RETAIN count total;   /* retain the value during the DO-loop until the
+                            last record of each subject.            */
+      IF FIRST.id THEN DO;  /*initialization at first record of each subject*/
+          count = 0;  /* set count to 0 for each subject */
+          total = 0;  /* set total to 0 for each subject */
+       END;
+    count = count + 1;        /* accumulative calculation */
+    total = total + sales;    /* accumulative calculation */
+    IF LAST.id THEN DO;       /* find the last record of each subject */
+        mean = total / count; /* Calculate the mean for each subject */
+        Total_sale = total;   /* Total sales */
+        Total_sale_count = count;  /* Number of sales */
+     OUTPUT;                  /* print to the SAS data set: new  */
+END;
+
+TITLE &quot;Average Sales&quot;;
+PROC PRINT DATA=new; 
+RUN;</code></pre>
+<p><img src="img10/w10-RetainExample.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="learning-coding-by-examples-6" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Learning COding by Examples<a href="string-functions-and-basic-loops.html#learning-coding-by-examples-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section provides additional examples for practicing SAS string functions, loops, and related functions for effective and efficient data manipulation. Some of the string functions in the examples were not discussed in the previous sections. They are equally important as those covered in the previous sections.</p>
+<pre><code>/******************************************************************************
+       Topics: SAS Character Functions
+                1. Leading zeros and Blanks: INDEXC, SUBSTR, LENGTH, and LEFT
+                2. Substring Substitution: TRANSLATE
+                3. Handling Blanks: COMPRESS, COMPBL, TRIM
+                4: Concatenation: CATs family of functions
+              SAS DO-Block
+                1. DO-loop
+                2. DO-UNTIL loop
+                3. DO-WHILE loop
+              RETAIN Statement
+                1. RETAIN statement
+                2. Within Group Operation in Longitudinal Data
+*****************************************************************************/
+
+* OPTIONS PS= 74 LS = 74 NODATE NONUMBER;
+
+/*NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN*/
+/*************************************************/
+/**    SAS Character Functions                ****/
+/*************************************************/
+/*NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN*/
+
+LIBNAME week10 &quot;&quot;;
+
+DM &#39;CLEAR OUT&#39;;
+DM &#39;CLEAR LOG&#39;;
+
+/*  1. Leading zeros: INDEXC and SUBSTR      */
+
+/** Example 1  **/
+DATA ZIP_CODE;
+INPUT ID $ 1-7
+      NAME $ 9-22
+      COUNTY $ 24-30
+      STATE $ 31-32
+      ZIP $ 34 - 44
+      ER $ 46;
+DATALINES;
+A01101   Smith, Jean   Orange NC 27515-2688  Y
+A99126   Moore, Ronald Wake   NC 27511-2414  N
+B031073  Adams, Beth   Wake   NC 27705-2102  N
+B001324  Polinski, Gus Durham NC 27606-4010  Y
+;
+RUN;
+
+
+/* Extract the 5 digit zip code */
+DATA Five_digit_ZIP;
+SET ZIP_CODE;
+ZIP5 = SUBSTR(ZIP, 1, 5);
+KEEP NAME COUNTY ZIP ZIP5;
+RUN;
+
+PROC PRINT;
+RUN;
+
+/** Example 2: leading zeros  **/
+
+DATA LEADING_0;
+INPUT NUMBER $;
+NON_0 = INDEXC(NUMBER, &quot;123456789&quot;); /* given the index of the first digit
+                                          in any of the digits in the second 
+                                          argument */
+NEW_NUMBER = SUBSTR(NUMBER, NON_0);  /* extract a substring starting from 
+                                        the index  (physical location) to 
+                                        the end of the string */
+DATALINES;
+0123
+117_0K
+00033Y
+;
+RUN;
+
+PROC PRINT DATA = LEADING_0;
+RUN;
+
+
+/*  2. LENGTH and SCAN    
+LENGTH returns the length of the value of the string;
+SCAN returns the nth word in a character string.
+     By default, positive n from left to right;
+     negative n, from right to left.            */
+
+DATA CITY_STATE;
+LENGTH CITY_STATE $ 30;
+INPUT CITY_STATE &amp; $;  /* attention: &amp;(ampersand) modifier */
+/* &amp; tells SAS that words separated by a *SINGLE* blank define a value of 
+     a character variable. */
+DATALINES;
+King and Queen Court House VA
+Saint Mary of the Woods IN
+West Palm Beach FL
+Outer Banks NC
+;
+RUN;
+
+PROC PRINT;
+RUN;
+
+
+
+DATA SEP_SITY_STATE;
+SET CITY_STATE;
+LEN = LENGTH(CITY_STATE);
+STATE = SCAN(CITY_STATE, -1);        /* -1 =&gt; last word       */
+CITY = SUBSTR(CITY_STATE, 1, LEN-3); /* 1=starting character, 
+                                        -3 = blank space + 
+                                        2 state abbreviation  */
+RUN;
+
+PROC PRINT DATA = SEP_SITY_STATE;
+RUN;
+
+/****************************************************************************
+          3. Functions for Handling Blanks
+
+   TRIM()--&gt;   removes the trailing blanks. however, if there are blank,
+               TRIM returns only one blank in case of multiple 
+               consecutive blanks.
+   TRIMN()--&gt;  returns no blank in case of a blank string. 
+   STRIP() --&gt; removes both leading and trailing blanks
+   COMPRESS()--&gt; removes all blanks
+   COMPBL() --&gt; compresses multiple blanks into a single blank.
+*****************************************************************************/
+
+DATA WHITE_SPACES;
+INPUT str_name $char14.;
+DATALINES;
+Mary Smith        /* contains trailing blanks */
+ John Brown       /* contains leading blanks */
+ Alice Park       /* contains leading and trailing blanks */
+Tom Wang          /* contains leading, trailing, and multiple blanks 
+                     in between */
+                  /* contains a blank string */
+;
+RUN;
+
+PROC PRINT; RUN;
+
+DATA HANDLING_BLANKS;
+SET WHITE_SPACES;
+ raw_str_name = &#39;*&#39;||str_name||&#39;*&#39;;  /* simple concatenation: we can see 
+                                        the blanks in the original str_name.*/
+ strip = &#39;*&#39;||STRIP(str_name)||&#39;*&#39;; /* remove both leading and trailing blanks*/
+ trim_left = &#39;*&#39;||TRIM(LEFT(str_name))|| &#39;*&#39;;  /* TRIM removes the trailing                                                              blanks; LEFT aligns the string 
+                                                 to the left. Use the LEFT 
+                                                 function and the TRIM function
+                                                 together, we can first remove 
+                                                 leading blanks and then remove 
+                                                 trailing blanks, which will 
+                                                 return the same results as 
+                                                 the STRIP function.  */
+ trimn_left = &#39;*&#39;||TRIMN(LEFT(str_name))||&#39;*&#39;;   /* TRIMN returns no blank for 
+                                                    a blank string. */
+ compressed_name = COMPRESS(raw_str_name);    /* COMPRESS removes all the blanks 
+                                                from the string.*/
+ comp_BL = COMPBL(raw_str_name);   /* COMPBL removes multiple blanks
+                                      compressed into original single blank*/
+RUN;
+
+
+PROC PRINT DATA = HANDLING_BLANKS;
+RUN;
+
+
+/*********************************************************************
+  4   Concatenate Strings and Handle Blanks: Play with CATs
+
+CAT()  function concatenates character strings without removing 
+       leading or trailing blanks.
+CATT() function concatenates character strings and removes 
+       trailing blanks.
+CATS() function concatenates character strings and removes 
+       leading and trailing blanks.
+CATX() function concatenates character strings, removes leading 
+       and trailing blanks, and insert separators between each string.
+*********************************************************************/
+
+/** Concatenating strings: || and CAT
+    Sometimes we may want to concatenate two
+    or more strings in managing string variables.
+    CAT() has several variants                **/
+
+DATA CATS_FUN;
+SET WHITE_SPACES;
+LENGTH cat_str catt_str cats_str $16 catx_str $20;
+text=&#39;Hello&#39;;
+/** new variables by concatenating strings  **/
+cat_str = cat (&#39;*&#39;,str_name,&#39;*&#39;);     /* equivalent to: ||  --&gt; 
+                                        simple concatenating of two strings  */
+catt_str = catt(&#39;*&#39;,str_name,&#39;*&#39;);    /* equivalent to: TRIM || or TRIMN ||; 
+                                         --&gt; removes only trailing blanks  */
+cats_str = cats(&#39;*&#39;,str_name,&#39;*&#39;);    /* equivalent to: STRIP ||; --&gt; removes 
+                                         leading and trailing blanks      */
+catx_str = catx(&#39;!&#39;,text,str_name);   /* equivalent to: STRIP || separator; 
+                                         removes leading and trailing and 
+                                         insert separators in between strings */
+RUN;
+
+PROC PRINT DATA = CATS_FUN;
+RUN;
+
+
+DATA Concatenation0;
+   INFILE DATALINES MISSOVER; /* missing values at the end of the record */
+   LENGTH first last $20;
+   INPUT first $ last $  ;
+DATALINES;
+jone smith
+john wayne
+bill 
+phil hodge
+;
+RUN;
+
+/** CAUTION: There are some white spaces in the original names due to
+    the specification of the length. You cannot see this white space in the
+    HTML output, but you can see these blanks in the list out the window.
+
+    ***********  ASSUMING X1, X2, X3, and X4 are four strings   ********
+
+    LEFT(X1)       -&gt; left aligns a character and removes leading blanks. 
+    CAT(of X1-X4)== X1||X2||X3||X4    --&gt; simply combines strings
+    CATS(of X1-X4)==TRIM(LEFT(X1))||...||TRIM(LEFT(X4))   --&gt; removes leading 
+                                                          and trailing blanks
+    CATT(of X1-X4)== TRIM(X1)||TRIM(X2)||TRIM(X3)||TRIM(X4)  --&gt; removes only 
+                                                             trailing blanks
+    CATX(of X1-X4)== TRIM(LEFT(X1))||SP||...||SP||TRIM(LEFT(X4)) --&gt; removes 
+                                                         leading and trailing                                                                
+    SP = separator    and insert separators in between strings  **/
+                                                                    
+/* check the output in the list output window! */        
+DATA Concatenation1;
+  SET Concatenation0;
+  NAME = catx(&quot;, &quot;, of last first ); /* removes leading and trailing and 
+                                        add a separator in between strings */
+  NAME_CAT = cat(of last first);     /* simple concatenating (with blanks 
+                                        in between) strings       */
+  NAME_CATS = cats(of last first);  /* concatenating (with no blanks) and 
+                                    then removing leading and trailing blanks*/
+  NAME_CATT = catt(of last first);  /*  concatenating (with no blanks) and then 
+                                        removing the trailing blanks*/
+  /* Testing a few other */
+  CATS_NAME_CAT = CATS(NAME_CAT);   /* removes the trailing and leading 
+                                       (In this particular example, no leading 
+                                        and railing blanks found in Name_CAT 
+                                        variable!)           */
+  CATTS_NAME_CAT = CATT(NAME_CAT);
+RUN;
+
+PROC CONTENTS DATA = Concatenation1;
+RUN;
+
+PROC PRINT; RUN;
+
+
+/* 6. TRANSLATE =&gt; converts characters that are similar digits
+                   to actual digits: for example, Oo -&gt; 00
+                   LI -&gt; 11                                  */
+DATA STREET;
+INPUT ID $ 1-7
+      STREET_ADRR $ 9- 30;
+DATALINES;
+A01101   4 Conner St.
+A99126   13O Market St.
+B031073  442I Glenwood Ave.
+B001324  18o Cannon Dr.
+A03121   10L Cannon Dr.
+B991401  2IO Ear Ave.
+A021313  3O1 Luck Dr.
+;
+RUN;
+
+/* The following dataset corrects the error to convert to actual digits
+   and then use a concatenating function to make a correct address   
+   concatenating function and operator:
+   || ==&gt; concatenates two strings
+*/
+DATA DIGIT_CORRECTION;
+SET STREET;
+DIGIT = SCAN(STREET_ADRR, 1); /* extract the first word of the string */
+NEW = TRANSLATE(DIGIT, &quot;00111&quot;, &quot;OoLIl&quot;); /* corrected digits */
+RUN;
+
+PROC PRINT; RUN;
+
+
+/*NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN*/
+/*************************************************/
+/**               SAS Loops                   ****/
+/*************************************************/
+/*NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN*/
+
+/** 1.  DO-loop **/
+DATA DOLoop;            /* SAS dataset  */
+     DO i = 1 TO 5;     /* I will be a variable in the SAS data set */
+        Y = i**2;       /* values are 1, 4, 9, 16, 25 , Y will be
+                             another variable in the data set.       */ 
+        OUTPUT;         /* OUTPUT ==&gt; writes every record to the SAS 
+                                   data set.  Only the value in the
+                                   last iteration will be written to
+                                   the SAS data set if OUTPUT was not
+                                   used.                             */
+     END;
+ RUN;
+
+ PROC PRINT; RUN;
+
+DATA DOLoopBy;                /* SAS dataset  */
+     DO i = 1 TO 5 BY 0.5;    /* I will be a variable in the SAS data set*/
+          Y = i**2;           /* values are 1, 4, 9, 16, 25 , Y will be
+                                    another variable in the data set.     */ 
+         OUTPUT;              /* Write the value generated in each iteration
+                                 to the SAS data set                      */
+     END;
+ RUN;
+
+ PROC PRINT; RUN;
+
+/** FOR-each: LAG() function **/
+DATA FOR_EACH;
+   DO V = 1, 1, 2, 3, 5, 8, 13, 21;  /* DO-loop enumerate all values      */
+       lag_V = lag(V);    /* LAG function: drop the last value and a missing 
+                                           as the initial value           */
+       Y = V/lag(V);
+       OUTPUT;                /* Write the value generated in each iteration
+                                 to the SAS data set                      */
+   END;
+RUN;
+
+PROC PRINT; RUN;
+
+
+ /** 2. DO-WHILE: WHILE clause to iterate as long as a certain condition holds**/
+ DATA DO_WHILTW_Loop;      /* SAS dataset  */
+     DO i = 1 to 6 WHILE (y &lt; 20);  /*  I will be a variable in the SAS data set*/
+          Y = i**2;                /*  values are 1, 4, 9, 16, 25 , Y will be
+                                        another variable in the data set.   */ 
+         OUTPUT; 
+     END;
+ RUN;
+
+ PROC PRINT; RUN;
+
+
+ /** 3. DO-UNTIL: UNTIL clause to iterate as long as a certain condition holds **/
+DATA investment; 
+      DO UNTIL (value &gt;= 50000);  /* looping until value &gt;= 50000 */
+              value + 1200;       /* initial value = 0, after this statement, 
+                                     value = 1200  */
+              value + value * 0.05; /* The result: 1200 + 1200*0.05 = 12600 */
+              year + 1;             /* The result: 0 + 1 = 1 */
+              OUTPUT;               /* write the value generated in each 
+                                       individual iteration. */
+      END;                          /* closing the loop: stopping rule meets */
+RUN; 
+
+ PROC PRINT; RUN;
+
+ /** 4.  Nested loop **/
+
+DATA design;
+  DO i = 10 to 40 by 10;
+       DO j = 3 to 15 BY 3;
+           OUTPUT;
+      END;
+ END;
+RUN;
+
+PROC PRINT DATA = design;
+RUN;
+
+
+/** 4. Single loop application: The following example uses DO-loop to
+       define a new variable with updated values in each iteration. You 
+       define the raw dataset first and then add the new variable with
+       updates using the DO loop.                                  **/
+
+/* Example 1: DO-loop in a DATA step with INPUT-DATALINES statements  */
+DATA CD_INVEST (DROP = i);  /* i is only used in loop statements,
+                               drop this meaningless variable and
+                               keep the data clean.           */
+    INPUT Type $ 1-7 
+          AnnualRate 
+          Months;
+    /* data modification starts here  */
+    Investment = 5000;          /* add a new variable to the data with an 
+                                   initial value        */
+    DO i = 1 TO Months;         /* DO loop to update the value of INVESTMENT 
+                                   in each iteration */
+     Investment + (AnnualRate/12)*Investment; /* updating INVESTMENT   */
+        * OUTPUT;                   /* OUTPUT should NOT be used here, otherwise, 
+                                      It will generate MONTHLY amounts!!!  */
+    END;
+    FORMAT Investment dollar8.2;  /* formatting INVESTMENT to have a nice 
+                                     formatted display      */
+    DATALINES;                  
+03Month  0.01980  3
+06Month  0.02230  6
+09Month  0.02230  9
+12Month  0.02470 12
+18Month  0.02470 18
+24Month  0.02570 24
+36Month  0.02720 36
+48Month  0.02960 48
+60Month  0.03445 60
+;
+RUN;
+
+PROC PRINT DATA = CD_INVEST;
+RUN;
+
+/** Example 2: two data steps to create the same data set **/
+/* Step 1: create a data set*/
+DATA CD_INVEST_RAW;
+    INPUT Type $ 1-7 
+          AnnualRate 
+          Months;
+    DATALINES;                  
+03Month  0.01980  3
+06Month  0.02230  6
+09Month  0.02230  9
+12Month  0.02470 12
+18Month  0.02470 18
+24Month  0.02570 24
+36Month  0.02720 36
+48Month  0.02960 48
+60Month  0.03445 60
+;
+RUN;
+
+/* Step 2: Add new variable */
+
+DATA CD_INVEST_GAIN;
+SET CD_INVEST_RAW;
+    /* data modification starts here  */
+    Investment = 5000;        /* add a new variable to the data with
+                                 an initial value */
+    DO i = 1 TO Months;       /* DO loop to update the value of INVESTMENT 
+                                 in each iteration */
+        Investment + (AnnualRate/12)*Investment;    /* updating INVESTMENT*/
+        OUTPUT;
+    END;
+    FORMAT Investment dollar8.2;  /* formatting INVESTMENT to have a 
+                                     nice formatted display */
+DROP I;
+RUN;
+
+PROC PRINT DATA = CD_INVEST_GAIN;
+RUN;
+
+
+/*NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+/***********************************************************
+          Working with Groups within
+   Longitudinal Data Sets: RETAIN and DO-loop
+  
+ Task: (1). the cumulative sum of the total score of each subject.
+       (2). Count the number of records of each subject
+       (3). Cumulative average of each subject.
+***********************************************************
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN*/
+
+/** Typical longitudinal data  **/
+DATA BASE;
+INPUT ID $ 
+      SALES
+      VIS_DATE mmddyy10.;
+DATALINES;
+a 235 07/11/1997
+a 304 11/12/1997
+b 321 06/15/1998
+b 319 09/21/1998
+b 357 11/11/1998
+c 279 07/21/1997
+c 302 10/20/1997
+c 314 11/19/1997
+c 298 12/27/1997
+;
+RUN;
+
+/* sort by ID and Date,  */
+PROC SORT DATA = BASE;
+BY ID VIS_DATE;
+RUN;
+
+/** With NO RETAIN: 
+    1. New variables that are in the original data will be 
+       initialized as missing values in each iteration.    
+    2. Any arithmetic operation that involves a missing value
+       will result in a missing value.                  **/
+
+DATA NEW_NO_RETAIN;
+SET BASE;
+BY ID;
+IF FIRST.id THEN DO;   /* initialize the variables */
+    count = 0;
+    total = 0;
+END;                   /* 1st iteration         */   /*  2nd iteration      */
+count = count + 1;     /*  count = 0 + 1 = 1     */  /*  count = * + 1 = *  */  
+total = total + sales; /*  total = 0 + 235 = 235 */  /*  total = * + 304 = * */
+avg = total/count;     /*  avg = 235/1 = 235     */  /*  avg = */* = *       */;
+OUTPUT;                     /*  write out records in each iteration  */                      
+RUN;
+
+PROC PRINT DATA = NEW_NO_RETAIN;
+RUN;
+
+
+/** With RETAIN: 
+    1. RETAIN will retain the value from the previous iteration.
+    2. New variables will not be initialized as missing values
+       since the retained value from the previous iteration 
+       will be used.                                         **/
+
+DATA NEW_RETAIN;
+SET BASE;
+BY ID;
+RETAIN count total;  /* retain the value in the current iteration to the next 
+                        iteration  */
+IF FIRST.id THEN DO;         /* initialize the variables */
+    count = 0;
+    total = 0;
+END;                  /* 1st iteration           */  /* 2nd iteration         */
+count = count + 1;    /*  count = 0 + 1 = 1      */  /* count = 1 + 1 = 2     */  
+total = total + sales; /*  total = 0 + 235 = 235 */  /* total = 235+304 = 539 */
+avg = total/count;     /*  avg = 235/1 = 235     */  /* avg = 539/2 = 269.5  */;
+OUTPUT;                /* Write out the new records in each iteration. */          
+RUN;
+
+PROC PRINT DATA = NEW_RETAIN;
+RUN;
+
+/******************************************************/
+/**  Only output the last observation of each subject**/
+/******************************************************/
+DATA NEW_RETAIN_LAST_OBS;
+SET BASE;
+BY ID;
+RETAIN count total;  /* retain the value in the current iteration to 
+                        the next iteration  */
+IF FIRST.id THEN DO;         /* initialize the variables */
+    count = 0;
+    total = 0;
+END;
+count = count + 1;          /*  count on the right hand is 0  */  
+total = total + sales;      /*  total on the right hand is a missing value  */
+avg = total/count;                
+IF LAST.id THEN DO;
+    avg = avg*1;
+    OUTPUT;                /* Write out the average when reading the last 
+                                record of each subject  */
+END;
+RUN;
+
+PROC PRINT DATA = NEW_RETAIN_LAST_OBS;
+RUN;
+</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modifying-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sas-arrays.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pengdsci/STA311EB/edit/master/10-stringLoop.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["STA311EB.pdf", "STA311EB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

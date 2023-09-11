@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Descriptive Statistics | STA311: Stats Comp. &amp; Data Mgmt.</title>
+  <meta name="description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Descriptive Statistics | STA311: Stats Comp. &amp; Data Mgmt." />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Descriptive Statistics | STA311: Stats Comp. &amp; Data Mgmt." />
+  
+  <meta name="twitter:description" content="This is course pack for STA311 offered at WCU. The output format is bookdown::gitbook." />
+  
+
+<meta name="author" content="Cheng Peng" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="read-data-from-other-applications.html"/>
+<link rel="next" href="basic-statistics-graphics.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><center><font color = "darkred" size = 3>STA311 E-Pack</font><br><font color = "darkred" size = 4> <b>Stats Comp & Data Mgmt.</b><br><br><img src = "311.png"  width="85" height="115"></center></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html"><i class="fa fa-check"></i><b>2</b> Basics of SAS System</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-data-and-variables"><i class="fa fa-check"></i><b>2.1</b> SAS Data and Variables</a></li>
+<li class="chapter" data-level="2.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-code-structure"><i class="fa fa-check"></i><b>2.2</b> SAS Code Structure</a></li>
+<li class="chapter" data-level="2.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-libraries"><i class="fa fa-check"></i><b>2.3</b> SAS Libraries</a></li>
+<li class="chapter" data-level="2.4" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#first-sas-code-hello-world"><i class="fa fa-check"></i><b>2.4</b> First SAS Code: “Hello World!”</a></li>
+<li class="chapter" data-level="2.5" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-log-files"><i class="fa fa-check"></i><b>2.5</b> SAS Log Files</a></li>
+<li class="chapter" data-level="2.6" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-output"><i class="fa fa-check"></i><b>2.6</b> SAS Output</a></li>
+<li class="chapter" data-level="2.7" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#some-sas-tutorial-from-sas-inc."><i class="fa fa-check"></i><b>2.7</b> Some SAS Tutorial from SAS Inc.</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#description-of-the-sas-program"><i class="fa fa-check"></i><b>2.7.1</b> Description of the SAS Program</a></li>
+<li class="chapter" data-level="2.7.2" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#sas-graphical-user-interface"><i class="fa fa-check"></i><b>2.7.2</b> SAS Graphical User Interface</a></li>
+<li class="chapter" data-level="2.7.3" data-path="basics-of-sas-system.html"><a href="basics-of-sas-system.html#writing-sas-code"><i class="fa fa-check"></i><b>2.7.3</b> Writing SAS Code</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html"><i class="fa fa-check"></i><b>3</b> Coding Conventions and Best Practices</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-file-and-program-structures"><i class="fa fa-check"></i><b>3.1</b> SAS file and Program Structures</a></li>
+<li class="chapter" data-level="3.2" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#naming-conventions-and-sas-program-structure"><i class="fa fa-check"></i><b>3.2</b> Naming Conventions and SAS Program Structure</a></li>
+<li class="chapter" data-level="3.3" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#sas-data-structure"><i class="fa fa-check"></i><b>3.3</b> SAS Data Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#some-best-coding-practices"><i class="fa fa-check"></i><b>3.4</b> Some Best Coding Practices</a></li>
+<li class="chapter" data-level="3.5" data-path="coding-conventions-and-best-practices.html"><a href="coding-conventions-and-best-practices.html#learning-sas-coding-by-examples"><i class="fa fa-check"></i><b>3.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html"><i class="fa fa-check"></i><b>4</b> Methods of SAS Data Input</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#specifying-variable-length"><i class="fa fa-check"></i><b>4.1</b> Specifying Variable Length</a></li>
+<li class="chapter" data-level="4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#methods-of-data-input"><i class="fa fa-check"></i><b>4.2</b> Methods of Data Input</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#list-input"><i class="fa fa-check"></i><b>4.2.1</b> List Input</a></li>
+<li class="chapter" data-level="4.2.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#column-input"><i class="fa fa-check"></i><b>4.2.2</b> Column Input</a></li>
+<li class="chapter" data-level="4.2.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formatted-input-delimited-input"><i class="fa fa-check"></i><b>4.2.3</b> Formatted Input (Delimited Input)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#summary---three-input-styles"><i class="fa fa-check"></i><b>4.2.4</b> Summary - Three Input Styles</a></li>
+<li class="chapter" data-level="4.2.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#mixed-input"><i class="fa fa-check"></i><b>4.2.5</b> Mixed Input</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#handling-special-structured-data"><i class="fa fa-check"></i><b>4.3</b> Handling Special Structured Data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#data-file-containing-comments-and-descriptions"><i class="fa fa-check"></i><b>4.3.1</b> Data File Containing Comments and Descriptions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-line-for-the-record"><i class="fa fa-check"></i><b>4.3.2</b> Multi-line for the Record</a></li>
+<li class="chapter" data-level="4.3.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#multi-records-in-the-same-line"><i class="fa fa-check"></i><b>4.3.3</b> Multi-records In the Same Line</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#making-better-line-outputs"><i class="fa fa-check"></i><b>4.4</b> Making Better Line Outputs</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#options-statement"><i class="fa fa-check"></i><b>4.4.1</b> OPTIONS Statement</a></li>
+<li class="chapter" data-level="4.4.2" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#titles-and-footnotes"><i class="fa fa-check"></i><b>4.4.2</b> Titles and Footnotes</a></li>
+<li class="chapter" data-level="4.4.3" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#labeling-variables"><i class="fa fa-check"></i><b>4.4.3</b> Labeling Variables</a></li>
+<li class="chapter" data-level="4.4.4" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#formats-and-user-define-formats"><i class="fa fa-check"></i><b>4.4.4</b> Formats and User Define Formats</a></li>
+<li class="chapter" data-level="4.4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#a-note-on-sas-dates"><i class="fa fa-check"></i><b>4.4.5</b> A Note on SAS Dates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="methods-of-sas-data-input.html"><a href="methods-of-sas-data-input.html#learning-sas-coding-by-examples-1"><i class="fa fa-check"></i><b>4.5</b> Learning SAS Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html"><i class="fa fa-check"></i><b>5</b> Read Data from Other Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#more-infile-options"><i class="fa fa-check"></i><b>5.1</b> More INFILE Options</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dlm"><i class="fa fa-check"></i><b>5.1.1</b> <code>DLM</code></a></li>
+<li class="chapter" data-level="5.1.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#dsd"><i class="fa fa-check"></i><b>5.1.2</b> <code>DSD</code></a></li>
+<li class="chapter" data-level="5.1.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#missover"><i class="fa fa-check"></i><b>5.1.3</b> <code>MISSOVER</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-in-existing-sas-data-sets"><i class="fa fa-check"></i><b>5.2</b> Reading in Existing SAS Data Sets</a></li>
+<li class="chapter" data-level="5.3" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#reading-data-via-wizard"><i class="fa fa-check"></i><b>5.3</b> Reading Data via Wizard</a></li>
+<li class="chapter" data-level="5.4" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#loading-data-proc-import"><i class="fa fa-check"></i><b>5.4</b> Loading Data PROC IMPORT</a></li>
+<li class="chapter" data-level="5.5" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#read-data-with-url"><i class="fa fa-check"></i><b>5.5</b> Read Data with URL</a></li>
+<li class="chapter" data-level="5.6" data-path="read-data-from-other-applications.html"><a href="read-data-from-other-applications.html#learning-coding-by-examples"><i class="fa fa-check"></i><b>5.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>6</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#frequency-table-analysis"><i class="fa fa-check"></i><b>6.1</b> Frequency Table Analysis</a></li>
+<li class="chapter" data-level="6.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Numerical Summary Statistics</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-means"><i class="fa fa-check"></i><b>6.2.1</b> <code>PROC MEANS</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#proc-univariate"><i class="fa fa-check"></i><b>6.2.2</b> <code>PROC UNIVARIATE</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#learning-coding-by-examples-1"><i class="fa fa-check"></i><b>6.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html"><i class="fa fa-check"></i><b>7</b> Basic Statistics Graphics</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#boxplot"><i class="fa fa-check"></i><b>7.1</b> Boxplot</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-box-plot"><i class="fa fa-check"></i><b>7.1.1</b> Basic Box Plot</a></li>
+<li class="chapter" data-level="7.1.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#boxplots-for-categories"><i class="fa fa-check"></i><b>7.1.2</b> Boxplots for Categories</a></li>
+<li class="chapter" data-level="7.1.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-box-plot"><i class="fa fa-check"></i><b>7.1.3</b> Panel Box Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#bar-charts"><i class="fa fa-check"></i><b>7.2</b> Bar Charts</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-bar-chart-for-one-variable"><i class="fa fa-check"></i><b>7.2.1</b> Basic Bar Chart for One Variable</a></li>
+<li class="chapter" data-level="7.2.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#stacked-bar-charts"><i class="fa fa-check"></i><b>7.2.2</b> Stacked Bar Charts</a></li>
+<li class="chapter" data-level="7.2.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#bar-charts-with-means-and-error-bars"><i class="fa fa-check"></i><b>7.2.3</b> Bar Charts with Means and Error Bars</a></li>
+<li class="chapter" data-level="7.2.4" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-bar-charts"><i class="fa fa-check"></i><b>7.2.4</b> Panel Bar Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#histogram"><i class="fa fa-check"></i><b>7.3</b> Histogram</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#histogram-with-density-curves"><i class="fa fa-check"></i><b>7.3.1</b> Histogram with Density Curves</a></li>
+<li class="chapter" data-level="7.3.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#overlaid-histograms"><i class="fa fa-check"></i><b>7.3.2</b> Overlaid Histograms</a></li>
+<li class="chapter" data-level="7.3.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-histogram"><i class="fa fa-check"></i><b>7.3.3</b> Panel Histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#scatter-plots"><i class="fa fa-check"></i><b>7.4</b> Scatter Plots</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#basic-scatter-plot-for-two-numeric-variables"><i class="fa fa-check"></i><b>7.4.1</b> Basic Scatter Plot for Two Numeric Variables</a></li>
+<li class="chapter" data-level="7.4.2" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#scatter-plot-with-least-squares-regression-line"><i class="fa fa-check"></i><b>7.4.2</b> Scatter Plot With Least Squares Regression Line</a></li>
+<li class="chapter" data-level="7.4.3" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#panel-scatter-plot"><i class="fa fa-check"></i><b>7.4.3</b> Panel Scatter Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#pair-wise-scatter-plot"><i class="fa fa-check"></i><b>7.5</b> Pair-wise Scatter Plot</a></li>
+<li class="chapter" data-level="7.6" data-path="basic-statistics-graphics.html"><a href="basic-statistics-graphics.html#learning-coding-by-examples-2"><i class="fa fa-check"></i><b>7.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="subsetting-data.html"><a href="subsetting-data.html"><i class="fa fa-check"></i><b>8</b> Subsetting Data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="subsetting-data.html"><a href="subsetting-data.html#selecting-columns"><i class="fa fa-check"></i><b>8.1</b> Selecting Columns</a></li>
+<li class="chapter" data-level="8.2" data-path="subsetting-data.html"><a href="subsetting-data.html#selecting-rows"><i class="fa fa-check"></i><b>8.2</b> Selecting Rows</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="subsetting-data.html"><a href="subsetting-data.html#partial-reading"><i class="fa fa-check"></i><b>8.2.1</b> Partial Reading</a></li>
+<li class="chapter" data-level="8.2.2" data-path="subsetting-data.html"><a href="subsetting-data.html#conditional-selecting-methods"><i class="fa fa-check"></i><b>8.2.2</b> Conditional Selecting Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="subsetting-data.html"><a href="subsetting-data.html#subsetting-by-splitting"><i class="fa fa-check"></i><b>8.3</b> Subsetting by Splitting</a></li>
+<li class="chapter" data-level="8.4" data-path="subsetting-data.html"><a href="subsetting-data.html#learning-coding-by-examples-3"><i class="fa fa-check"></i><b>8.4</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="combining-data-sets.html"><a href="combining-data-sets.html"><i class="fa fa-check"></i><b>9</b> Combining Data Sets</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="combining-data-sets.html"><a href="combining-data-sets.html#stackingconcatenating"><i class="fa fa-check"></i><b>9.1</b> Stacking/Concatenating</a></li>
+<li class="chapter" data-level="9.2" data-path="combining-data-sets.html"><a href="combining-data-sets.html#in-statement-and-ghost-variable"><i class="fa fa-check"></i><b>9.2</b> <code>IN</code> Statement and <code>ghost</code> Variable</a></li>
+<li class="chapter" data-level="9.3" data-path="combining-data-sets.html"><a href="combining-data-sets.html#interleaving-data-sets"><i class="fa fa-check"></i><b>9.3</b> Interleaving Data Sets</a></li>
+<li class="chapter" data-level="9.4" data-path="combining-data-sets.html"><a href="combining-data-sets.html#merging-by-matching"><i class="fa fa-check"></i><b>9.4</b> Merging by Matching</a></li>
+<li class="chapter" data-level="9.5" data-path="combining-data-sets.html"><a href="combining-data-sets.html#summary-of-some-key-words-and-statements"><i class="fa fa-check"></i><b>9.5</b> Summary of Some KEY Words and Statements</a></li>
+<li class="chapter" data-level="9.6" data-path="combining-data-sets.html"><a href="combining-data-sets.html#learning-coding-by-examples-4"><i class="fa fa-check"></i><b>9.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modifying-data.html"><a href="modifying-data.html"><i class="fa fa-check"></i><b>10</b> Modifying Data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modifying-data.html"><a href="modifying-data.html#sas-functions-date-and-others"><i class="fa fa-check"></i><b>10.1</b> SAS Functions: Date and Others</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="modifying-data.html"><a href="modifying-data.html#using-date-functions"><i class="fa fa-check"></i><b>10.1.1</b> Using Date Functions</a></li>
+<li class="chapter" data-level="10.1.2" data-path="modifying-data.html"><a href="modifying-data.html#other-related-sas-functions"><i class="fa fa-check"></i><b>10.1.2</b> Other Related SAS Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="modifying-data.html"><a href="modifying-data.html#automatic-variables"><i class="fa fa-check"></i><b>10.2</b> Automatic Variables</a></li>
+<li class="chapter" data-level="10.3" data-path="modifying-data.html"><a href="modifying-data.html#calculating-new-variables"><i class="fa fa-check"></i><b>10.3</b> Calculating New Variables</a></li>
+<li class="chapter" data-level="10.4" data-path="modifying-data.html"><a href="modifying-data.html#logical-expressions"><i class="fa fa-check"></i><b>10.4</b> Logical Expressions</a></li>
+<li class="chapter" data-level="10.5" data-path="modifying-data.html"><a href="modifying-data.html#operators-with-where-statement"><i class="fa fa-check"></i><b>10.5</b> Operators with WHERE statement</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="modifying-data.html"><a href="modifying-data.html#where-between-and"><i class="fa fa-check"></i><b>10.5.1</b> <code>WHERE-BETWEEN-AND</code></a></li>
+<li class="chapter" data-level="10.5.2" data-path="modifying-data.html"><a href="modifying-data.html#where-contains-or"><i class="fa fa-check"></i><b>10.5.2</b> <code>WHERE-CONTAINS or ?</code></a></li>
+<li class="chapter" data-level="10.5.3" data-path="modifying-data.html"><a href="modifying-data.html#where-is-missing-or-is-null"><i class="fa fa-check"></i><b>10.5.3</b> <code>WHERE-IS MISSING or IS NULL</code></a></li>
+<li class="chapter" data-level="10.5.4" data-path="modifying-data.html"><a href="modifying-data.html#where-like"><i class="fa fa-check"></i><b>10.5.4</b> <code>WHERE-LIKE</code></a></li>
+<li class="chapter" data-level="10.5.5" data-path="modifying-data.html"><a href="modifying-data.html#where"><i class="fa fa-check"></i><b>10.5.5</b> <code>WHERE =*</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="modifying-data.html"><a href="modifying-data.html#learning-coding-by-examples-5"><i class="fa fa-check"></i><b>10.6</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html"><i class="fa fa-check"></i><b>11</b> String Functions and Basic Loops</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#string-functions"><i class="fa fa-check"></i><b>11.1</b> String Functions</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#concatenation-cat-cats-catx-and"><i class="fa fa-check"></i><b>11.1.1</b> Concatenation CAT, CATS, CATX, and <code>||</code></a></li>
+<li class="chapter" data-level="11.1.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#substr"><i class="fa fa-check"></i><b>11.1.2</b> SUBSTR</a></li>
+<li class="chapter" data-level="11.1.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#string-function-for-handling-blanks"><i class="fa fa-check"></i><b>11.1.3</b> String Function for Handling Blanks</a></li>
+<li class="chapter" data-level="11.1.4" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#compress-vs-compbl"><i class="fa fa-check"></i><b>11.1.4</b> COMPRESS vs COMPBL</a></li>
+<li class="chapter" data-level="11.1.5" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#change-character-case-functions"><i class="fa fa-check"></i><b>11.1.5</b> Change Character Case Functions</a></li>
+<li class="chapter" data-level="11.1.6" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#search-character-functions"><i class="fa fa-check"></i><b>11.1.6</b> Search Character Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#basic-loops"><i class="fa fa-check"></i><b>11.2</b> Basic Loops</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do--loop"><i class="fa fa-check"></i><b>11.2.1</b> DO -loop</a></li>
+<li class="chapter" data-level="11.2.2" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do-while-loop"><i class="fa fa-check"></i><b>11.2.2</b> DO-WHILE Loop</a></li>
+<li class="chapter" data-level="11.2.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#do-until-loop"><i class="fa fa-check"></i><b>11.2.3</b> DO-UNTIL Loop</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#retain-statement-and-longitudinal-data-operations"><i class="fa fa-check"></i><b>11.3</b> RETAIN Statement and Longitudinal Data Operations</a></li>
+<li class="chapter" data-level="11.4" data-path="string-functions-and-basic-loops.html"><a href="string-functions-and-basic-loops.html#learning-coding-by-examples-6"><i class="fa fa-check"></i><b>11.4</b> Learning COding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sas-arrays.html"><a href="sas-arrays.html"><i class="fa fa-check"></i><b>12</b> SAS Arrays</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="sas-arrays.html"><a href="sas-arrays.html#array-syntax"><i class="fa fa-check"></i><b>12.1</b> Array <strong>Syntax</strong></a></li>
+<li class="chapter" data-level="12.2" data-path="sas-arrays.html"><a href="sas-arrays.html#methods-of-specifying-array-elements"><i class="fa fa-check"></i><b>12.2</b> Methods of Specifying ARRAY Elements</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="sas-arrays.html"><a href="sas-arrays.html#explicit-definition"><i class="fa fa-check"></i><b>12.2.1</b> Explicit Definition</a></li>
+<li class="chapter" data-level="12.2.2" data-path="sas-arrays.html"><a href="sas-arrays.html#specify-a-range-of-elements"><i class="fa fa-check"></i><b>12.2.2</b> Specify A Range of Elements</a></li>
+<li class="chapter" data-level="12.2.3" data-path="sas-arrays.html"><a href="sas-arrays.html#select-all-variables-between-a-start-and-end-variable"><i class="fa fa-check"></i><b>12.2.3</b> Select All Variables Between A Start and End Variable</a></li>
+<li class="chapter" data-level="12.2.4" data-path="sas-arrays.html"><a href="sas-arrays.html#using-automatic-variable"><i class="fa fa-check"></i><b>12.2.4</b> Using Automatic Variable</a></li>
+<li class="chapter" data-level="12.2.5" data-path="sas-arrays.html"><a href="sas-arrays.html#sas-created-elements"><i class="fa fa-check"></i><b>12.2.5</b> SAS Created Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="sas-arrays.html"><a href="sas-arrays.html#use-of-array"><i class="fa fa-check"></i><b>12.3</b> Use of Array</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="sas-arrays.html"><a href="sas-arrays.html#referencing-elements-of-an-array"><i class="fa fa-check"></i><b>12.3.1</b> Referencing Elements of an Array</a></li>
+<li class="chapter" data-level="12.3.2" data-path="sas-arrays.html"><a href="sas-arrays.html#array-operators"><i class="fa fa-check"></i><b>12.3.2</b> Array Operators</a></li>
+<li class="chapter" data-level="12.3.3" data-path="sas-arrays.html"><a href="sas-arrays.html#array-with-loops"><i class="fa fa-check"></i><b>12.3.3</b> ARRAY with Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="sas-arrays.html"><a href="sas-arrays.html#reshape-data"><i class="fa fa-check"></i><b>12.4</b> Reshape Data</a></li>
+<li class="chapter" data-level="12.5" data-path="sas-arrays.html"><a href="sas-arrays.html#learning-coding-by-examples-7"><i class="fa fa-check"></i><b>12.5</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html"><i class="fa fa-check"></i><b>13</b> Output Deliver System (ODS)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-basics"><i class="fa fa-check"></i><b>13.1</b> ODS Basics</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#some-technical-terms"><i class="fa fa-check"></i><b>13.1.1</b> Some Technical Terms</a></li>
+<li class="chapter" data-level="13.1.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#sas-default-destination-listing"><i class="fa fa-check"></i><b>13.1.2</b> SAS Default Destination: LISTING</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-syntax"><i class="fa fa-check"></i><b>13.2</b> ODS Syntax</a></li>
+<li class="chapter" data-level="13.3" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#flexibility-of-ods"><i class="fa fa-check"></i><b>13.3</b> Flexibility of ODS</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#html"><i class="fa fa-check"></i><b>13.3.1</b> HTML</a></li>
+<li class="chapter" data-level="13.3.2" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#multiple-ods-putputs"><i class="fa fa-check"></i><b>13.3.2</b> Multiple ODS Putputs</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#ods-styles"><i class="fa fa-check"></i><b>13.4</b> ODS Styles</a></li>
+<li class="chapter" data-level="13.5" data-path="output-deliver-system-ods.html"><a href="output-deliver-system-ods.html#learning-coding-by-examples-8"><i class="fa fa-check"></i><b>13.5</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html"><i class="fa fa-check"></i><b>14</b> Generating Analysis Reports</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#proc-report-syntax"><i class="fa fa-check"></i><b>14.1</b> PROC REPORT Syntax</a></li>
+<li class="chapter" data-level="14.2" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#ods-reports"><i class="fa fa-check"></i><b>14.2</b> ODS Reports</a></li>
+<li class="chapter" data-level="14.3" data-path="generating-analysis-reports.html"><a href="generating-analysis-reports.html#learning-coding-by-examples-9"><i class="fa fa-check"></i><b>14.3</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html"><i class="fa fa-check"></i><b>15</b> Basics of SAS MACRO</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macro-variables"><i class="fa fa-check"></i><b>15.1</b> MACRO Variables</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#defining-macro-variables"><i class="fa fa-check"></i><b>15.1.1</b> Defining MACRO Variables</a></li>
+<li class="chapter" data-level="15.1.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#use-of-macro-variables"><i class="fa fa-check"></i><b>15.1.2</b> Use of MACRO Variables</a></li>
+<li class="chapter" data-level="15.1.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#combining-macro-variables-with-text"><i class="fa fa-check"></i><b>15.1.3</b> Combining Macro Variables with Text</a></li>
+<li class="chapter" data-level="15.1.4" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macro-quoting"><i class="fa fa-check"></i><b>15.1.4</b> Macro Quoting</a></li>
+<li class="chapter" data-level="15.1.5" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#system-automatics-macro-variables"><i class="fa fa-check"></i><b>15.1.5</b> System Automatics MACRO Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#sas-macro"><i class="fa fa-check"></i><b>15.2</b> SAS MACRO</a></li>
+<li class="chapter" data-level="15.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#macros-with-parameters"><i class="fa fa-check"></i><b>15.3</b> MACROs with Parameters</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#positional-parameter"><i class="fa fa-check"></i><b>15.3.1</b> Positional Parameter</a></li>
+<li class="chapter" data-level="15.3.2" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#keyword-parameter"><i class="fa fa-check"></i><b>15.3.2</b> Keyword Parameter</a></li>
+<li class="chapter" data-level="15.3.3" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#mixed-parameter-list"><i class="fa fa-check"></i><b>15.3.3</b> Mixed Parameter List</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="basics-of-sas-macro.html"><a href="basics-of-sas-macro.html#learning-coding-by-examples-10"><i class="fa fa-check"></i><b>15.4</b> Learning Coding by Examples</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><center><BR><BR><a href="https://github.com/rstudio/bookdown" target="blank"><font color = "blue" size = 2> Published with bookdown</font></a></center></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA311: Stats Comp. &amp; Data Mgmt.</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="descriptive-statistics" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Descriptive Statistics<a href="descriptive-statistics.html#descriptive-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Once we finish reading data to SAS, we can use SAS to perform basic descriptive analysis such as frequency tables, different charts for numerical measures, etc. For convenience, we use the following data set for all illustrative examples in this chapter.</p>
+<p>This is data about penguins collected by Dr. Kristen Gorman and the Palmer Station in Antarctica. There are 344 cases and 7 columns. With both numerical and categorical variables, there are options for exploring, including looking for differentiators between the three species of penguin.</p>
+<p><a href="https://raw.githubusercontent.com/pengdsci/sta553/main/w02-penguins.csv" class="uri">https://raw.githubusercontent.com/pengdsci/sta553/main/w02-penguins.csv</a></p>
+<pre><code>FILENAME pguin URL &quot;https://raw.githubusercontent.com/pengdsci/sta553/main/w02-penguins.csv&quot;;
+
+PROC IMPORT DATAFILE = pguin
+    OUT = penguin        
+    DBMS = CSV  
+    REPLACE;
+    GETNAMES = YES;
+RUN;</code></pre>
+<p>We first look at the types of variables in the working data set using <code>PROC CONTENTS</code>.</p>
+<pre><code>TITLE &quot;Information of Penguin Data&quot;;
+PROC CONTENTS DATA = penguin;
+RUN;</code></pre>
+<p>The output contains three tables, the second table contains information about the SAS engine. We only look at the first and the third table that contains data information.</p>
+<p><img src="img05/w05-DataContents.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>We can see that there are 344 observations and 9 variables. All variables in the data set are in numerical form except for the year. We will use a SAS function to convert character variables to numerical variables in order to do appropriate analyses.</p>
+<div id="frequency-table-analysis" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Frequency Table Analysis<a href="descriptive-statistics.html#frequency-table-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can use <code>PROC FREQ</code> to produce frequency tables based on categorical variables. We can also group numerical variables to create categorical variables and then create frequency tables. Group variables in a data set are considered as data manipulation, We will discuss this in later chapters. The next examples will use the existing categorical variables in the data set.</p>
+<pre><code>TITLE &quot;Frequency by species and locations&quot;;
+PROC FREQ DATA=penguin;
+  TABLES species;  /* species table */
+  TABLES island;   /* location table */
+RUN;</code></pre>
+<p>The above two procedures give the frequency distributions of <code>species</code> and <code>island</code> in the same procedure. A SAS program consists of individual data and procedure steps. Each procedure allows only one title and a few sub-titles, all titles and sub-titles are always printed on the top of the output of the procedure.</p>
+<p><img src="img05/w05-1wayFreqTable.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>We can use two procedure steps to give specific titles for individual tables. We may want to know whether a particular species of penguin likes to live in a particular location. The two-way frequency table (cross-tabulation) gives this type of information.</p>
+<pre><code>TITLE &quot;Two-way Frequency Table&quot;;
+PROC FREQ DATA=penguin;
+  TABLES species * island;  /* species table */
+RUN;</code></pre>
+<p><img src="img05/w05-2wayFreqTable.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Note the asterisk (*) between the variables <code>species</code> and <code>island</code> on the tables statement. The above two-way table contains four different frequencies. Sometimes, we may be interested in only one type of frequency. We can select a particular frequency to print out by using the <code>norow</code>, <code>nocol</code>, and <code>nofreq</code> options on the tables statement to suppress the printing of the row percentages, column percentages, and frequencies (leaving just the cell percentages). Note that the options come after the forward-slash ( / ) on the tables statement.</p>
+<pre><code>TITLE &quot;Two-way Relative Frequency Table&quot;;
+PROC FREQ DATA=penguin;
+  TABLES species * island / NOROW NOCOL NOFREQ ;
+RUN;</code></pre>
+<p>Note that the order of the options does not matter.</p>
+<p><img src="img05/w05-2wayFreqRelTable.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="numerical-summary-statistics" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Numerical Summary Statistics<a href="descriptive-statistics.html#numerical-summary-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In elementary statistics, we learned several numerical measures of numerical data (variable) SAS procedures <code>PROC MEANS</code> and <code>PROC UNIVARIATE</code> calculate these numerical summary measures and also create plots such as basic statistical graphics as by-products.</p>
+<p>Since some of the numerical variables stored in the data are in the character form, we first convert them back to numerical form in order to perform appropriate analysis.</p>
+<pre><code>DATA new_penguin;  /* define a new data set */
+   SET Penguin;    /* copy the data original data*/
+   body_mass = input(body_mass_g, 8.);  /* conversion */
+   flipper_length = input(flipper_length_mm, 8.);
+   bill_depth = input(bill_depth_mm, 8.);
+   bill_length = input(bill_length_mm, 8.);
+RUN;
+
+PROC CONTENTS DATA  = new_penguin; /* check the conversion */
+RUN;</code></pre>
+<p><img src="img05/w05-ConvertedDataSet.png" width="70%" style="display: block; margin: auto;" /></p>
+<div id="proc-means" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> <code>PROC MEANS</code><a href="descriptive-statistics.html#proc-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>PROC MEANS</code> calculates the summarized statistics such as means, quartiles, size, etc. The detailed list of options is given in the following table.</p>
+<p><img src="img05/w05-ProcMeansOptions.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>In the following example, we selected several summary statistics to report in <code>PROC MEANS</code>.</p>
+<pre><code>TITLE &quot;Summary Statistics by PROC MEANS&quot;;
+PROC MEANS DATA=new_penguin N MIN Q1 MEAN STD MEDIAN Q3 MAX;
+  VAR body_mass;
+RUN;</code></pre>
+<p><img src="img05/w05-ProcMeansTables.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Suppose we would like to get the summary statistics separately for different species. We can use the class statement (shown below) to get separate results for the different values of <code>species</code>.</p>
+<pre><code>TITLE &quot;Summary Statistics by SPECIES&quot;;
+PROC MEANS DATA=new_penguin N MIN Q1 MEAN STD MEDIAN Q3 MAX;
+  CLASS species;
+  VAR body_mass;
+RUN;</code></pre>
+<p><img src="img05/w05-ProcMeansTablesBySpecies.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>We can also save the output of the summary table as a SAS data set.</p>
+<pre><code>  
+TITLE &quot;Summary Statistics by OUTPUT SAS dataset&quot;;
+PROC MEANS DATA=new_penguin N MIN Q1 MEAN STD MEDIAN Q3 MAX;
+  CLASS species;
+  VAR body_mass;
+  OUTPUT OUT= SummaryPenguin /autoname;
+RUN; 
+  
+PROC PRINT;
+RUN;</code></pre>
+<p><img src="img05/w05-outputSummaryData.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="proc-univariate" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> <code>PROC UNIVARIATE</code><a href="descriptive-statistics.html#proc-univariate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We first look at the univariate analysis using <code>PROC UNIVARIATE</code>.</p>
+<pre><code>PROC UNIVARIATE DATA=new_penguin;
+  VAR body_mass;
+RUN;</code></pre>
+<p>The output tables of <code>PROC UNIVARIATE</code> are summarized in the following.</p>
+<p><img src="img05/w05-UnivariateOutput.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="learning-coding-by-examples-1" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Learning Coding by Examples<a href="descriptive-statistics.html#learning-coding-by-examples-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following examples contain more detailed information on the three procedures: MEANS, FREQ, and UNIVARIATE.</p>
+<p>We still use the iris data set in different formats that can be found at</p>
+<p><a href="https://raw.githubusercontent.com/pengdsci/STA311/main/w04-iris-csv.csv" class="uri">https://raw.githubusercontent.com/pengdsci/STA311/main/w04-iris-csv.csv</a>, <a href="https://raw.githubusercontent.com/pengdsci/STA311/main/w04-iris-text.txt" class="uri">https://raw.githubusercontent.com/pengdsci/STA311/main/w04-iris-text.txt</a>,
+<a href="https://github.com/pengdsci/STA311/raw/main/w04-iris-xls.xls" class="uri">https://github.com/pengdsci/STA311/raw/main/w04-iris-xls.xls</a>
+<a href="https://github.com/pengdsci/STA311/raw/main/w04-iris-xlsx.xlsx" class="uri">https://github.com/pengdsci/STA311/raw/main/w04-iris-xlsx.xlsx</a></p>
+<p>Some inferential information introduced in various examples is not required for this class. We keep this type of information in this note to make the ePack a useful reference book.</p>
+<pre><code>/**********************************************************
+    Author: Cheng Peng
+      Date: 2/15/2021
+ Topics  1. Loading tab and csv file to SAS
+         2. PROC MEANS Basics
+         3. PROC MEANS - beyond averages
+         4. PROC FREQ Basics
+         5. PROC UNIVARIATE basics
+***********************************************************/
+DM &quot;CLEAR LOG&quot;;
+DM &quot;CLEAR OUT&quot;;
+
+LIBNAME w05 &quot;C:\STA311\w05&quot;;
+OPTIONS PS = 94 LS =74 NODATE NONUMBER NOCENTER;
+
+
+
+/*******************************************************
+      Topic 1: Loading Data with Data and PROC step
+
+      Read text and csv data into SAS with DATA STEP
+      and PROC IMPORT - Pay attention to the DELIMITER
+      When using INFILE-INPUT statement in a data step
+********************************************************/
+
+/** txt - tab-delimited data **/
+DATA TXTIRIS;
+LENGTH variety $ 10;
+/* txt files are tab-delimited data. The delimiter of this data is &#39;09&#39;x
+   that has to be specified in the following INFILE statement            */
+INFILE &quot;C:\STA311\w05\w05-iris-text.txt&quot; 
+        delimiter = &#39;09&#39;x  FIRSTOBS = 2;
+INPUT SepalLengt SepalWidth  PetalLength  PedalWidth  variety $;
+RUN;
+
+PROC CONTENTS DATA = TXTIRIS;
+RUN;
+
+/** CSV - comma separated values, dlm =&quot;,&quot; should be specified in the
+    INFILE statement.                                             **/
+DATA CSVIRIS;
+LENGTH variety $ 10;
+INFILE &quot;C:\STA311\w05\w05-iris-csv.csv&quot; 
+          dlm=&quot;,&quot; FIRSTOBS = 2;
+INPUT SepalLength SepalWidth PetalLength PedalWidth variety $;
+RUN;
+
+PROC CONTENTS DATA = CSVIRIS;
+RUN;
+
+/** PROC IMPORT Methods **/
+/** PROC IMPORT TXT **/
+PROC IMPORT OUT= WORK.txt_iris 
+            DATAFILE= &quot;C:\STA311\w05\w05-iris-text.txt&quot; 
+            DBMS=TAB REPLACE;   /* .txt is a tab-delimited data  */
+     GETNAMES=YES;
+     DATAROW=2;         /** data record starts from row 2, 
+                            The first row lists variable names  **/
+     GUESSINGROWS =150;  /** This option is required since the 
+                            length of variety is more than 8 bytes **/
+RUN;
+
+/* PROC IMPORT - CSV */
+PROC IMPORT OUT= WORK.iris_csv 
+            DATAFILE= &quot;C:\STA311\w05\w05-iris-csv.csv&quot; 
+            DBMS=CSV REPLACE;  /* database management system identifier: CSV */
+     GETNAMES=YES;
+     DATAROW=2;  /*  */
+     GUESSINGROWS =MAX; /* Need to be specified whenever the data set has character 
+                          variables. The maximum number of row SAS can guess is 
+                          32767. */
+RUN;
+
+
+/****************************************************************
+                   Topic 2. PROC MEANS
+ Certain SAS procedures can only be performed on numeric data. 
+ Two such procedures - PROC MEANS and PROC UNIVARIATE - are 
+ illustrated here using the height/weight SAS data set. 
+ (Note that PROC SUMMARY generates output similar to PROC MEANS.)
+
+  Several Statements to know:
+  1. CLASS
+  2. BY
+  3. OUTPUT
+****************************************************************/
+DM &quot;CLEAR LOG&quot;;
+DM &quot;CLEAR OUT&quot;;
+
+/** Example 2.1: default descriptive statistics -  
+               N Mean Std Dev Minimum Maximum     **/
+PROC MEANS DATA = iris_csv;    /* Begin the PROC step */
+  /* Add 2 titles */
+  TITLE1 &#39;PROC MEANS:  Example 2.1&#39;;
+  TITLE2 &#39;No keywords specified&#39;;
+RUN;             /* End the PROC step */
+
+/** Explore the information in the data set **/
+PROC CONTENTS DATA = IRIS_CSV;
+RUN;
+
+
+/******************************************************************
+   Example 2.2: available keywords - all descriptive statistics 
+
+   When using PROC MEANS, the CLASS statement avoids having
+   to sort the data first, but the CLASS statement is more 
+   suited to smaller data sets or when just a few CLASS 
+   variables are to be used.                    
+ 
+ Some of the keywords available with PROC MEANS:
+        N - number of observations
+        MEAN - mean value
+        MIN - minimum value
+        Q1 - first quartile
+        Median - middle value of the sorted data set
+        Q3 - third quartile
+        MAX - maximum value
+        SUM - the total values
+        NMISS - number of missing values
+        MAXDEC = n - setting the maximum number of decimal places 
+
+*******************************************************************/
+
+PROC MEANS DATA = IRIS_CSV N MIN Q1 MEDIAN MEAN Q3 MAX SUM NMISS ; 
+     VAR sepal_length;
+     /*Separate the analysis by values of variety */
+     CLASS variety; /* CLASS statement produces a single table */
+
+     /* Add 3 titles */
+     TITLE1 &#39;PROC MEANS:  Example 2.2&#39;;
+     TITLE2 &#39;Use of VAR, CLASS, and TITLE statements&#39;;
+     TITLE3 &#39;CLASSED by variety&#39;;
+RUN;        
+
+/* Example 2.3: BY- statement to replace CLASS statement!
+                BY statement will be used frequently in the future.
+                In order to use the BY statement, the data set has to
+                be sorted by the CLASS variable - variety!      */
+PROC SORT DATA = IRIS_CSV; 
+BY variety;
+RUN;
+
+OPTION LS=150;
+
+/* pay attention to the  */
+PROC MEANS N MIN Q1 MEAN MEDIAN Q3 MAX STD SUM NMISS MAXDEC = 1 
+     DATA = iris_csv MAXDEC = 3; 
+     /*Separate the analysis by values of variety */
+     BY variety;   /* BY statement produces three separate tables! */
+     /*Apply analysis only to &quot;sepal_length&quot; variable*/
+     VAR sepal_length;    
+     /* Add 3 titles */
+     TITLE1 &#39;PROC MEANS:  Example 2.3&#39;;
+     TITLE2 &#39;Use of VAR, BY, and TITLE statements&#39;;
+     TITLE3 &#39;CLASSED by variety&#39;;
+     TITLE4 &quot;BY Statement - Produces 3 Tables&quot;;
+RUN;        
+
+/** Other descriptive statistics with PROC MEANS:
+
+    SUM Sum of observations
+    MEDIAN  50th percentile
+    P1  -&gt; 1st percentile
+    P5  -&gt; 5th percentile
+    P10 -&gt; 10th percentile
+    P90 -&gt; 90th percentile
+    P95 -&gt; 95th percentile
+    P99 -&gt; 99th percentile
+    Q1  -&gt; First Quartile
+    Q3  -&gt; Third Quartile
+    *****
+    VAR -&gt; Variance
+    RANGE   -&gt; Range
+    USS -&gt; Uncorr. sum of squares
+    CSS -&gt; Corr. sum of squares
+    STDERR  -&gt; Standard Error
+    T   -&gt; Student抯 t value for testing Ho: md = 0
+    PRT -&gt; P-value associated with t-test above
+    SUMWGT  -&gt; Sum of the WEIGHT variable values
+    QRANGE  -&gt; Quartile range
+    *****
+    CLM -&gt; confidence limits on the mean
+    LCLM -&gt; lower confidence limit on the mean (one-sided)
+    UCLM -&gt; upper confidence limit on the mean (one-sided)
+**/
+
+/** Example 2.4: confidence interval for mean sepal_length and 
+                 sepal_width by variety                    **/
+
+PROC MEANS DATA = IRIS_CSV   MAXDEC = 3
+                 N             /* sample size */
+                 MEAN          /* sample mean */
+                 MAXDEC = 1    /* decimal places to keep */
+                 ALPHA = 0.01  /* significant level  */
+                 CLM           /* two-sided confidence limits: 99%  */
+                 LCLM          /* lower confidence limit: 99% */
+                 UCLM          /* upper confidence limit: 99% */
+                 ; 
+     /*Separate the analysis by values of variety */
+     CLASS variety;   /* want to create a single table */
+     /*Apply analysis only to &quot;sepal_length&quot; and &quot;sepal_width&quot; variables*/
+     VAR sepal_length sepal_length; 
+     /* Add 3 titles */
+     TITLE1 &#39;PROC MEANS:  Example 2.4&#39;;
+     TITLE2 &#39;Confidence Intervals: 99%&#39;;
+     TITLE3 &#39;CLASSED by variety&#39;;
+RUN;        
+
+PROC PRINT; RUN;
+
+
+OPTIONS PS = 90 LS =70 NONUMBER NODATE;   /* global options */
+
+/* Example 2.5: OUTPUT- statement creates an SAS data set that stores
+                the output information from PROC MEANS! - This is another
+                method for creating SAS data sets.                  */
+
+PROC MEANS DATA = IRIS_CSV ALPHA=0.01 NOPRINT; /* Setting up confidence level.
+                                 If not specified, default level 0.05  */
+                 *CLM             /* suppress the output statistics */
+                 N                /* sample size */
+                 MEAN            /* sample mean */
+                 MAXDEC = 1      /* decimal places to keep */
+                 ALPHA = 0.01    /* significant level  */
+                 CLM             /* two-sided confidence limits: 99%  */
+                 LCLM            /* lower confidence limit: 99% */
+                 UCLM            /* upper confidence limit: 99% */
+                 ; 
+     /*Separate the analysis by values of variety */
+     CLASS variety;   /* want to create a single table */
+     /*Apply analysis only to &quot;sepal_length&quot; and &quot;sepal_width&quot; variables*/
+     VAR sepal_length sepal_length; 
+     /* output a SAS data set */ 
+     OUTPUT OUT = My_CLM            /* output SAS data set --&gt; temp lib*/
+               N = size             /* sample size */
+               MEAN = avg         
+               STDERR = sd_err      /* standard error */
+               LCLM = LCI           /* lower confidence limit  */
+               UCLM = UCI;          /* upper confidence limit  */
+     /* Add 3 titles */
+     TITLE1 &#39;PROC MEANS:  Example 2.5&#39;;
+     TITLE2 &#39;Confidence Intervals: 99%&#39;;
+     TITLE3 &#39;CLASSED by variety&#39;;
+RUN;        
+
+TITLE &quot;&quot;;  /* this clears all previous titles */
+
+PROC PRINT; RUN;
+
+/**************************************************************
+            Topic 3:  PROC FREQ
+
+Frequency tables and crosstabulation tables provide a way to
+summarize data for ordinal and categorical variables. 
+Frequency tables show the distribution of a variable&#39;s values.
+**************************************************************/
+
+/**  Example 3.1. Simple frequency table **/
+PROC FREQ DATA = IRIS_CSV;
+TABLE VARIETY;
+TITLE &quot;Frequency Table of Variety&quot;;
+RUN;
+
+/** Example 3.2. Output frequency table to a SAS data set 
+    Frequencies and percentages calculated using Proc Freq 
+    can also be saved to an output dataset using the OUT option 
+    combined with the TABLES statement.
+   
+    The OUTCUM option can also be added to include the 
+    cumulative frequencies in the output dataset          **/
+
+PROC FREQ DATA = IRIS_CSV;
+TABLE VARIETY / OUT = Variety_FREQ OUTCUM;
+TITLE1 &quot;Frequency Table of Variety&quot;;
+TITLE2 &quot;Store the output to a SAS data set&quot;;
+RUN;
+
+PROC PRINT;
+TITLE &quot;Print out the output Frequency table&quot;;
+RUN;
+
+TITLE &quot;&quot;;
+
+/** We will revisit PROC FREQ after we do some data manipulation **/
+
+/**************************************************************
+            Topic 4:  PROC UNIVARIATE
+
+PROC UNIVARIATE produces descriptive statistics on continuous 
+variables just like proc means, but many more of them, and also 
+can produce some univariate plots.
+
+**************************************************************/
+
+OPTION NOCENTER LS = 90;
+
+/* Example 4.1:  Univariate analysis of a numerical variable
+                 -- a simple example                     */
+PROC UNIVARIATE DATA = IRIS_CSV 
+    NORMAL  /* normality test */
+    FREQ    /* frequency table of sepal_length: not useful*/
+    PLOT;   /* plot of the histogram of sepal_length */
+    VAR Sepal_length;
+    /* specification of details in the histogram
+       1. Place a normal curve on the top of the histogram
+    */
+    HISTOGRAM Sepal_length/NORMAL;
+    TITLE &#39;PROC UNIVARIATE EXAMPLE&#39;;
+    FOOTNOTE &#39;Evaluate the distribution of Sepal_length&#39;;
+RUN;
+
+TITLE &quot;&quot;;
+FOOTNOTE &quot;&quot;;
+
+
+/* Example 4.2:  PROC UNIVARIATE -- OUTPUT SAS Data set     
+   This is a very simple example with a few descriptive statistics  */
+PROC UNIVARIATE  DATA = IRIS_CSV NOPRINT;
+    VAR Sepal_length;
+      OUTPUT OUT = UNIVAR_OUT_AVG          /* output data set #1 */
+              MEAN = Sepal_length_avg;
+    OUTPUT    OUT = UNIV_OUT_MORE        /* output data set #2 */
+              /* Three descriptive statistics were written to the SAS data set */
+              MEAN =Sepal_L_AVG        
+              STD = Sepal_L_STD
+              MIN = Sepal_L_MIN;
+RUN;
+
+
+/******************************************************
+  Available Statistics for OUT in PROC UNIVARIATE
+
+*** Descriptive Statistics ***
+CSS ==&gt; Sum of squares corrected for the mean
+CV ==&gt; Percent coefficient of variation
+KURTOSIS | KURT ==&gt; Measurement of the heaviness of tails
+MAX ==&gt; Largest (maximum) value
+MEAN ==&gt; Arithmetic mean
+MIN ==&gt; Smallest (minimum) value
+MODE ==&gt; Most frequent value (if not unique, the smallest mode)
+N==&gt; Number of observations on which calculations are based
+NMISS==&gt; Number of missing observations
+NOBS==&gt; Total number of observations
+RANGE==&gt; Difference between the maximum and minimum values
+SKEWNESS | SKEW==&gt; Measurement of the tendency of the deviations to be larger 
+    in one direction than in the other
+STD | STDDEV==&gt; Standard deviation
+STDMEAN | STDERR==&gt; Standard error of the mean
+SUM==&gt; Sum
+SUMWGT==&gt; Sum of the weights
+USS==&gt; Uncorrected sum of squares
+VAR==&gt; Variance
+
+**** Quantile Statistics  ****
+MEDIAN | Q2 | P50==&gt; middle value (50th percentile)
+P1==&gt; 1st percentile
+P5==&gt; 5th percentile
+P10==&gt; 10th percentile
+P90==&gt; 90th percentile
+P95==&gt; 95th percentile
+P99==&gt; 99th percentile
+Q1 | P25==&gt; Lower quartile (25th percentile)
+Q3 | P75==&gt; Upper quartile (75th percentile)
+QRANGE==&gt; Difference between the upper and lower quartiles 
+           (also known as the inner quartile range)
+
+*** Robust Statistics ***
+GINI==&gt; Gini抯 mean difference
+MAD==&gt; Median absolute difference
+QN==&gt; 2nd variation of median absolute difference
+SN==&gt; 1st variation of median absolute difference
+STD_GINI==&gt; Standard deviation for Gini抯 mean difference
+STD_MAD==&gt; Standard deviation for median absolute difference
+STD_QN==&gt; Standard deviation for the second variation of 
+          The median absolute difference
+STD_QRANGE==&gt; Estimate of the standard deviation, based on 
+              interquartile range
+STD_SN==&gt; Standard deviation for the first variation of the 
+          median absolute difference
+
+*** Hypothesis Test Statistics ***
+MSIGN==&gt; Sign statistic
+NORMAL==&gt; Test statistic for normality. If the sample size is less than or 
+          equal to 2000, this is the Shapiro-Wilk W statistic. Otherwise, 
+          it is the Kolmogorov D statistic.
+PROBM==&gt; Probability of a greater absolute value for the sign statistic
+PROBN==&gt; Probability that the data came from a normal distribution
+PROBS==&gt; Probability of a greater absolute value for the signed-rank statistic
+PROBT==&gt; Two-tailed p-value for Student抯 t statistic with  degrees of freedom
+SIGNRANK==&gt; Signed rank statistic
+T==&gt; Student t statistic to test the null hypothesis that the
+     The population mean is equal to mu_0 
+
+****************************************************/
+</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="read-data-from-other-applications.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-statistics-graphics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pengdsci/STA311EB/edit/master/05-DescriptiveStats.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["STA311EB.pdf", "STA311EB.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
